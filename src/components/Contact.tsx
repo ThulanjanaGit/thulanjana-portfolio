@@ -1,39 +1,47 @@
+import * as m from "motion/react-m";
+import { FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { CONTACT } from "../constants";
-import { motion } from "motion/react";
+import { fadeIn } from "../utils/motion";
+import SectionHeading from "./SectionHeading";
 
 const Contact = () => {
   return (
-    <div className="border-b border-neutral-900 pb-20">
-      <motion.h2
-        whileInView={{ y: 0, opacity: 1 }}
-        initial={{ y: -100, opacity: 0 }}
-        transition={{ duration: 1.5 }}
-        className="my-10 text-center text-4xl"
-      >
-        Get In Touch
-      </motion.h2>
-      <div className="text-center tracking-tighter">
-        <motion.p
-          whileInView={{ x: 0, opacity: 1 }}
-          initial={{ x: -100, opacity: 0 }}
-          transition={{ duration: 1.5 }}
-          className="my-4"
-        >
-          <a href={CONTACT.addressLink}>{CONTACT.address}</a>
-        </motion.p>
-        <motion.p
-          whileInView={{ x: 0, opacity: 1 }}
-          initial={{ x: 100, opacity: 0 }}
-          transition={{ duration: 1.5 }}
-          className="my-4"
-        >
-          <a href={`tel:${CONTACT.phoneNoPT}`}>{CONTACT.phoneNoPT}</a>
-        </motion.p>
-        <a href={`mailto:${CONTACT.email}`} className="border-b">
-          {CONTACT.email}
-        </a>
-      </div>
-    </div>
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="border-b border-neutral-900 pb-20"
+    >
+      <SectionHeading id="contact-heading">Get In Touch</SectionHeading>
+      <address className="flex flex-col items-center gap-4 tracking-tighter not-italic">
+        <m.p {...fadeIn("left")} className="flex items-center gap-3">
+          <FaLocationDot aria-hidden="true" className="text-neutral-500" />
+          <a
+            href={CONTACT.addressLink}
+            className="underline-offset-4 hover:underline"
+          >
+            {CONTACT.address}
+          </a>
+        </m.p>
+        <m.p {...fadeIn("right")} className="flex items-center gap-3">
+          <FaPhone aria-hidden="true" className="text-neutral-500" />
+          <a
+            href={`tel:${CONTACT.phone.replaceAll(" ", "")}`}
+            className="underline-offset-4 hover:underline"
+          >
+            {CONTACT.phone}
+          </a>
+        </m.p>
+        <m.p {...fadeIn("left")} className="flex items-center gap-3">
+          <FaEnvelope aria-hidden="true" className="text-neutral-500" />
+          <a
+            href={`mailto:${CONTACT.email}`}
+            className="underline-offset-4 hover:underline"
+          >
+            {CONTACT.email}
+          </a>
+        </m.p>
+      </address>
+    </section>
   );
 };
 

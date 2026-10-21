@@ -3,23 +3,146 @@ import helpAgeInternational from "../assets/projects/helpage-international.webp"
 import bartsCharity from "../assets/projects/barts-charity.webp";
 import fara from "../assets/projects/fara.webp";
 import travelGuider from "../assets/projects/travel-guider.webp";
-import type { Experience, Project } from "../types";
+import {
+  DiAngularSimple,
+  DiCss3,
+  DiHtml5,
+  DiJava,
+  DiJavascript,
+  DiMongodb,
+  DiMysql,
+  DiNodejs,
+  DiPhp,
+  DiPython,
+  DiWordpress,
+} from "react-icons/di";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaSquareXTwitter,
+  FaWhatsapp,
+} from "react-icons/fa6";
+import { RiReactjsLine } from "react-icons/ri";
+import type {
+  Experience,
+  NavLink,
+  Project,
+  SocialLink,
+  Technology,
+} from "../types";
 
 export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
 
-export const SOCIAL = {
-  linkedIn: "https://www.linkedin.com/in/thulanjana/",
-  github: "https://github.com/ThulanjanaGit",
-  xTwitter: "https://x.com/ThulanjanaX",
-  instagram: "https://www.instagram.com/__pramod_00__/",
-  whatsapp: "http://wa.me/351965617062",
-};
+export const NAV_LINKS: NavLink[] = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/thulanjana/",
+    icon: FaLinkedin,
+  },
+  { label: "GitHub", href: "https://github.com/ThulanjanaGit", icon: FaGithub },
+  {
+    label: "X (Twitter)",
+    href: "https://x.com/ThulanjanaX",
+    icon: FaSquareXTwitter,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/__pramod_00__/",
+    icon: FaInstagram,
+  },
+  { label: "WhatsApp", href: "https://wa.me/351965617062", icon: FaWhatsapp },
+];
 
 export const HERO_CONTENT = ` Experienced Full Stack Web Developer with a first-class Software Engineering degree from the University of Wolverhampton. With 3+ years of expertise in both frontend and backend development, I specialize in building scalable, dynamic systems using technologies like React, Angular, PHP, Node.js, and MySQL. Passionate about creating high-quality, user-centered solutions, I leverage technical excellence to deliver efficient, innovative applications aligned with business goals.`;
 
-export const ABOUT_TEXT = `Armed with a Bachelor of Science Honours in Software Engineering from the University of Wolverhampton, my journey as a Full Stack Web Developer has been shaped by my work at Fat Beehive. I have built dynamic, scalable systems and crafted high-quality websites, leveraging a diverse technology stack including React, Angular, PHP, Node.js, and MySQL. My experience spans both frontend and backend development, optimizing user experiences and functionality across projects.
+export const ABOUT_PARAGRAPHS = [
+  "Armed with a Bachelor of Science Honours in Software Engineering from the University of Wolverhampton, my journey as a Full Stack Web Developer has been shaped by my work at Fat Beehive. I have built dynamic, scalable systems and crafted high-quality websites, leveraging a diverse technology stack including React, Angular, PHP, Node.js, and MySQL. My experience spans both frontend and backend development, optimizing user experiences and functionality across projects.",
+  "In addition to customizing WordPress and integrating Salesforce for enhanced marketing automation, I have worked on creating seamless, data-driven solutions that drive customer engagement. Dedicated to continuous growth and innovation, I am passionate about translating complex requirements into user-centric, scalable web applications that align with evolving business goals.",
+];
 
-In addition to customizing WordPress and integrating Salesforce for enhanced marketing automation, I have worked on creating seamless, data-driven solutions that drive customer engagement. Dedicated to continuous growth and innovation, I am passionate about translating complex requirements into user-centric, scalable web applications that align with evolving business goals.`;
+export const TECHNOLOGIES: Technology[] = [
+  {
+    name: "React",
+    icon: RiReactjsLine,
+    colorClass: "text-cyan-400",
+    experience: "3 years",
+  },
+  {
+    name: "Angular",
+    icon: DiAngularSimple,
+    colorClass: "text-indigo-500",
+    experience: "3 years",
+  },
+  {
+    name: "WordPress",
+    icon: DiWordpress,
+    colorClass: "text-gray-600",
+    experience: "2 years",
+  },
+  {
+    name: "Node.js",
+    icon: DiNodejs,
+    colorClass: "text-blue-500",
+    experience: "3 years",
+  },
+  {
+    name: "JavaScript",
+    icon: DiJavascript,
+    colorClass: "text-yellow-500",
+    experience: "4 years",
+  },
+  {
+    name: "HTML",
+    icon: DiHtml5,
+    colorClass: "text-green-500",
+    experience: "4 years",
+  },
+  {
+    name: "CSS",
+    icon: DiCss3,
+    colorClass: "text-red-700",
+    experience: "4 years",
+  },
+  {
+    name: "PHP",
+    icon: DiPhp,
+    colorClass: "text-purple-600",
+    experience: "3 years",
+  },
+  {
+    name: "Python",
+    icon: DiPython,
+    colorClass: "text-yellow-700",
+    experience: "2 years",
+  },
+  {
+    name: "Java",
+    icon: DiJava,
+    colorClass: "text-red-600",
+    experience: "2 years",
+  },
+  {
+    name: "MySQL",
+    icon: DiMysql,
+    colorClass: "text-green-500",
+    experience: "3 years",
+  },
+  {
+    name: "MongoDB",
+    icon: DiMongodb,
+    colorClass: "text-green-500",
+    experience: "3 years",
+  },
+];
 
 export const EXPERIENCES: Experience[] = [
   {
@@ -160,6 +283,6 @@ export const PROJECTS: Project[] = [
 export const CONTACT = {
   address: "R. Nova do Rio 55, 4200-419 Porto, Portugal",
   addressLink: "https://maps.app.goo.gl/t7kL7Pz7JXmjrQWc7",
-  phoneNoPT: "+351 965 617 062",
+  phone: "+351 965 617 062",
   email: "thulanjana1125@gmail.com",
 };

@@ -1,114 +1,138 @@
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 import { useState } from "react";
+import { FaChevronLeft, FaChevronRight, FaLinkedin } from "react-icons/fa6";
 import { RECOMMENDATIONS } from "../constants/recommendations";
-import { motion } from "motion/react";
-import { FaLinkedin } from "react-icons/fa";
-import { TbMailFilled } from "react-icons/tb";
+import { fadeIn } from "../utils/motion";
+import SectionHeading from "./SectionHeading";
+
+const arrowButtonClass =
+  "grid size-11 shrink-0 cursor-pointer place-items-center rounded-full bg-neutral-800 text-white shadow-lg transition-colors hover:bg-neutral-700";
+
+const fade = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+  transition: { duration: 0.25 },
+};
 
 const Recommendations = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const count = RECOMMENDATIONS.length;
+  const current = RECOMMENDATIONS[currentIndex];
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % RECOMMENDATIONS.length);
+  const showPrevious = () => {
+    setCurrentIndex((index) => (index - 1 + count) % count);
   };
 
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + RECOMMENDATIONS.length) % RECOMMENDATIONS.length,
-    );
+  const showNext = () => {
+    setCurrentIndex((index) => (index + 1) % count);
   };
-
-  const formattedDescription = RECOMMENDATIONS[currentIndex].description
-    .split("\n")
-    .map((line, index) => (
-      <span key={index}>
-        {line}
-        <br />
-      </span>
-    ));
 
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h2
-        whileInView={{ y: 0, opacity: 1 }}
-        initial={{ y: -100, opacity: 0 }}
-        transition={{ duration: 1.5 }}
-        className="my-20 text-center text-4xl"
-      >
+    <section
+      id="recommendations"
+      aria-labelledby="recommendations-heading"
+      aria-roledescription="carousel"
+      className="border-b border-neutral-900 pb-4"
+    >
+      <SectionHeading id="recommendations-heading">
         Recommendations
-      </motion.h2>
-
-      <motion.div
-        className="relative mx-auto max-w-5xl"
-        whileInView={{ x: 0, opacity: 1 }}
-        initial={{ x: -100, opacity: 0 }}
-        transition={{ duration: 1.5 }}
+      </SectionHeading>
+      <m.div
+        {...fadeIn("left")}
+        className="mx-auto mb-12 flex max-w-5xl flex-col items-center gap-10 lg:flex-row lg:items-start"
       >
-        <div className="mx-12 flex flex-col items-center justify-center lg:flex-row">
-          <motion.div
-            className="m-3 mb-6 flex min-h-172 w-full flex-col items-center justify-center lg:mb-0 lg:w-1/3"
-            key={currentIndex}
-          >
-            <img
-              src={RECOMMENDATIONS[currentIndex].image}
-              alt={RECOMMENDATIONS[currentIndex].name}
-              width={288}
-              height={288}
-              loading="lazy"
-              className="m-6 size-72 rounded-full object-cover"
-            />
-            <div className="flex items-center justify-center gap-4 text-4xl">
-              {[
-                {
-                  href: RECOMMENDATIONS[currentIndex].linkedIn,
-                  icon: <FaLinkedin />,
-                },
-                {
-                  href: RECOMMENDATIONS[currentIndex].email,
-                  icon: <TbMailFilled />,
-                },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
+        <div className="flex shrink-0 flex-col items-center">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={showPrevious}
+              aria-label="Previous recommendation"
+              className={arrowButtonClass}
+            >
+              <FaChevronLeft aria-hidden="true" />
+            </button>
+            <AnimatePresence mode="wait" initial={false}>
+              <m.img
+                key={current.name}
+                {...fade}
+                src={current.image}
+                alt=""
+                width={288}
+                height={288}
+                loading="lazy"
+                className="size-40 rounded-full object-cover sm:size-56"
+              />
+            </AnimatePresence>
+            <button
+              type="button"
+              onClick={showNext}
+              aria-label="Next recommendation"
+              className={arrowButtonClass}
+            >
+              <FaChevronRight aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mt-4 flex">
+            {RECOMMENDATIONS.map(({ name }, index) => (
+              <button
+                key={name}
+                type="button"
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Show recommendation from ${name}`}
+                aria-current={index === currentIndex}
+                className="group grid size-6 cursor-pointer place-items-center"
+              >
+                <span
+                  className={`size-2.5 rounded-full transition-colors ${
+                    index === currentIndex
+                      ? "bg-neutral-200"
+                      : "bg-neutral-700 group-hover:bg-neutral-500"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div aria-live="polite" className="w-full lg:flex-1">
+          <AnimatePresence mode="wait" initial={false}>
+            <m.figure
+              key={current.name}
+              {...fade}
+              aria-roledescription="slide"
+              aria-label={`${currentIndex + 1} of ${count}`}
+            >
+              <figcaption className="mb-4 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xl font-semibold text-neutral-200">
+                    {current.name}
+                  </p>
+                  <p className="text-lg font-medium text-neutral-400">
+                    {current.position}
+                  </p>
+                </div>
+                <a
+                  href={current.linkedIn}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.3 }}
-                  whileTap={{ scale: 0.95 }}
+                  aria-label={`${current.name} on LinkedIn (opens in a new tab)`}
+                  className="text-3xl text-neutral-300 transition-colors hover:text-white"
                 >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div className="w-full lg:w-2/3">
-            <h6 className="mb-2 text-xl font-semibold">
-              {RECOMMENDATIONS[currentIndex].name}
-            </h6>
-            <p className="mb-2 text-lg font-medium text-neutral-400">
-              {RECOMMENDATIONS[currentIndex].position}
-            </p>
-            <div className="text-neutral-500">{formattedDescription}</div>
-          </motion.div>
+                  <FaLinkedin aria-hidden="true" />
+                </a>
+              </figcaption>
+              <blockquote className="space-y-4 text-neutral-400">
+                {current.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </blockquote>
+            </m.figure>
+          </AnimatePresence>
         </div>
-
-        <div className="absolute top-1/2 right-0 left-0 mt-4 flex justify-between">
-          <button
-            onClick={handlePrev}
-            className="cursor-pointer rounded-full bg-neutral-800 px-4 py-2 text-white shadow-lg hover:bg-neutral-700"
-          >
-            &lt;
-          </button>
-          <button
-            onClick={handleNext}
-            className="cursor-pointer rounded-full bg-neutral-800 px-4 py-2 text-white shadow-lg hover:bg-neutral-700"
-          >
-            &gt;
-          </button>
-        </div>
-      </motion.div>
-    </div>
+      </m.div>
+    </section>
   );
 };
 
