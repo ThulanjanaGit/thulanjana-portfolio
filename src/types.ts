@@ -11,19 +11,32 @@ export interface SocialLink {
   icon: IconType;
 }
 
-export interface Technology {
+export interface Skill {
   name: string;
   icon: IconType;
   colorClass: string;
-  experience: string;
+}
+
+export interface Highlight {
+  title: string;
+  description: string;
 }
 
 export interface Experience {
-  year: string;
   role: string;
   company: string;
-  description: string[];
+  location: string;
+  period: string;
+  highlights: Highlight[];
   technologies: string[];
+}
+
+export interface Education {
+  degree: string;
+  honours: string;
+  institution: string;
+  location: string;
+  period: string;
 }
 
 export interface Project {

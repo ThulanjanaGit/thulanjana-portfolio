@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Routine npm updates arrive as one grouped PR a month; major versions get
+  # their own PR so a breaking upgrade never blocks the routine ones.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      npm-minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      github-actions:
+        patterns: ["*"]

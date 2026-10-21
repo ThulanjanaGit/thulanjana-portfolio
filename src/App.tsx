@@ -1,13 +1,14 @@
 import { domAnimation, LazyMotion, MotionConfig } from "motion/react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Technologies from "./components/Technologies";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Recommendations from "./components/Recommendations";
-import Footer from "./components/Footer";
+import Footer from "./components/layout/Footer";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Skills from "./components/sections/Skills";
+import Experience from "./components/sections/Experience";
+import Education from "./components/sections/Education";
+import Recommendations from "./components/sections/Recommendations";
+import Projects from "./components/sections/Projects";
+import Contact from "./components/sections/Contact";
 
 const App = () => {
   return (
@@ -33,8 +34,9 @@ const App = () => {
             <main id="main">
               <Hero />
               <About />
-              <Technologies />
+              <Skills />
               <Experience />
+              <Education />
               <Recommendations />
               <Projects />
               <Contact />

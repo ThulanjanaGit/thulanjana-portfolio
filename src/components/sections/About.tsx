@@ -1,8 +1,8 @@
 import * as m from "motion/react-m";
-import aboutImg from "../assets/about.webp";
-import { ABOUT_PARAGRAPHS } from "../constants";
-import { fadeIn } from "../utils/motion";
-import SectionHeading from "./SectionHeading";
+import aboutImg from "../../assets/about.webp";
+import { ABOUT_PARAGRAPHS } from "../../data/profile";
+import { fadeIn } from "../../utils/motion";
+import SectionHeading from "../ui/SectionHeading";
 
 const About = () => {
   return (

@@ -1,6 +1,7 @@
 import * as m from "motion/react-m";
-import logo from "../assets/logo.webp";
-import { NAV_LINKS, SOCIAL_LINKS } from "../constants";
+import logo from "../../assets/logo.webp";
+import { NAV_LINKS } from "../../data/navigation";
+import { SOCIAL_LINKS } from "../../data/profile";
 
 const Navbar = () => {
   return (

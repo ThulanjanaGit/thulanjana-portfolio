@@ -1,9 +1,9 @@
 import * as m from "motion/react-m";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import { PROJECTS } from "../constants";
-import { fadeIn } from "../utils/motion";
-import SectionHeading from "./SectionHeading";
-import TagList from "./TagList";
+import { PROJECTS } from "../../data/projects";
+import { fadeIn } from "../../utils/motion";
+import SectionHeading from "../ui/SectionHeading";
+import TagList from "../ui/TagList";
 
 const Projects = () => {
   return (

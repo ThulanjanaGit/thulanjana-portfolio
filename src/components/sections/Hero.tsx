@@ -1,7 +1,7 @@
 import type { Variants } from "motion/react";
 import * as m from "motion/react-m";
-import profilePic from "../assets/profile.webp";
-import { HERO_CONTENT, RESUME_URL } from "../constants";
+import profilePic from "../../assets/profile.webp";
+import { HERO_CONTENT, HERO_TITLE, RESUME_URL } from "../../data/profile";
 
 const container = (delay: number): Variants => ({
   hidden: { x: -100, opacity: 0 },
@@ -30,9 +30,13 @@ const Hero = () => {
               variants={container(0.15)}
               initial="hidden"
               animate="visible"
-              className="bg-linear-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
+              className="bg-linear-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-center text-3xl tracking-tight text-transparent lg:text-left"
             >
-              Web Developer
+              {HERO_TITLE.map((line) => (
+                <span key={line} className="block">
+                  {line}{" "}
+                </span>
+              ))}
             </m.p>
             <m.p
               variants={container(0.3)}
