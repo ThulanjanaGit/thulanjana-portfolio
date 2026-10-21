@@ -1,25 +1,17 @@
-import {
-  DiAngularSimple,
-  DiNodejs,
-  DiCss3,
-  DiHtml5,
-  DiJava,
-  DiJavascript,
-  DiMongodb,
-  DiMysql,
-  DiPhp,
-  DiPython,
-  DiWordpress,
-} from "react-icons/di";
-import { RiReactjsLine } from "react-icons/ri";
-import { motion, type Variants } from "motion/react";
+import type { Variants } from "motion/react";
+import * as m from "motion/react-m";
+import { TECHNOLOGIES } from "../constants";
+import { fadeIn } from "../utils/motion";
+import SectionHeading from "./SectionHeading";
+
+const BOB_DURATIONS = [3, 2.5, 2];
 
 const iconVariants = (duration: number): Variants => ({
   initial: { y: 10 },
   animate: {
     y: [10, -10],
     transition: {
-      duration: duration,
+      duration,
       ease: "linear",
       repeat: Infinity,
       repeatType: "reverse",
@@ -27,127 +19,41 @@ const iconVariants = (duration: number): Variants => ({
   },
 });
 
-const iconData = [
-  {
-    icon: <RiReactjsLine className="text-7xl text-cyan-400" />,
-    name: "React",
-    experience: "3 years",
-    variantDelay: 3,
-  },
-  {
-    icon: <DiAngularSimple className="text-7xl text-indigo-500" />,
-    name: "Angular",
-    experience: "3 years",
-    variantDelay: 2.5,
-  },
-  {
-    icon: <DiWordpress className="text-7xl text-gray-600" />,
-    name: "WordPress",
-    experience: "2 years",
-    variantDelay: 2,
-  },
-  {
-    icon: <DiNodejs className="text-7xl text-blue-500" />,
-    name: "Node.js",
-    experience: "3 years",
-    variantDelay: 3,
-  },
-  {
-    icon: <DiJavascript className="text-7xl text-yellow-500" />,
-    name: "JavaScript",
-    experience: "4 years",
-    variantDelay: 2.5,
-  },
-  {
-    icon: <DiHtml5 className="text-7xl text-green-500" />,
-    name: "HTML",
-    experience: "4 years",
-    variantDelay: 2,
-  },
-  {
-    icon: <DiCss3 className="text-7xl text-red-700" />,
-    name: "CSS",
-    experience: "4 years",
-    variantDelay: 3,
-  },
-  {
-    icon: <DiPhp className="text-7xl text-purple-600" />,
-    name: "PHP",
-    experience: "3 years",
-    variantDelay: 2.5,
-  },
-  {
-    icon: <DiPython className="text-7xl text-yellow-700" />,
-    name: "Python",
-    experience: "2 years",
-    variantDelay: 2,
-  },
-  {
-    icon: <DiJava className="text-7xl text-red-600" />,
-    name: "Java",
-    experience: "2 years",
-    variantDelay: 3,
-  },
-  {
-    icon: <DiMysql className="text-7xl text-green-500" />,
-    name: "MySQL",
-    experience: "3 years",
-    variantDelay: 2.5,
-  },
-  {
-    icon: <DiMongodb className="text-7xl text-green-500" />,
-    name: "MongoDB",
-    experience: "3 years",
-    variantDelay: 2,
-  },
-];
-
 const Technologies = () => {
   return (
-    <div className="flex flex-col items-center justify-center border-b border-neutral-900 pb-4">
-      <motion.h2
-        whileInView={{ y: 0, opacity: 1 }}
-        initial={{ y: -100, opacity: 0 }}
-        transition={{ duration: 1.5 }}
-        className="my-20 text-center text-4xl"
+    <section
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="flex flex-col items-center border-b border-neutral-900 pb-4"
+    >
+      <SectionHeading id="skills-heading">Skills</SectionHeading>
+      <m.ul
+        {...fadeIn("left")}
+        className="flex max-w-3xl flex-wrap justify-center gap-3 sm:gap-4"
       >
-        Technologies
-      </motion.h2>
-
-      <motion.div
-        whileInView={{ x: 0, opacity: 1 }}
-        initial={{ x: -100, opacity: 0 }}
-        transition={{ duration: 1.5 }}
-        className="flex max-w-3xl flex-wrap justify-center gap-4"
-      >
-        {iconData.map((item, index) => (
-          <motion.div
-            key={index}
-            variants={iconVariants(item.variantDelay)}
-            initial="initial"
-            animate="animate"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative my-3 rounded-2xl border-4 border-neutral-800 p-4 hover:bg-white"
-          >
-            <div
-              className={
-                "transition-colors duration-300 group-hover:text-white group-hover:opacity-0"
-              }
+        {TECHNOLOGIES.map(
+          ({ name, icon: Icon, colorClass, experience }, index) => (
+            <m.li
+              key={name}
+              variants={iconVariants(
+                BOB_DURATIONS[index % BOB_DURATIONS.length],
+              )}
+              initial="initial"
+              animate="animate"
+              whileHover={{ scale: 1.1 }}
+              className="my-3 flex w-24 flex-col items-center gap-2 rounded-2xl border-4 border-neutral-800 p-3 text-center transition-colors hover:border-neutral-600 sm:w-28"
             >
-              <div className={item.icon.props.className}>{item.icon}</div>
-            </div>
-
-            <div className="absolute inset-0 flex items-center justify-center text-xl opacity-0 transition-opacity duration-300 group-hover:text-black group-hover:opacity-100">
-              <div className="text-center">
-                <p>{item.name}</p>
-                <p>{item.experience}</p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+              <Icon
+                aria-hidden="true"
+                className={`text-5xl sm:text-6xl ${colorClass}`}
+              />
+              <span className="text-sm leading-tight">{name}</span>
+              <span className="text-xs text-neutral-400">{experience}</span>
+            </m.li>
+          ),
+        )}
+      </m.ul>
+    </section>
   );
 };
 
