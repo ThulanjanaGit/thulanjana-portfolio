@@ -1,7 +1,6 @@
-import { ABOUT_TEXT } from "../constants";
+import { ABOUT_TEXT, RESUME_URL } from "../constants";
 import aboutImg from "../assets/AboutMe.png";
-import resumePdf from "../assets/Thulanjana - Full Stack Developer.pdf";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const About = () => {
   const formattedText = ABOUT_TEXT.split("\n").map((line, index) => (
@@ -24,7 +23,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="w-full lg:w-1/2 lg:p-8"
         >
-          <div className="max-w-[32rem] flex items-center justify-center">
+          <div className="flex max-w-lg items-center justify-center">
             <img className="rounded-2xl" src={aboutImg} alt="About Me" />
           </div>
         </motion.div>
@@ -37,14 +36,14 @@ const About = () => {
           <div className="flex justify-center lg:justify-start">
             <div className="my-2 max-w-xl py-6">{formattedText}</div>
           </div>
-          <div className="flex max-w-xl justify-center lg:justify-center mt-6">
+          <div className="mt-6 flex max-w-xl justify-center lg:justify-center">
             <motion.a
-              href={resumePdf}
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block px-6 py-3 text-black bg-neutral-300 rounded-lg"
+              className="inline-block rounded-lg bg-neutral-300 px-6 py-3 text-black"
             >
               Open Resume
             </motion.a>

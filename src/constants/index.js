@@ -4,6 +4,8 @@ import project3 from "../assets/projects/Projects03.png";
 import project4 from "../assets/projects/Projects04.png";
 import project5 from "../assets/projects/Projects05.png";
 
+export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
+
 export const SOCIAL = {
   linkedIn: "https://www.linkedin.com/in/thulanjana/",
   github: "https://github.com/ThulanjanaGit",

@@ -1,5 +1,5 @@
 import { EXPERIENCES } from "../constants";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Experience = () => {
   return (
@@ -29,13 +29,13 @@ const Experience = () => {
               transition={{ duration: 1 }}
               className="w-full max-w-3xl lg:w-4/5"
             >
-              <h6 className="mb-2 text-semibold">
+              <h6 className="text-semibold mb-2">
                 {experience.role} -{" "}
                 <span className="text-sm text-purple-100">
                   {experience.company}
                 </span>
               </h6>
-              <ul className="mb-4 text-neutral-400 list-inside list-disc pl-5">
+              <ul className="mb-4 list-inside list-disc pl-5 text-neutral-400">
                 {experience.description.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}
@@ -43,7 +43,7 @@ const Experience = () => {
               {experience.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className="mr-2 mt-4 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800"
+                  className="mt-4 mr-2 rounded-sm bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800"
                 >
                   {tech}
                 </span>

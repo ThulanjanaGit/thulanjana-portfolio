@@ -12,7 +12,7 @@ import {
   DiWordpress,
 } from "react-icons/di";
 import { RiReactjsLine } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const iconVariants = (duration) => ({
   initial: { y: 10 },
@@ -104,7 +104,7 @@ const iconData = [
 
 const Technologies = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4 flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center border-b border-neutral-900 pb-4">
       <motion.h2
         whileInView={{ y: 0, opacity: 1 }}
         initial={{ y: -100, opacity: 0 }}
@@ -118,7 +118,7 @@ const Technologies = () => {
         whileInView={{ x: 0, opacity: 1 }}
         initial={{ x: -100, opacity: 0 }}
         transition={{ duration: 1.5 }}
-        className="max-w-3xl flex flex-wrap justify-center gap-4"
+        className="flex max-w-3xl flex-wrap justify-center gap-4"
       >
         {iconData.map((item, index) => (
           <motion.div
@@ -128,17 +128,17 @@ const Technologies = () => {
             animate="animate"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="relative my-3 rounded-2xl border-4 border-neutral-800 p-4 group hover:bg-white"
+            className="group relative my-3 rounded-2xl border-4 border-neutral-800 p-4 hover:bg-white"
           >
             <div
               className={
-                "group-hover:text-white transition-colors duration-300 group-hover:opacity-0"
+                "transition-colors duration-300 group-hover:text-white group-hover:opacity-0"
               }
             >
               <div className={item.icon.props.className}>{item.icon}</div>
             </div>
 
-            <div className="absolute inset-0 flex items-center justify-center text-xl opacity-0 group-hover:opacity-100 group-hover:text-black transition-opacity duration-300">
+            <div className="absolute inset-0 flex items-center justify-center text-xl opacity-0 transition-opacity duration-300 group-hover:text-black group-hover:opacity-100">
               <div className="text-center">
                 <p>{item.name}</p>
                 <p>{item.experience}</p>

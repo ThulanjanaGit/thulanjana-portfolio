@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RECOMMENDATIONS } from "../constants/recommendations.js";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { FaLinkedin } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
 
@@ -14,7 +14,7 @@ const Recommendations = () => {
   const handlePrev = () => {
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - 1 + RECOMMENDATIONS.length) % RECOMMENDATIONS.length
+        (prevIndex - 1 + RECOMMENDATIONS.length) % RECOMMENDATIONS.length,
     );
   };
 
@@ -39,20 +39,20 @@ const Recommendations = () => {
       </motion.h2>
 
       <motion.div
-        className="relative max-w-5xl mx-auto"
+        className="relative mx-auto max-w-5xl"
         whileInView={{ x: 0, opacity: 1 }}
         initial={{ x: -100, opacity: 0 }}
         transition={{ duration: 1.5 }}
       >
-        <div className="flex justify-center mx-[3rem] items-center flex-col lg:flex-row">
+        <div className="mx-12 flex flex-col items-center justify-center lg:flex-row">
           <motion.div
-            className="flex items-center m-3 min-h-[43rem] justify-center w-full lg:w-1/3 mb-6 lg:mb-0 flex-col"
+            className="m-3 mb-6 flex min-h-172 w-full flex-col items-center justify-center lg:mb-0 lg:w-1/3"
             key={currentIndex}
           >
             <img
               src={RECOMMENDATIONS[currentIndex].image}
               alt={RECOMMENDATIONS[currentIndex].name}
-              className="rounded-full m-6 w-[18rem] h-[18rem] object-cover"
+              className="m-6 size-72 rounded-full object-cover"
             />
             <div className="flex items-center justify-center gap-4 text-4xl">
               {[
@@ -90,16 +90,16 @@ const Recommendations = () => {
           </motion.div>
         </div>
 
-        <div className="absolute top-1/2 left-0 right-0 flex justify-between mt-4">
+        <div className="absolute top-1/2 right-0 left-0 mt-4 flex justify-between">
           <button
             onClick={handlePrev}
-            className="bg-neutral-800 text-white px-4 py-2 rounded-full shadow-lg hover:bg-neutral-700"
+            className="cursor-pointer rounded-full bg-neutral-800 px-4 py-2 text-white shadow-lg hover:bg-neutral-700"
           >
             &lt;
           </button>
           <button
             onClick={handleNext}
-            className="bg-neutral-800 text-white px-4 py-2 rounded-full shadow-lg hover:bg-neutral-700"
+            className="cursor-pointer rounded-full bg-neutral-800 px-4 py-2 text-white shadow-lg hover:bg-neutral-700"
           >
             &gt;
           </button>
