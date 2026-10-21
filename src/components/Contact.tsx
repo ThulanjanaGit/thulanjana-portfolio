@@ -1,5 +1,5 @@
 import { CONTACT } from "../constants";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Contact = () => {
   return (
@@ -26,7 +26,6 @@ const Contact = () => {
           initial={{ x: 100, opacity: 0 }}
           transition={{ duration: 1.5 }}
           className="my-4"
-          href={`tel:${CONTACT.phoneNoPT}`}
         >
           <a href={`tel:${CONTACT.phoneNoPT}`}>{CONTACT.phoneNoPT}</a>
         </motion.p>

@@ -1,8 +1,8 @@
 import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/Thulanjana.jpg";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "motion/react";
 
-const container = (delay) => ({
+const container = (delay: number): Variants => ({
   hidden: { x: -100, opacity: 0 },
   visible: {
     x: 0,
@@ -29,7 +29,7 @@ const Hero = () => {
               variants={container(0.5)}
               initial="hidden"
               animate="visible"
-              className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
+              className="bg-linear-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
             >
               Web Developer
             </motion.span>
@@ -43,18 +43,18 @@ const Hero = () => {
             </motion.p>
           </div>
         </div>
-        <dev className="w-full lg:w-1/2 lg:p-8">
-          <dev className="flex justify-center">
+        <div className="w-full lg:w-1/2 lg:p-8">
+          <div className="flex justify-center">
             <motion.img
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 1.2 }}
-              className="rounded-2xl max-w-[32rem] object-cover"
+              className="max-w-lg rounded-2xl object-cover"
               src={profilePic}
               alt="Thulanjana Pramod"
             />
-          </dev>
-        </dev>
+          </div>
+        </div>
       </div>
     </div>
   );

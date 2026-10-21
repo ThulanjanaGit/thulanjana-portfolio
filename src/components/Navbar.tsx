@@ -4,15 +4,15 @@ import { FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { SOCIAL } from "../constants";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Navbar = () => {
   return (
     <nav className="mb-20 flex items-center justify-between py-6">
-      <div className="flex flex-shrink-0 item-center">
-        <img className="mx-2 w-[4rem] rounded-[0.5rem]" src={logo} alt="Logo" />
+      <div className="item-center flex shrink-0">
+        <img className="mx-2 w-16 rounded-lg" src={logo} alt="Logo" />
       </div>
-      <div className="m-8 flex item-center justify-center gap-4 text-2xl">
+      <div className="item-center m-8 flex justify-center gap-4 text-2xl">
         {[
           { href: SOCIAL.linkedIn, icon: <FaLinkedin /> },
           { href: SOCIAL.github, icon: <FaGithub /> },

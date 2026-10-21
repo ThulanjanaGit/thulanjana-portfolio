@@ -1,5 +1,5 @@
 import { PROJECTS } from "../constants";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Projects = () => {
   return (
@@ -26,7 +26,7 @@ const Projects = () => {
                 width={180}
                 height={180}
                 alt={project.title}
-                className="mb-6 rounded"
+                className="mb-6 rounded-sm"
               />
             </motion.div>
             <motion.div
@@ -35,12 +35,12 @@ const Projects = () => {
               transition={{ duration: 1.5 }}
               className="w-full max-w-xl lg:w-3/4"
             >
-              <h6 className="mb-2 text-semibold">{project.title}</h6>
+              <h6 className="text-semibold mb-2">{project.title}</h6>
               <p className="mb-4 text-neutral-400">{project.description}</p>
               {project.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800"
+                  className="mr-2 rounded-sm bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800"
                 >
                   {tech}
                 </span>
