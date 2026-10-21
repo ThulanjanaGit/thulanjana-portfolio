@@ -12,9 +12,9 @@ import {
   DiWordpress,
 } from "react-icons/di";
 import { RiReactjsLine } from "react-icons/ri";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 
-const iconVariants = (duration) => ({
+const iconVariants = (duration: number): Variants => ({
   initial: { y: 10 },
   animate: {
     y: [10, -10],

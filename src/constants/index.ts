@@ -3,6 +3,7 @@ import project2 from "../assets/projects/Projects02.png";
 import project3 from "../assets/projects/Projects03.png";
 import project4 from "../assets/projects/Projects04.png";
 import project5 from "../assets/projects/Projects05.png";
+import type { Experience, Project } from "../types";
 
 export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
 
@@ -20,7 +21,7 @@ export const ABOUT_TEXT = `Armed with a Bachelor of Science Honours in Software 
 
 In addition to customizing WordPress and integrating Salesforce for enhanced marketing automation, I have worked on creating seamless, data-driven solutions that drive customer engagement. Dedicated to continuous growth and innovation, I am passionate about translating complex requirements into user-centric, scalable web applications that align with evolving business goals.`;
 
-export const EXPERIENCES = [
+export const EXPERIENCES: Experience[] = [
   {
     year: "Dec 2023 - Present",
     role: "Web Developer",
@@ -102,7 +103,7 @@ export const EXPERIENCES = [
   },
 ];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
   {
     title: "E-Learning Website",
     image: project1,

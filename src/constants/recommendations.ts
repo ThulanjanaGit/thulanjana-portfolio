@@ -1,8 +1,9 @@
 import Rajind from "../assets/recommendations/Rajind.jpg";
 import Kamosh from "../assets/recommendations/Kamosh.jpg";
 import Achini from "../assets/recommendations/Achini.jpg";
+import type { Recommendation } from "../types";
 
-export const RECOMMENDATIONS = [
+export const RECOMMENDATIONS: Recommendation[] = [
   {
     name: "Rajind Pamoda",
     position: "Advanced Engineer - Capgemini Engineering",

@@ -1,8 +1,8 @@
 import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/Thulanjana.jpg";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 
-const container = (delay) => ({
+const container = (delay: number): Variants => ({
   hidden: { x: -100, opacity: 0 },
   visible: {
     x: 0,
@@ -43,8 +43,8 @@ const Hero = () => {
             </motion.p>
           </div>
         </div>
-        <dev className="w-full lg:w-1/2 lg:p-8">
-          <dev className="flex justify-center">
+        <div className="w-full lg:w-1/2 lg:p-8">
+          <div className="flex justify-center">
             <motion.img
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -53,8 +53,8 @@ const Hero = () => {
               src={profilePic}
               alt="Thulanjana Pramod"
             />
-          </dev>
-        </dev>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RECOMMENDATIONS } from "../constants/recommendations.js";
+import { RECOMMENDATIONS } from "../constants/recommendations";
 import { motion } from "motion/react";
 import { FaLinkedin } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
