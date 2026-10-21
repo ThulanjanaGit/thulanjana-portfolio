@@ -11,7 +11,7 @@ export interface SocialLink {
   icon: IconType;
 }
 
-export interface Technology {
+export interface Skill {
   name: string;
   icon: IconType;
   colorClass: string;

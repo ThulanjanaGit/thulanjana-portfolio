@@ -1,0 +1,42 @@
+import { FaAws } from "react-icons/fa6";
+import {
+  SiAngular,
+  SiDjango,
+  SiDocker,
+  SiFastapi,
+  SiGooglecloud,
+  SiGraphql,
+  SiJavascript,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPhp,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiRedux,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import type { Skill } from "../types";
+
+export const SKILLS: Skill[] = [
+  { name: "React", icon: SiReact, colorClass: "text-cyan-400" },
+  { name: "TypeScript", icon: SiTypescript, colorClass: "text-blue-500" },
+  { name: "Next.js", icon: SiNextdotjs, colorClass: "text-neutral-100" },
+  { name: "JavaScript", icon: SiJavascript, colorClass: "text-yellow-400" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, colorClass: "text-sky-400" },
+  { name: "Redux", icon: SiRedux, colorClass: "text-violet-500" },
+  { name: "Angular", icon: SiAngular, colorClass: "text-red-500" },
+  { name: "Node.js", icon: SiNodedotjs, colorClass: "text-green-500" },
+  { name: "Python", icon: SiPython, colorClass: "text-yellow-300" },
+  { name: "FastAPI", icon: SiFastapi, colorClass: "text-teal-400" },
+  { name: "Django", icon: SiDjango, colorClass: "text-emerald-500" },
+  { name: "PHP", icon: SiPhp, colorClass: "text-indigo-400" },
+  { name: "GraphQL", icon: SiGraphql, colorClass: "text-pink-500" },
+  { name: "PostgreSQL", icon: SiPostgresql, colorClass: "text-blue-400" },
+  { name: "MongoDB", icon: SiMongodb, colorClass: "text-green-500" },
+  { name: "Docker", icon: SiDocker, colorClass: "text-sky-500" },
+  { name: "AWS", icon: FaAws, colorClass: "text-orange-400" },
+  { name: "Google Cloud", icon: SiGooglecloud, colorClass: "text-blue-300" },
+];

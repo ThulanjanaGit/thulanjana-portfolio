@@ -1,7 +1,7 @@
-import { EXPERIENCES } from "../constants";
-import SectionHeading from "./SectionHeading";
-import TagList from "./TagList";
-import TimelineItem from "./TimelineItem";
+import { EXPERIENCES } from "../../data/experience";
+import SectionHeading from "../ui/SectionHeading";
+import TagList from "../ui/TagList";
+import TimelineItem from "../ui/TimelineItem";
 
 const Experience = () => {
   return (

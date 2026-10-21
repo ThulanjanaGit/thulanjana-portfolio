@@ -1,7 +1,7 @@
 import type { Variants } from "motion/react";
 import * as m from "motion/react-m";
-import profilePic from "../assets/profile.webp";
-import { HERO_CONTENT, HERO_TITLE, RESUME_URL } from "../constants";
+import profilePic from "../../assets/profile.webp";
+import { HERO_CONTENT, HERO_TITLE, RESUME_URL } from "../../data/profile";
 
 const container = (delay: number): Variants => ({
   hidden: { x: -100, opacity: 0 },

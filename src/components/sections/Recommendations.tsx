@@ -2,9 +2,9 @@ import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaLinkedin } from "react-icons/fa6";
-import { RECOMMENDATIONS } from "../constants/recommendations";
-import { fadeIn } from "../utils/motion";
-import SectionHeading from "./SectionHeading";
+import { RECOMMENDATIONS } from "../../data/recommendations";
+import { fadeIn } from "../../utils/motion";
+import SectionHeading from "../ui/SectionHeading";
 
 const arrowButtonClass =
   "grid size-11 shrink-0 cursor-pointer place-items-center rounded-full bg-neutral-800 text-white shadow-lg transition-colors hover:bg-neutral-700";

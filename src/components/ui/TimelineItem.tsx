@@ -1,6 +1,6 @@
 import * as m from "motion/react-m";
 import type { ReactNode } from "react";
-import { fadeIn } from "../utils/motion";
+import { fadeIn } from "../../utils/motion";
 
 interface TimelineItemProps {
   period: string;

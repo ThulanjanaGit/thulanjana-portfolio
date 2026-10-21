@@ -1,8 +1,8 @@
 import type { Variants } from "motion/react";
 import * as m from "motion/react-m";
-import { TECHNOLOGIES } from "../constants";
-import { fadeIn } from "../utils/motion";
-import SectionHeading from "./SectionHeading";
+import { SKILLS } from "../../data/skills";
+import { fadeIn } from "../../utils/motion";
+import SectionHeading from "../ui/SectionHeading";
 
 const BOB_DURATIONS = [3, 2.5, 2];
 
@@ -19,7 +19,7 @@ const iconVariants = (duration: number): Variants => ({
   },
 });
 
-const Technologies = () => {
+const Skills = () => {
   return (
     <section
       id="skills"
@@ -31,7 +31,7 @@ const Technologies = () => {
         {...fadeIn("left")}
         className="flex max-w-3xl flex-wrap justify-center gap-3 sm:gap-4"
       >
-        {TECHNOLOGIES.map(({ name, icon: Icon, colorClass }, index) => (
+        {SKILLS.map(({ name, icon: Icon, colorClass }, index) => (
           <m.li
             key={name}
             variants={iconVariants(BOB_DURATIONS[index % BOB_DURATIONS.length])}
@@ -52,4 +52,4 @@ const Technologies = () => {
   );
 };
 
-export default Technologies;
+export default Skills;

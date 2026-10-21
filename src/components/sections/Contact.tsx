@@ -1,8 +1,8 @@
 import * as m from "motion/react-m";
 import { FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
-import { CONTACT } from "../constants";
-import { fadeIn } from "../utils/motion";
-import SectionHeading from "./SectionHeading";
+import { CONTACT } from "../../data/profile";
+import { fadeIn } from "../../utils/motion";
+import SectionHeading from "../ui/SectionHeading";
 
 const Contact = () => {
   return (

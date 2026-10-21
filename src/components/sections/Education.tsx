@@ -1,6 +1,6 @@
-import { EDUCATION } from "../constants";
-import SectionHeading from "./SectionHeading";
-import TimelineItem from "./TimelineItem";
+import { EDUCATION } from "../../data/education";
+import SectionHeading from "../ui/SectionHeading";
+import TimelineItem from "../ui/TimelineItem";
 
 const Education = () => {
   return (
