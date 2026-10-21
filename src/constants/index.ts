@@ -4,27 +4,34 @@ import bartsCharity from "../assets/projects/barts-charity.webp";
 import fara from "../assets/projects/fara.webp";
 import travelGuider from "../assets/projects/travel-guider.webp";
 import {
-  DiAngularSimple,
-  DiCss3,
-  DiHtml5,
-  DiJava,
-  DiJavascript,
-  DiMongodb,
-  DiMysql,
-  DiNodejs,
-  DiPhp,
-  DiPython,
-  DiWordpress,
-} from "react-icons/di";
-import {
+  FaAws,
   FaGithub,
   FaInstagram,
   FaLinkedin,
   FaSquareXTwitter,
   FaWhatsapp,
 } from "react-icons/fa6";
-import { RiReactjsLine } from "react-icons/ri";
+import {
+  SiAngular,
+  SiDjango,
+  SiDocker,
+  SiFastapi,
+  SiGooglecloud,
+  SiGraphql,
+  SiJavascript,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPhp,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiRedux,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
 import type {
+  Education,
   Experience,
   NavLink,
   Project,
@@ -62,167 +69,204 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { label: "WhatsApp", href: "https://wa.me/351965617062", icon: FaWhatsapp },
 ];
 
-export const HERO_CONTENT = ` Experienced Full Stack Web Developer with a first-class Software Engineering degree from the University of Wolverhampton. With 3+ years of expertise in both frontend and backend development, I specialize in building scalable, dynamic systems using technologies like React, Angular, PHP, Node.js, and MySQL. Passionate about creating high-quality, user-centered solutions, I leverage technical excellence to deliver efficient, innovative applications aligned with business goals.`;
+export const HERO_TITLE = ["Software Engineer", "Frontend Developer"];
+
+export const HERO_CONTENT =
+  "Frontend-focused Software Engineer with 4 years of experience building high-performance, scalable web applications across telecom, fintech, data governance and charity sectors. I specialise in React and TypeScript, with solid full-stack experience in Node.js, Python and PHP.";
 
 export const ABOUT_PARAGRAPHS = [
-  "Armed with a Bachelor of Science Honours in Software Engineering from the University of Wolverhampton, my journey as a Full Stack Web Developer has been shaped by my work at Fat Beehive. I have built dynamic, scalable systems and crafted high-quality websites, leveraging a diverse technology stack including React, Angular, PHP, Node.js, and MySQL. My experience spans both frontend and backend development, optimizing user experiences and functionality across projects.",
-  "In addition to customizing WordPress and integrating Salesforce for enhanced marketing automation, I have worked on creating seamless, data-driven solutions that drive customer engagement. Dedicated to continuous growth and innovation, I am passionate about translating complex requirements into user-centric, scalable web applications that align with evolving business goals.",
+  "I'm a Software Engineer at Opplane in Lisbon, building high-performance React, Next.js and Python (Django, FastAPI) applications on AWS and GCP for telecom, fintech and data governance clients. Recently I designed JudgeKit, a domain-agnostic Python library that calibrates multi-LLM quality scores, and built REST, GraphQL and MCP services that connect frontend, microservice and AI workflows.",
+  "Before Opplane, I spent two years at Fat Beehive in the UK, engineering responsive React applications for enterprise clients including Siemens Energy and extensible frontend frameworks for 30+ leading UK platforms. I care about frontend performance, clean architecture and automated testing, and I hold a First Class Honours degree in Software Engineering from the University of Wolverhampton.",
 ];
 
 export const TECHNOLOGIES: Technology[] = [
-  {
-    name: "React",
-    icon: RiReactjsLine,
-    colorClass: "text-cyan-400",
-    experience: "3 years",
-  },
-  {
-    name: "Angular",
-    icon: DiAngularSimple,
-    colorClass: "text-indigo-500",
-    experience: "3 years",
-  },
-  {
-    name: "WordPress",
-    icon: DiWordpress,
-    colorClass: "text-gray-600",
-    experience: "2 years",
-  },
-  {
-    name: "Node.js",
-    icon: DiNodejs,
-    colorClass: "text-blue-500",
-    experience: "3 years",
-  },
-  {
-    name: "JavaScript",
-    icon: DiJavascript,
-    colorClass: "text-yellow-500",
-    experience: "4 years",
-  },
-  {
-    name: "HTML",
-    icon: DiHtml5,
-    colorClass: "text-green-500",
-    experience: "4 years",
-  },
-  {
-    name: "CSS",
-    icon: DiCss3,
-    colorClass: "text-red-700",
-    experience: "4 years",
-  },
-  {
-    name: "PHP",
-    icon: DiPhp,
-    colorClass: "text-purple-600",
-    experience: "3 years",
-  },
-  {
-    name: "Python",
-    icon: DiPython,
-    colorClass: "text-yellow-700",
-    experience: "2 years",
-  },
-  {
-    name: "Java",
-    icon: DiJava,
-    colorClass: "text-red-600",
-    experience: "2 years",
-  },
-  {
-    name: "MySQL",
-    icon: DiMysql,
-    colorClass: "text-green-500",
-    experience: "3 years",
-  },
-  {
-    name: "MongoDB",
-    icon: DiMongodb,
-    colorClass: "text-green-500",
-    experience: "3 years",
-  },
+  { name: "React", icon: SiReact, colorClass: "text-cyan-400" },
+  { name: "TypeScript", icon: SiTypescript, colorClass: "text-blue-500" },
+  { name: "Next.js", icon: SiNextdotjs, colorClass: "text-neutral-100" },
+  { name: "JavaScript", icon: SiJavascript, colorClass: "text-yellow-400" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, colorClass: "text-sky-400" },
+  { name: "Redux", icon: SiRedux, colorClass: "text-violet-500" },
+  { name: "Angular", icon: SiAngular, colorClass: "text-red-500" },
+  { name: "Node.js", icon: SiNodedotjs, colorClass: "text-green-500" },
+  { name: "Python", icon: SiPython, colorClass: "text-yellow-300" },
+  { name: "FastAPI", icon: SiFastapi, colorClass: "text-teal-400" },
+  { name: "Django", icon: SiDjango, colorClass: "text-emerald-500" },
+  { name: "PHP", icon: SiPhp, colorClass: "text-indigo-400" },
+  { name: "GraphQL", icon: SiGraphql, colorClass: "text-pink-500" },
+  { name: "PostgreSQL", icon: SiPostgresql, colorClass: "text-blue-400" },
+  { name: "MongoDB", icon: SiMongodb, colorClass: "text-green-500" },
+  { name: "Docker", icon: SiDocker, colorClass: "text-sky-500" },
+  { name: "AWS", icon: FaAws, colorClass: "text-orange-400" },
+  { name: "Google Cloud", icon: SiGooglecloud, colorClass: "text-blue-300" },
 ];
 
 export const EXPERIENCES: Experience[] = [
   {
-    year: "Dec 2023 - Present",
-    role: "Web Developer",
-    company: "Fat Beehive - London, UK",
-    description: [
-      "Developed dynamic, responsive web applications using React for frontend and PHP for backend, implementing reusable components, state management, and seamless API integrations to deliver robust user experiences.",
-      "Designed and maintained high-quality websites and applications using JavaScript, HTML, CSS, and PHP, with expertise in frameworks like React, Angular, and WordPress.",
-      "Customized WordPress themes and plugins to improve functionality, integrate backend services, and enhance engagement across 30+ sites, aligning with business goals.",
-      "Troubleshot and resolved technical issues across frontend and backend systems, documenting solutions to enhance system reliability and streamline workflows.",
+    role: "Software Engineer",
+    company: "Opplane",
+    location: "Portugal",
+    period: "Sep 2025 – Present",
+    highlights: [
+      {
+        title: "Scalable Applications",
+        description:
+          "Built high-performance React, Next.js and Python (Django, FastAPI) applications on AWS and GCP for telecom, fintech, and data governance clients.",
+      },
+      {
+        title: "LLM Evaluation Platform",
+        description:
+          "Designed and extracted JudgeKit, a domain-agnostic Python library using Bayesian IRT models (PyMC) to calibrate multi-LLM quality scores across large datasets.",
+      },
+      {
+        title: "API Integration",
+        description:
+          "Built and integrated REST, GraphQL, and MCP endpoints, including a combined FastAPI and stateless MCP agent service to unify frontend, microservice, and AI workflows.",
+      },
+      {
+        title: "Distributed Batch Processing",
+        description:
+          "Built asynchronous, resumable batch jobs on Cloud Run, BigQuery, and GCS, isolating scientific dependencies into dedicated container images.",
+      },
+      {
+        title: "Reusable Libraries",
+        description:
+          "Authored a framework-agnostic SQLAlchemy and Django audit trail library that logs data changes at the session flush layer.",
+      },
+      {
+        title: "Quality Assurance & Observability",
+        description:
+          "Maintained 300+ automated tests using pytest, Jest, and React Testing Library while integrating Datadog for system observability and automated error alerting.",
+      },
+      {
+        title: "CI/CD & Cloud Infrastructure",
+        description:
+          "Built Bitbucket Pipelines to automate version-gated releases, publish Artefact Registry container images, and sync runtime config to GCS.",
+      },
+      {
+        title: "Agile Collaboration",
+        description:
+          "Led code reviews, sprint planning, and architecture documentation in Scrum teams alongside UI/UX and backend engineers.",
+      },
     ],
     technologies: [
-      "React 17-18",
-      "Redux",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "Node.js 18",
-      "PHP 8",
-      "Angular 13",
-      "HTML5",
-      "CSS3",
-      "WordPress",
-      "MySQL",
-      "MongoDB",
-      "Docker",
-      "Twig",
-    ],
-  },
-  {
-    year: "July 2023 - Dec 2023",
-    role: "Junior Web Developer",
-    company: "Fat Beehive - London, UK",
-    description: [
-      "Developed user-friendly web applications using React and PHP, ensuring optimal performance, responsiveness, and seamless integration with RESTful APIs.",
-      "Customized WordPress themes and plugins to enhance design, functionality, and user engagement, while integrating backend services and optimizing database performance.",
-      "Created dynamic content templates with Twig, PHP, streamlining content management, customization, and efficient backend data handling.",
-      "Provided technical support and troubleshooting for applications built with React, PHP, and Salesforce integrations, resolving complex issues across both frontend and backend systems.",
-    ],
-    technologies: [
-      "React 17-18",
-      "Redux",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "Node.js 16",
-      "PHP 8",
-      "Angular 12",
-      "HTML5",
-      "CSS3",
-      "WordPress",
-      "MySQL",
-      "MongoDB",
-      "Symfony",
-      "Twig",
-    ],
-  },
-  {
-    year: "Aug 2021 - June 2023",
-    role: "Application Support Engineer",
-    company:
-      "Intercontinental Institute of Human Resource Management (iihrm) - Colombo, Sri Lanka",
-    description: [
-      "Gained extensive experience with React, Angular, PHP, Node.js, HTML, CSS, and MySQL, developing and maintaining, dynamic web applications with robust backend functionality.",
-      "Provided technical support for enterprise-level systems, diagnosing and resolving complex issues across both FE and BE components to ensure system reliability and performance.",
-      "Managed inquiries and trouble tickets, researching and implementing effective solutions, and optimizing backend services for better data handling and system efficiency.",
-      "Documented ticket triage and troubleshooting steps for both frontend and backend technologies, streamlining issue resolution and improving overall system performance.",
-    ],
-    technologies: [
-      "React 17",
-      "Angular 11",
-      "JavaScript",
-      "TypeScript",
-      "Node.js",
-      "PHP 7.4",
-      "HTML5",
-      "CSS3",
+      "React",
+      "Next.js",
       "Python",
-      "MySQL",
-      "MongoDB",
+      "Django",
+      "FastAPI",
+      "GraphQL",
+      "MCP",
+      "AWS",
+      "Google Cloud",
+      "BigQuery",
+      "SQLAlchemy",
+      "pytest",
+      "Jest",
+      "Datadog",
     ],
+  },
+  {
+    role: "Web Developer",
+    company: "Fat Beehive",
+    location: "UK",
+    period: "Dec 2023 – Sep 2025",
+    highlights: [
+      {
+        title: "Enterprise FE Solutions",
+        description:
+          "Engineered high-performance, responsive React web applications for enterprise clients, including Siemens Energy, and created extensible frontend frameworks for 30+ leading UK platforms.",
+      },
+      {
+        title: "Full-Stack & API Architecture",
+        description:
+          "Built and integrated robust Node.js, Express REST APIs and customised PHP, WordPress backends, seamlessly connecting frontend components with server-side logic using Test-Driven Development (TDD).",
+      },
+      {
+        title: "Testing & Quality",
+        description:
+          "Spearheaded unit and integration testing using Jest, React Testing Library, and Supertest, accelerating deployment pipelines and improving code reliability.",
+      },
+      {
+        title: "Performance & SEO",
+        description:
+          "Optimised Core Web Vitals, responsiveness, and load times using modern JavaScript, CSS, Sass, and asset bundling strategies.",
+      },
+      {
+        title: "Data Processing & Integration",
+        description:
+          "Researched and optimised data processing workflows to enable efficient information extraction and retrieval across complex web platforms.",
+      },
+    ],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "PHP",
+      "WordPress",
+      "Jest",
+      "React Testing Library",
+      "Supertest",
+      "Sass",
+    ],
+  },
+  {
+    role: "Junior Web Developer",
+    company: "Fat Beehive",
+    location: "UK",
+    period: "Aug 2023 – Dec 2023",
+    highlights: [
+      {
+        title: "UI Refinement",
+        description:
+          "Refined existing web applications with UI enhancements, performance upgrades, and error resolutions across top UK charity platforms.",
+      },
+      {
+        title: "Full-Stack Feature Delivery",
+        description:
+          "Leveraged PHP, TypeScript, and SQL to develop custom functionality aligned with business objectives and user needs.",
+      },
+      {
+        title: "System Optimisation",
+        description:
+          "Diagnosed and resolved complex processing issues on UNIX and Windows environments, reducing system downtime and boosting platform efficiency.",
+      },
+    ],
+    technologies: ["PHP", "TypeScript", "SQL"],
+  },
+  {
+    role: "Application Support Engineer",
+    company: "IIHRM",
+    location: "Sri Lanka",
+    period: "Aug 2021 – Jul 2023",
+    highlights: [
+      {
+        title: "Application Maintenance",
+        description:
+          "Developed and maintained dynamic frontend interfaces and backend services using React, PHP (Laravel), and MySQL for enterprise online assessment tools.",
+      },
+      {
+        title: "System Triage & Support",
+        description:
+          "Provided end-to-end technical support across FE and BE components, documenting ticket-triage processes to streamline issue resolution and maximise system reliability.",
+      },
+      {
+        title: "Data Handling Optimisation",
+        description:
+          "Researched, troubleshot, and optimised backend database queries and services for high-volume data processing.",
+      },
+    ],
+    technologies: ["React", "PHP", "Laravel", "MySQL"],
+  },
+];
+
+export const EDUCATION: Education[] = [
+  {
+    degree: "BSc (Hons) Software Engineering",
+    honours: "First Class Honours",
+    institution: "University of Wolverhampton",
+    location: "UK",
+    period: "2020 – 2023",
   },
 ];
 
@@ -239,7 +283,7 @@ export const PROJECTS: Project[] = [
     image: travelGuider,
     description:
       "An intuitive travel guide app featuring location search, detailed itineraries, and rental options for travel equipment, designed to enhance convenience and streamline your travel experience.",
-    technologies: ["ReactNative", "Node.js", "SASS", "MongoDB", "Google API"],
+    technologies: ["React Native", "Node.js", "Sass", "MongoDB", "Google API"],
   },
   {
     title: "Community Website",
@@ -267,7 +311,7 @@ export const PROJECTS: Project[] = [
     title: "E-Commerce Website",
     image: fara,
     description:
-      "A vibrant website features include donation options, community program information, charity shop integration with online shopping, event updates, and accessibility-focused design to promote engagement and transform lives.",
+      "A vibrant website featuring donation options, community program information, charity shop integration with online shopping, event updates, and accessibility-focused design to promote engagement and transform lives.",
     technologies: [
       "HTML",
       "CSS",
@@ -281,8 +325,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const CONTACT = {
-  address: "R. Nova do Rio 55, 4200-419 Porto, Portugal",
-  addressLink: "https://maps.app.goo.gl/t7kL7Pz7JXmjrQWc7",
+  location: "Lisbon, Portugal",
   phone: "+351 965 617 062",
   email: "thulanjana1125@gmail.com",
 };

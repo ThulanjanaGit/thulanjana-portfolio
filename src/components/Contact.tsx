@@ -15,12 +15,7 @@ const Contact = () => {
       <address className="flex flex-col items-center gap-4 tracking-tighter not-italic">
         <m.p {...fadeIn("left")} className="flex items-center gap-3">
           <FaLocationDot aria-hidden="true" className="text-neutral-500" />
-          <a
-            href={CONTACT.addressLink}
-            className="underline-offset-4 hover:underline"
-          >
-            {CONTACT.address}
-          </a>
+          {CONTACT.location}
         </m.p>
         <m.p {...fadeIn("right")} className="flex items-center gap-3">
           <FaPhone aria-hidden="true" className="text-neutral-500" />
