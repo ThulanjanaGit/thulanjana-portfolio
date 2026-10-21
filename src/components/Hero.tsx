@@ -1,5 +1,5 @@
 import { HERO_CONTENT } from "../constants";
-import profilePic from "../assets/Thulanjana.jpg";
+import profilePic from "../assets/profile.webp";
 import { motion, type Variants } from "motion/react";
 
 const container = (delay: number): Variants => ({
@@ -52,6 +52,9 @@ const Hero = () => {
               className="max-w-lg rounded-2xl object-cover"
               src={profilePic}
               alt="Thulanjana Pramod"
+              width={1024}
+              height={1024}
+              fetchPriority="high"
             />
           </div>
         </div>

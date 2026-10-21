@@ -52,6 +52,9 @@ const Recommendations = () => {
             <img
               src={RECOMMENDATIONS[currentIndex].image}
               alt={RECOMMENDATIONS[currentIndex].name}
+              width={288}
+              height={288}
+              loading="lazy"
               className="m-6 size-72 rounded-full object-cover"
             />
             <div className="flex items-center justify-center gap-4 text-4xl">

@@ -1,4 +1,4 @@
-import logo from "../assets/ThulanjanaLogo.png";
+import logo from "../assets/logo.webp";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -10,7 +10,13 @@ const Navbar = () => {
   return (
     <nav className="mb-20 flex items-center justify-between py-6">
       <div className="item-center flex shrink-0">
-        <img className="mx-2 w-16 rounded-lg" src={logo} alt="Logo" />
+        <img
+          className="mx-2 w-16 rounded-lg"
+          src={logo}
+          alt="Logo"
+          width={64}
+          height={64}
+        />
       </div>
       <div className="item-center m-8 flex justify-center gap-4 text-2xl">
         {[

@@ -1,5 +1,5 @@
 import { ABOUT_TEXT, RESUME_URL } from "../constants";
-import aboutImg from "../assets/AboutMe.png";
+import aboutImg from "../assets/about.webp";
 import { motion } from "motion/react";
 
 const About = () => {
@@ -24,7 +24,14 @@ const About = () => {
           className="w-full lg:w-1/2 lg:p-8"
         >
           <div className="flex max-w-lg items-center justify-center">
-            <img className="rounded-2xl" src={aboutImg} alt="About Me" />
+            <img
+              className="rounded-2xl"
+              src={aboutImg}
+              alt="About Me"
+              width={1024}
+              height={1024}
+              loading="lazy"
+            />
           </div>
         </motion.div>
         <motion.div

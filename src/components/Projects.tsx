@@ -25,6 +25,7 @@ const Projects = () => {
                 src={project.image}
                 width={180}
                 height={180}
+                loading="lazy"
                 alt={project.title}
                 className="mb-6 rounded-sm"
               />
