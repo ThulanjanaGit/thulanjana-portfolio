@@ -40,14 +40,23 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload the site for GitHub Pages
+      # The site is hosted on Vercel. GitHub Pages only serves a redirect, so
+      # links to the old address keep working.
+      - name: Prepare the redirect page for GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p pages
+          cp .github/pages/index.html pages/index.html
+          cp .github/pages/index.html pages/404.html
+
+      - name: Upload the redirect page for GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
-          path: dist
+          path: pages
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy the redirect to GitHub Pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest

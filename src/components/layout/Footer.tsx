@@ -1,5 +1,7 @@
 import { NAV_LINKS } from "../../data/navigation";
 
+// Prerendered pages keep the year they were built in, so the line that shows
+// it ignores a different year when the page hydrates.
 const CURRENT_YEAR = new Date().getFullYear();
 
 const linkClass =
@@ -25,7 +27,7 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
-        <p>© {CURRENT_YEAR} Thulanjana Pramod</p>
+        <p suppressHydrationWarning>© {CURRENT_YEAR} Thulanjana Pramod</p>
       </div>
       {/* The first name, cut by the bottom edge. 22.6cqw makes it span the
           page width: it measures 442.5px at 100px in Hanken Grotesk 500. */}

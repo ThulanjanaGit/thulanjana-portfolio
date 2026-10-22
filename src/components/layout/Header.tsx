@@ -14,12 +14,12 @@ const Header = () => {
   return (
     // At the top it sits over the hero's upper field. Further down it takes
     // the ground colour and slides away while you read; see useHeadroom for
-    // what brings it back.
+    // what brings it back. Without scripts it scrolls away with the hero.
     <header
       ref={header}
       data-scrolled={atTop ? undefined : ""}
       data-hidden={hidden ? "" : undefined}
-      className="fixed inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5"
+      className="absolute inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5 [.js_&]:fixed"
     >
       <a href="#top" className={`${linkClass} shrink-0 font-medium`}>
         Thulanjana Pramod
