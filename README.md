@@ -26,7 +26,7 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/` path matches the GitHub Pages URL and is set by `base` in `vite.config.ts`.
+Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/` path matches the GitHub Pages URL and is set by `base` in `vite.config.ts`. Vercel builds use `/` instead (see [Vercel](#vercel)).
 
 ## Scripts
 
@@ -68,7 +68,7 @@ All text and lists live in `src/data/`:
 
 | File                 | Content                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------- |
-| `profile.ts`         | Hero title and summary, About text, social links, contact details, CV link         |
+| `profile.ts`         | Hero title and summary, About text, social links, Toptal link, contact details, CV |
 | `navigation.ts`      | Header links                                                                       |
 | `skills.ts`          | Skills grid (icons from [react-icons](https://react-icons.github.io/react-icons/)) |
 | `experience.ts`      | Jobs, highlights and tags                                                          |
@@ -108,6 +108,12 @@ To redeploy `main` without a change, open the **Actions** tab, select **CI and d
 **One-time setup:** go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**. After the first successful deploy, the old `gh-pages` branch is no longer used and can be deleted.
 
 If the repository is renamed or the site moves to a custom domain, update `base` in `vite.config.ts` and the absolute URLs in `index.html`.
+
+### Vercel
+
+The site can also be deployed on Vercel with the default Vite settings. Vercel sets the `VERCEL` environment variable during its builds, and `vite.config.ts` then sets `base` to `/`, so the site is served from the root. GitHub Pages builds are unchanged.
+
+The canonical and Open Graph URLs in `index.html` still point to GitHub Pages. If Vercel becomes the main address, update them.
 
 ### Dependency updates
 
