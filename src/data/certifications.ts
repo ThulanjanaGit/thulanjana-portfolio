@@ -1,0 +1,77 @@
+import type { Certification } from "../types";
+
+export const CERTIFICATIONS: Certification[] = [
+  {
+    title: "Building with the Claude API",
+    issuer: "Anthropic",
+    issued: "Aug 2026",
+    url: "https://verify.skilljar.com/c/c8fabtciown8",
+    skills: ["Anthropic API", "Generative AI"],
+  },
+  {
+    title: "Introduction to Model Context Protocol",
+    issuer: "Anthropic",
+    issued: "Aug 2026",
+    url: "https://verify.skilljar.com/c/4q2efkcfzuq4",
+    skills: ["Model Context Protocol (MCP)", "APIs"],
+  },
+  {
+    title: "Claude Code in Action",
+    issuer: "Anthropic",
+    issued: "Aug 2026",
+    url: "https://verify.skilljar.com/c/rhkt3sxx52ti",
+    skills: ["Claude Code", "Prompt engineering"],
+  },
+  {
+    title: "Introduction to Agent Skills",
+    issuer: "Anthropic",
+    issued: "Jul 2026",
+    url: "https://verify.skilljar.com/c/faz7mzehczkn",
+    skills: ["Claude Code", "AI agents"],
+  },
+  {
+    title: "Angular (Basic) Certificate",
+    issuer: "HackerRank",
+    issued: "Nov 2024",
+    credentialId: "095E90BC5C4C",
+    url: "https://www.hackerrank.com/certificates/095e90bc5c4c",
+    skills: ["AngularJS"],
+  },
+  {
+    title: "Problem Solving (Basic) Certificate",
+    issuer: "HackerRank",
+    issued: "Nov 2024",
+    credentialId: "583335C9F5AB",
+    url: "https://www.hackerrank.com/certificates/583335c9f5ab",
+    skills: ["Problem solving"],
+  },
+  {
+    title: "JavaScript (Basic) Certificate",
+    issuer: "HackerRank",
+    issued: "Nov 2024",
+    credentialId: "16C2C2ED1165",
+    url: "https://www.hackerrank.com/certificates/16c2c2ed1165",
+    skills: ["JavaScript"],
+  },
+  {
+    title: "React.js Essential Training",
+    issuer: "LinkedIn Learning",
+    issued: "Nov 2024",
+    url: "https://www.linkedin.com/learning/certificates/78bb8b9d7e5120c4f440e10cf2e4def4408b22f473bf3625b7e47b571d9d3bda",
+    skills: ["React"],
+  },
+  {
+    title: "JavaScript Essential Training",
+    issuer: "LinkedIn Learning",
+    issued: "Oct 2024",
+    url: "https://www.linkedin.com/learning/certificates/496eb329bf34ecdc44c33624c3f2b86db53807a2087c28804f5429ba82e9de98",
+    skills: ["JavaScript"],
+  },
+  {
+    title: "HTML Essential Training",
+    issuer: "LinkedIn Learning",
+    issued: "Oct 2024",
+    url: "https://www.linkedin.com/learning/certificates/d2cd1f0b9502ad19abbb228e965027da20fd96446e244e37c3ec81f45a538e67",
+    skills: ["HTML"],
+  },
+];

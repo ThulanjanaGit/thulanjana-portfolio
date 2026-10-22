@@ -1,16 +1,24 @@
 import { PROJECTS } from "../../data/projects";
 import { stagger } from "../../utils/stagger";
 
-// Tiles step down like the About statement. The heading fills cell 0; with
-// two columns the second column starts one step lower, and with three columns
-// the second and third start one and two steps lower. On phones the pictures
-// alternate sides instead. Class names stay whole so Tailwind can find them.
-const tileOffset = (cell: number) => {
-  const twoColumns = cell % 2 === 1 ? "sm:max-xl:mt-(--step)" : "";
+const VISIBLE_PROJECTS = PROJECTS.filter(({ hidden }) => !hidden);
+
+// Tiles step down like a staircase. With two columns the heading runs across
+// the top and the second column starts one step lower. From 1280px, three or
+// more projects take three columns with the heading in the first cell, the
+// next two starting one and two steps lower; two projects keep two columns so
+// no column stands empty. On phones the pictures alternate sides instead.
+// Class names stay whole so Tailwind can find them.
+const THREE_COLUMNS = VISIBLE_PROJECTS.length >= 3;
+
+const tileOffset = (index: number) => {
+  if (!THREE_COLUMNS) return index % 2 === 1 ? "sm:mt-(--step)" : "";
+  const twoColumns = index % 2 === 1 ? "sm:max-xl:mt-(--step)" : "";
+  const cell = (index + 1) % 3;
   const threeColumns =
-    cell % 3 === 1
+    cell === 1
       ? "xl:mt-(--step)"
-      : cell % 3 === 2
+      : cell === 2
         ? "xl:mt-[calc(var(--step)*2)]"
         : "";
   return `${twoColumns} ${threeColumns}`;
@@ -24,19 +32,23 @@ const Projects = () => {
       data-chapter="invert"
       className="px-page py-chapter [--step:clamp(2rem,6vw,6rem)]"
     >
-      <ul className="grid items-start gap-x-gutter gap-y-16 sm:grid-cols-2 sm:gap-y-20 xl:grid-cols-3">
-        <li>
+      <ul
+        className={`grid items-start gap-x-gutter gap-y-16 sm:grid-cols-2 sm:gap-y-20 ${THREE_COLUMNS ? "xl:grid-cols-3" : ""}`}
+      >
+        <li
+          className={THREE_COLUMNS ? "sm:max-xl:col-span-2" : "sm:col-span-2"}
+        >
           <h2 id="projects-heading" data-reveal className="text-head">
             Projects
           </h2>
         </li>
-        {PROJECTS.map(
+        {VISIBLE_PROJECTS.map(
           ({ title, kind, image, description, technologies, link }, index) => (
             <li
               key={title}
               data-reveal
               style={stagger(index + 1)}
-              className={tileOffset(index + 1)}
+              className={tileOffset(index)}
             >
               <div
                 data-shutter

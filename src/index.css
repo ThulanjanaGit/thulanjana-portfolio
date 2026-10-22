@@ -30,13 +30,14 @@
   --text-display--line-height: 0.9;
   --text-display--letter-spacing: -0.05em;
 
-  --spacing-page: clamp(1rem, 2.2vw, 2rem);
+  /* Side margin: 16-32px, growing on wide screens so content stays within
+     86rem (1376px) while colour fields still run edge to edge. */
+  --spacing-page: max(clamp(1rem, 2.2vw, 2rem), calc((100% - 86rem) / 2));
   --spacing-gutter: clamp(1rem, 2vw, 2rem);
   --spacing-section: clamp(5rem, 12vw, 13rem);
   /* Padding at the top and bottom of each section: half the gap, so two
      neighbouring sections sit one full gap apart. */
   --spacing-chapter: clamp(2.5rem, 6vw, 6.5rem);
-  --container-page: 120rem;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
@@ -49,12 +50,6 @@
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-field: var(--field);
-  --color-field-ink: var(--field-ink);
-  --color-field-muted: var(--field-muted);
-  --color-accent: var(--accent);
-  --color-accent-strong: var(--accent-strong);
-  --color-accent-ink: var(--accent-ink);
 }
 
 /* Dark is the default theme. Each block also serves inverted chapters,
@@ -65,8 +60,6 @@
   --surface: #191816;
   --ink: #eae8e4;
   --muted: #a39f98;
-  --accent: #3b5bdb;
-  --accent-strong: #2f4bc4;
   --focus: #eae8e4;
   color-scheme: dark;
 }
@@ -77,18 +70,11 @@
   --surface: #e4e2dd;
   --ink: #0b0b0b;
   --muted: #57534c;
-  --accent: #24338f;
-  --accent-strong: #1a2670;
   --focus: #0b0b0b;
   color-scheme: light;
 }
 
 :root {
-  --field: #e1ac10;
-  --field-ink: #0b0b0b;
-  --field-muted: #4d3d0a;
-  --accent-ink: #ffffff;
-
   --t-press: 140ms;
   --t-hover: 180ms;
   --t-ui: 240ms;
@@ -134,8 +120,8 @@
   }
 
   ::selection {
-    background-color: var(--field);
-    color: var(--field-ink);
+    background-color: var(--ink);
+    color: var(--ground);
   }
 
   [data-chapter="surface"] {
@@ -143,17 +129,6 @@
   }
 
   [data-chapter="invert"] {
-    background-color: var(--ground);
-    color: var(--ink);
-  }
-
-  [data-chapter="field"] {
-    --focus: var(--field-ink);
-    background-color: var(--field);
-    color: var(--field-ink);
-  }
-
-  [data-chapter="field"] ::selection {
     background-color: var(--ground);
     color: var(--ink);
   }

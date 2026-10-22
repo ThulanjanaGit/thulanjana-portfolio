@@ -24,6 +24,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "HelpAge International",
+    hidden: true,
     kind: "Community website",
     image: helpAgeInternational,
     description:
@@ -40,6 +41,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Barts Charity",
+    hidden: true,
     kind: "Charity website",
     image: bartsCharity,
     description:
@@ -48,6 +50,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "FARA",
+    hidden: true,
     kind: "E-commerce website",
     image: fara,
     description:

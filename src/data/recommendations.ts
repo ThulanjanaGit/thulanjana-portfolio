@@ -1,9 +1,20 @@
+import nunoOliveira from "../assets/recommendations/nuno-oliveira.webp";
 import rajindPamoda from "../assets/recommendations/rajind-pamoda.webp";
 import kamoshSamaraweera from "../assets/recommendations/kamosh-samaraweera.webp";
 import achiniFernando from "../assets/recommendations/achini-fernando.webp";
 import type { Recommendation } from "../types";
 
 export const RECOMMENDATIONS: Recommendation[] = [
+  {
+    name: "Nuno Oliveira",
+    role: "Head of Platform Engineering",
+    relationship: "Managed Thulanjana directly",
+    paragraphs: [
+      "I had the pleasure of working alongside Pramod and I highly recommend him as a team member. He is a dependable, conscientious colleague who brings a fantastic work ethic and a warm, professional attitude to work every day.",
+      "What stands out most about Pramod is his autonomy and commitment. He takes high-level direction well, manages his time independently, and takes great pride in meeting deadlines. He approaches every initiative with curiosity and an eagerness to continuously learn and expand his capabilities. On an interpersonal level, he treats everyone with complete respect and builds great relationships across the entire team. He will be a fantastic asset to any organization.",
+    ],
+    image: nunoOliveira,
+  },
   {
     name: "Rajind Pamoda",
     role: "Advanced Engineer",

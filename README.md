@@ -66,15 +66,16 @@ Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/`
 
 All text and lists live in `src/data/`:
 
-| File                 | Content                                                                                  |
-| -------------------- | ---------------------------------------------------------------------------------------- |
-| `profile.ts`         | Hero line, About statement and text, social links, Toptal link, location and email, CV   |
-| `navigation.ts`      | Header and footer links                                                                  |
-| `skills.ts`          | Skills for the technology filter; `OTHER_USES` covers skills used outside roles/projects |
-| `experience.ts`      | Jobs, highlights and technologies                                                        |
-| `education.ts`       | Education                                                                                |
-| `projects.ts`        | Projects; an optional `link` adds a "Visit site" link                                    |
-| `recommendations.ts` | Recommendations; `excerpt` is the two-line quote shown large                             |
+| File                 | Content                                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `profile.ts`         | Hero line, About lead and text, LinkedIn and GitHub links, Toptal link, location and email, CV             |
+| `navigation.ts`      | Header and footer links                                                                                    |
+| `experience.ts`      | Jobs, highlights and technologies; the technology filter lists every technology used here, most used first |
+| `education.ts`       | Degrees and school qualifications; `honours` and `skills` are optional                                     |
+| `certifications.ts`  | Certifications, grouped by issuer on the page; `credentialId` is optional                                  |
+| `projects.ts`        | Projects; an optional `link` adds a "Visit site" link, and `hidden: true` keeps a project off the page     |
+| `skills.ts`          | Skills grouped as in the CV, shown in the Skills section                                                   |
+| `recommendations.ts` | Recommendations in the order shown; the first one with an `excerpt` gives the two-line quote shown large   |
 
 TypeScript checks every entry, so `npm run build` reports a missing or misspelled field.
 
@@ -82,7 +83,7 @@ When your job title, location or summary changes, also update `index.html` (titl
 
 ### CV
 
-Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the same name. The "View Resume" button links to it.
+Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the same name. The "View CV" links in the hero and the contact section point to it.
 
 ### Images
 
@@ -122,6 +123,7 @@ Dependabot opens pull requests every month: one grouped pull request for minor a
 ## To do
 
 - [ ] Confirm I can publicly name each client project.
+- [ ] HelpAge International, Barts Charity and FARA are hidden for now. To show one again, remove its `hidden: true` in `src/data/projects.ts`.
 - [ ] Update `src/data/projects.ts`: add live links with the `link` field, larger screenshots (1600 px or wider) and recent work.
 
 ## License

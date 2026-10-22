@@ -7,7 +7,7 @@ const linkClass =
 
 const Footer = () => {
   return (
-    <footer data-chapter="field" className="overflow-hidden">
+    <footer data-chapter="invert" className="overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 px-page pt-8 sm:pt-12">
         <nav aria-label="Footer">
           <ul className="flex flex-wrap gap-x-6">

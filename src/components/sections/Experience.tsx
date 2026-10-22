@@ -1,71 +1,22 @@
-import { useState } from "react";
-import { EDUCATION } from "../../data/education";
+import { Fragment, useState } from "react";
 import { EXPERIENCES } from "../../data/experience";
-import type { Highlight } from "../../types";
+import type { Experience as Role } from "../../types";
 import { stagger } from "../../utils/stagger";
+import { groupBy, LINEUP_GRID } from "../ui/lineup";
 import SectionHeading from "../ui/SectionHeading";
 import TechFilter from "../ui/TechFilter";
 
-interface Row {
-  title: string;
-  place: string;
-  period: string;
-  country: string;
-  highlights: Highlight[];
-  note?: string;
-  technologies: string[];
-}
-
-const ROWS: Row[] = [
-  ...EXPERIENCES.map(
-    ({ role, company, location, period, highlights, technologies }) => ({
-      title: role,
-      place: company,
-      period,
-      country: location,
-      highlights,
-      technologies,
-    }),
-  ),
-  ...EDUCATION.map(({ degree, institution, location, period, honours }) => ({
-    title: degree,
-    place: institution,
-    period,
-    country: location,
-    highlights: [],
-    note: honours,
-    technologies: [],
-  })),
-];
-
-// Rows grouped by country, in the order each country first appears.
-const GROUPS = ROWS.reduce<{ country: string; rows: Row[] }[]>(
-  (groups, row) => {
-    const group = groups.find(({ country }) => country === row.country);
-    if (group) group.rows.push(row);
-    else groups.push({ country: row.country, rows: [row] });
-    return groups;
-  },
-  [],
-);
-
-// The summary and the opened details share one grid, so the details line up
-// with the row; the last column holds the + / − indicator. Role, company and
-// dates fit on one line only from 1280px (measured at lead size); below that
-// each row takes two lines. The dates column is a fixed 9em, not auto, so the
-// company column starts at the same place on every row.
-const ROW_GRID =
-  "grid grid-cols-[1fr_1.5rem] gap-x-gutter xl:grid-cols-[1fr_1fr_9em_1.5rem]";
+const GROUPS = groupBy(EXPERIENCES, ({ location }) => location);
 
 interface LineupRowProps {
   index: number;
-  row: Row;
+  role: Role;
   open: boolean;
   selected: string | null;
 }
 
-const LineupRow = ({ index, row, open, selected }: LineupRowProps) => {
-  const { title, place, period, highlights, note, technologies } = row;
+const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
+  const { role: title, company, period, highlights, technologies } = role;
   const dimmed = selected !== null && !technologies.includes(selected);
 
   return (
@@ -75,8 +26,8 @@ const LineupRow = ({ index, row, open, selected }: LineupRowProps) => {
         className={`group [transition:color_var(--t-hover)_ease] ${dimmed ? "text-muted" : ""}`}
       >
         <summary
-          aria-label={`${title} at ${place}, ${period}`}
-          className={`${ROW_GRID} cursor-pointer list-none items-baseline py-4 xl:text-lead [&::-webkit-details-marker]:hidden`}
+          aria-label={`${title} at ${company}, ${period}`}
+          className={`${LINEUP_GRID} cursor-pointer list-none items-baseline py-4 xl:text-lead [&::-webkit-details-marker]:hidden`}
         >
           <span className="text-lead">{title}</span>
           <span
@@ -87,42 +38,37 @@ const LineupRow = ({ index, row, open, selected }: LineupRowProps) => {
             <span className="hidden group-open:inline">−</span>
           </span>
           <span className="col-start-1 mt-1 flex justify-between gap-4 text-small text-muted sm:text-body xl:contents xl:text-lead xl:text-inherit">
-            <span>{place}</span>
+            <span>{company}</span>
             <span className="whitespace-nowrap tabular-nums xl:text-right">
               {period}
             </span>
           </span>
         </summary>
-        <div className={`${ROW_GRID} pb-10`}>
+        <div className={`${LINEUP_GRID} pb-10`}>
           <div className="col-span-2 xl:col-span-3">
-            {technologies.length > 0 && (
-              <p className="mb-6 text-small text-muted">
-                Built with{" "}
-                {technologies.map((technology, index) => (
-                  <span key={technology}>
-                    {index > 0 && ", "}
-                    {technology === selected ? (
-                      <mark className="bg-field px-1 text-field-ink">
-                        {technology}
-                      </mark>
-                    ) : (
-                      technology
-                    )}
-                  </span>
-                ))}
-              </p>
-            )}
-            {highlights.length > 0 && (
-              <ul className="grid gap-x-gutter gap-y-4 md:grid-cols-2 xl:grid-cols-3">
-                {highlights.map(({ title: highlight, description }) => (
-                  <li key={highlight}>
-                    <span className="font-medium">{highlight}:</span>{" "}
-                    {description}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {note && <p>{note}</p>}
+            <p className="mb-6 text-small text-muted">
+              Built with{" "}
+              {technologies.map((technology, position) => (
+                <Fragment key={technology}>
+                  {position > 0 && ", "}
+                  {technology === selected ? (
+                    <mark className="bg-ink px-1 text-ground">
+                      {technology}
+                    </mark>
+                  ) : (
+                    technology
+                  )}
+                </Fragment>
+              ))}
+            </p>
+            <ul className="grid gap-x-gutter gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+              {highlights.map(({ title: highlight, description }) => (
+                <li key={highlight}>
+                  <span className="font-medium">{highlight}:</span>{" "}
+                  {description}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </details>
@@ -145,18 +91,18 @@ const Experience = () => {
         <TechFilter selected={selected} onSelect={setSelected} />
       </div>
       <div className="mt-16">
-        {GROUPS.map(({ country, rows }) => (
+        {GROUPS.map(({ label: country, items }) => (
           <div key={country} className="mt-14 first:mt-0">
             <h3 data-reveal className="mb-2 text-lead text-muted">
               {country}
             </h3>
             <ul>
-              {rows.map((row, index) => (
+              {items.map((role, index) => (
                 <LineupRow
-                  key={`${row.title}-${row.period}`}
+                  key={`${role.role}-${role.period}`}
                   index={index}
-                  row={row}
-                  open={row === ROWS[0]}
+                  role={role}
+                  open={role === EXPERIENCES[0]}
                   selected={selected}
                 />
               ))}

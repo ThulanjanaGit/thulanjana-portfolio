@@ -5,11 +5,16 @@ const THEME_COLOR: Record<Theme, string> = {
   light: "#eeedea",
 };
 
+export const THEME_CHANGE = "themechange";
+
+export const isLightTheme = () =>
+  document.documentElement.dataset.theme === "light";
+
 // The inline script in index.html applies the saved theme before the first
 // paint; this keeps the attribute, the saved choice and the browser UI in step.
 export const toggleTheme = () => {
   const root = document.documentElement;
-  const next: Theme = root.dataset.theme === "light" ? "dark" : "light";
+  const next: Theme = isLightTheme() ? "dark" : "light";
 
   if (next === "light") root.dataset.theme = "light";
   else delete root.dataset.theme;
@@ -26,4 +31,5 @@ export const toggleTheme = () => {
   document
     .querySelector('meta[name="color-scheme"]')
     ?.setAttribute("content", next);
+  window.dispatchEvent(new Event(THEME_CHANGE));
 };
