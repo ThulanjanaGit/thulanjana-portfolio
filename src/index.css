@@ -1,24 +1,149 @@
 @import "tailwindcss" source(".");
 @source "../index.html";
 
+/* `light:` styles apply while the light theme is on (data-theme on <html>). */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* Tokens from DESIGN.md. Colour roles are CSS variables (below) so the light
+   theme and inverted chapters can swap them; Tailwind reads them inline. */
 @theme {
   --font-sans:
-    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --text-small--line-height: 1.45;
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-body--line-height: 1.5;
+  --text-body--letter-spacing: -0.005em;
+  --text-lead: clamp(1.25rem, 1rem + 1.1vw, 2rem);
+  --text-lead--line-height: 1.25;
+  --text-lead--letter-spacing: -0.015em;
+  --text-head: clamp(2.5rem, 1.2rem + 5.2vw, 5.5rem);
+  --text-head--line-height: 0.95;
+  --text-head--letter-spacing: -0.04em;
+  --text-display: clamp(3.5rem, 0.5rem + 13vw, 8.75rem);
+  --text-display--line-height: 0.9;
+  --text-display--letter-spacing: -0.05em;
+
+  --spacing-page: clamp(1rem, 2.2vw, 2rem);
+  --spacing-gutter: clamp(1rem, 2vw, 2rem);
+  --spacing-section: clamp(5rem, 12vw, 13rem);
+  --container-page: 120rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-field: var(--field);
+  --color-field-ink: var(--field-ink);
+  --color-field-muted: var(--field-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
+}
+
+/* Dark is the default theme. Each block also serves inverted chapters,
+   which take the other theme's roles. */
+:root,
+[data-theme="light"] [data-chapter="invert"] {
+  --ground: #0b0b0b;
+  --surface: #191816;
+  --ink: #ece8e1;
+  --muted: #a39f98;
+  --accent: #3b5bdb;
+  --accent-strong: #2f4bc4;
+  --focus: #ece8e1;
+  color-scheme: dark;
+}
+
+[data-theme="light"],
+:root:not([data-theme="light"]) [data-chapter="invert"] {
+  --ground: #f1eee8;
+  --surface: #e5e0d7;
+  --ink: #0b0b0b;
+  --muted: #57534c;
+  --accent: #24338f;
+  --accent-strong: #1a2670;
+  --focus: #0b0b0b;
+  color-scheme: light;
+}
+
+:root {
+  --field: #e1ac10;
+  --field-ink: #0b0b0b;
+  --field-muted: #4d3d0a;
+  --accent-ink: #ffffff;
+
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+  --t-open: 1200ms;
+  --stagger-line: 90ms;
+  --stagger-item: 70ms;
 }
 
 @layer base {
-  :root {
-    color-scheme: dark;
+  html {
+    background-color: var(--ground);
+    color: var(--ink);
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: var(--color-neutral-950);
+    @apply text-body;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-cyan-300);
-    outline-offset: 2px;
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--field);
+    color: var(--field-ink);
+  }
+
+  [data-chapter="surface"] {
+    background-color: var(--surface);
+  }
+
+  [data-chapter="invert"] {
+    background-color: var(--ground);
+    color: var(--ink);
+  }
+
+  [data-chapter="field"] {
+    --focus: var(--field-ink);
+    background-color: var(--field);
+    color: var(--field-ink);
+  }
+
+  [data-chapter="field"] ::selection {
+    background-color: var(--ground);
+    color: var(--ink);
   }
 
   @media (prefers-reduced-motion: no-preference) {

@@ -9,8 +9,22 @@
       content="Frontend-focused Software Engineer in Lisbon, Portugal, building high-performance web applications with React, TypeScript, Next.js, Node.js and Python."
     />
     <meta name="author" content="Thulanjana Pramod" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#0b0b0b" />
     <meta name="color-scheme" content="dark" />
+    <script>
+      // Apply the saved theme before the first paint so the page never
+      // flashes the wrong one. Dark is the default.
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.dataset.theme = "light";
+          document.querySelector('meta[name="theme-color"]').content =
+            "#f1eee8";
+          document.querySelector('meta[name="color-scheme"]').content = "light";
+        }
+      } catch {
+        // Storage can be blocked; the default theme stays.
+      }
+    </script>
     <link
       rel="canonical"
       href="https://thulanjanagit.github.io/thulanjana-portfolio/"
