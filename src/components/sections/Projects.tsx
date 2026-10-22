@@ -1,5 +1,6 @@
 import { PROJECTS } from "../../data/projects";
 import { stagger } from "../../utils/stagger";
+import { SECTION_FRAME } from "../ui/section";
 
 const VISIBLE_PROJECTS = PROJECTS.filter(({ hidden }) => !hidden);
 
@@ -30,7 +31,7 @@ const Projects = () => {
       id="projects"
       aria-labelledby="projects-heading"
       data-chapter="invert"
-      className="px-page py-chapter [--step:clamp(2rem,6vw,6rem)]"
+      className={`${SECTION_FRAME} [--step:clamp(2rem,6vw,6rem)]`}
     >
       <ul
         className={`grid items-start gap-x-gutter gap-y-16 sm:grid-cols-2 sm:gap-y-20 ${THREE_COLUMNS ? "xl:grid-cols-3" : ""}`}

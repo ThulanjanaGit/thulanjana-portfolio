@@ -66,16 +66,16 @@ Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/`
 
 All text and lists live in `src/data/`:
 
-| File                 | Content                                                                                                    |
-| -------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `profile.ts`         | Hero line, About lead and text, LinkedIn and GitHub links, Toptal link, location and email, CV             |
-| `navigation.ts`      | Header and footer links                                                                                    |
-| `experience.ts`      | Jobs, highlights and technologies; the technology filter lists every technology used here, most used first |
-| `education.ts`       | Degrees and school qualifications; `honours` and `skills` are optional                                     |
-| `certifications.ts`  | Certifications, grouped by issuer on the page; `credentialId` is optional                                  |
-| `projects.ts`        | Projects; an optional `link` adds a "Visit site" link, and `hidden: true` keeps a project off the page     |
-| `skills.ts`          | Skills grouped as in the CV, shown in the Skills section                                                   |
-| `recommendations.ts` | Recommendations in the order shown; the first one with an `excerpt` gives the two-line quote shown large   |
+| File                 | Content                                                                                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `profile.ts`         | Hero line, About lead and text, LinkedIn and GitHub links, Toptal link, location and email, CV                                                                  |
+| `navigation.ts`      | Header and footer links                                                                                                                                         |
+| `experience.ts`      | Jobs, highlights and technologies; the technology filter lists every technology used here, most used first                                                      |
+| `education.ts`       | Degrees and school qualifications; `honours` and `skills` are optional                                                                                          |
+| `certifications.ts`  | Certifications, grouped by issuer on the page; `credentialId` is optional                                                                                       |
+| `projects.ts`        | Projects; an optional `link` adds a "Visit site" link, and `hidden: true` keeps a project off the page                                                          |
+| `skills.ts`          | Skills grouped as in the CV, shown in the Skills section                                                                                                        |
+| `recommendations.ts` | Recommendations in the order shown, each with a `relationship` line and a `linkedIn` link; the first one with an `excerpt` gives the two-line quote shown large |
 
 TypeScript checks every entry, so `npm run build` reports a missing or misspelled field.
 
@@ -90,6 +90,7 @@ Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the sam
 - Put images in `src/assets/` as WebP, at about twice the size they are shown so they stay sharp on high-density screens (for example 1024 × 1024 for the portrait and 480 × 480 for project screenshots).
 - Import the image in the data file or component that uses it.
 - `public/og-image.jpg` (1200 × 630) is the preview shown when the link is shared. Replace it if your title or photo changes.
+- `public/favicon.svg` is the "TP" tab icon. `favicon-96x96.png` and `apple-touch-icon.png` (180 × 180) are PNG copies of it for browsers and phones that don't use SVG icons, so replace all three together.
 
 ## Deployment
 

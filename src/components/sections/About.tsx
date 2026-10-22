@@ -1,6 +1,7 @@
 import profilePic from "../../assets/profile.webp";
 import { ABOUT_LEAD, ABOUT_PARAGRAPHS } from "../../data/profile";
 import { stagger } from "../../utils/stagger";
+import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 
 const About = () => {
@@ -8,7 +9,7 @@ const About = () => {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="px-page py-chapter"
+      className={SECTION_FRAME}
     >
       <div className="grid gap-x-gutter lg:grid-cols-12">
         <div className="lg:col-span-7">
@@ -33,7 +34,7 @@ const About = () => {
         >
           <img
             src={profilePic}
-            alt="Portrait of Thulanjana Pramod in a dark suit"
+            alt="Portrait of Thulanjana Pramod"
             width={1024}
             height={1024}
             loading="lazy"

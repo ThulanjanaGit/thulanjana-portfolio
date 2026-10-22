@@ -37,12 +37,12 @@ const Education = () => {
                     </span>
                   </span>
                   {honours && (
-                    <span className="col-start-1 mt-2 text-muted xl:col-span-3 xl:text-body">
+                    <span className="col-span-2 col-start-1 mt-2 text-muted xl:col-span-3 xl:text-body">
                       {honours}
                     </span>
                   )}
                   {skills && (
-                    <span className="col-start-1 mt-2 max-w-[70ch] text-small text-muted xl:col-span-3">
+                    <span className="col-span-2 col-start-1 mt-2 text-small text-muted xl:col-span-3">
                       Skills gained: {skills.join(", ")}
                     </span>
                   )}

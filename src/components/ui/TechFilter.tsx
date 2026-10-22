@@ -103,7 +103,12 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
           </ul>
         </>
       )}
-      <p aria-live="polite" className="mt-6 min-h-[3lh] max-w-[62ch]">
+      {/* Room for the longest sentence at each width (measured), so the
+          line-up below stays put while you switch technologies. */}
+      <p
+        aria-live="polite"
+        className="mt-6 min-h-[4lh] sm:min-h-[3lh] md:min-h-[2lh] 2xl:min-h-[1lh]"
+      >
         {hydrated &&
           (selected ? describe(selected) : "Pick one to see where I used it.")}
       </p>

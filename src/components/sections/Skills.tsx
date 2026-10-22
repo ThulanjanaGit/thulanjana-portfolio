@@ -1,5 +1,6 @@
 import { SKILL_GROUPS } from "../../data/skills";
 import { stagger } from "../../utils/stagger";
+import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 
 const Skills = () => {
@@ -7,7 +8,7 @@ const Skills = () => {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="px-page py-chapter"
+      className={SECTION_FRAME}
     >
       <SectionHeading id="skills-heading">Skills</SectionHeading>
       <dl className="grid gap-y-8 lg:gap-y-10">
@@ -19,7 +20,7 @@ const Skills = () => {
             className="grid gap-x-gutter gap-y-2 lg:grid-cols-12"
           >
             <dt className="text-lead lg:col-span-4">{title}</dt>
-            <dd className="max-w-[70ch] lg:col-span-8">{skills.join(", ")}</dd>
+            <dd className="lg:col-span-8">{skills.join(", ")}</dd>
           </div>
         ))}
       </dl>

@@ -60,12 +60,13 @@ export interface Recommendation {
   name: string;
   role: string;
   organisation?: string;
-  // How they worked together, e.g. "Managed Thulanjana directly".
-  relationship?: string;
+  // How they worked together, as LinkedIn states it, e.g. "Managed Thulanjana
+  // directly".
+  relationship: string;
   paragraphs: string[];
   // A short quote from the paragraphs, broken by hand into two lines and
   // shown large above the letters.
   excerpt?: string[];
   image: string;
-  linkedIn?: string;
+  linkedIn: string;
 }

@@ -3,6 +3,7 @@ import { EXPERIENCES } from "../../data/experience";
 import type { Experience as Role } from "../../types";
 import { stagger } from "../../utils/stagger";
 import { groupBy, LINEUP_GRID } from "../ui/lineup";
+import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 import TechFilter from "../ui/TechFilter";
 
@@ -84,7 +85,7 @@ const Experience = () => {
       id="experience"
       aria-labelledby="experience-heading"
       data-chapter="surface"
-      className="px-page py-chapter"
+      className={SECTION_FRAME}
     >
       <SectionHeading id="experience-heading">Experience</SectionHeading>
       <div data-reveal style={stagger(1)}>

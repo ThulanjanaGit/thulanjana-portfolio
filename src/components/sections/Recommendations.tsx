@@ -1,5 +1,6 @@
 import { RECOMMENDATIONS } from "../../data/recommendations";
 import { stagger } from "../../utils/stagger";
+import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 
 const featured = RECOMMENDATIONS.find(({ excerpt }) => excerpt);
@@ -11,7 +12,7 @@ const Recommendations = () => {
     <section
       id="recommendations"
       aria-labelledby="recommendations-heading"
-      className="@container px-page py-chapter"
+      className={`@container ${SECTION_FRAME}`}
     >
       <SectionHeading id="recommendations-heading">
         Recommendations
@@ -73,24 +74,18 @@ const Recommendations = () => {
                     <p className="text-muted">
                       {organisation ? `${role}, ${organisation}` : role}
                     </p>
-                    {relationship && (
-                      <p className="text-small text-muted">{relationship}</p>
-                    )}
+                    <p className="text-small text-muted">{relationship}</p>
                   </div>
                 </div>
-                {linkedIn && (
-                  <a
-                    href={linkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center underline"
-                  >
-                    LinkedIn
-                    <span className="sr-only">
-                      : {name} (opens in a new tab)
-                    </span>
-                  </a>
-                )}
+                <a
+                  href={linkedIn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center underline"
+                >
+                  LinkedIn
+                  <span className="sr-only">: {name} (opens in a new tab)</span>
+                </a>
                 <blockquote className="mt-4">
                   <p>{first}</p>
                   {rest.length > 0 && (

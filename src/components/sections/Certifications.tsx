@@ -1,6 +1,7 @@
 import { CERTIFICATIONS } from "../../data/certifications";
 import { stagger } from "../../utils/stagger";
 import { groupBy } from "../ui/lineup";
+import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 
 const GROUPS = groupBy(CERTIFICATIONS, ({ issuer }) => issuer);
@@ -10,7 +11,7 @@ const Certifications = () => {
     <section
       id="certifications"
       aria-labelledby="certifications-heading"
-      className="px-page py-chapter"
+      className={SECTION_FRAME}
     >
       <SectionHeading id="certifications-heading">
         Certifications
