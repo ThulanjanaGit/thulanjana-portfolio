@@ -3,9 +3,7 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
-import Skills from "./components/sections/Skills";
 import Experience from "./components/sections/Experience";
-import Education from "./components/sections/Education";
 import Recommendations from "./components/sections/Recommendations";
 import Projects from "./components/sections/Projects";
 import Toptal from "./components/sections/Toptal";
@@ -26,10 +24,8 @@ const App = () => {
           <main id="main">
             <Hero />
             <About />
+            <Experience />
             <div className="container mx-auto px-page">
-              <Skills />
-              <Experience />
-              <Education />
               <Recommendations />
               <Projects />
               <Toptal />
