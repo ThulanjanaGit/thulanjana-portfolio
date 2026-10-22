@@ -53,7 +53,7 @@ Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/`
 │   │   └── ui/                Small shared components
 │   ├── data/                  All site content; edit these files to update the site
 │   ├── hooks/                 Small React hooks
-│   ├── utils/theme.ts         Light and dark theme switch
+│   ├── utils/                 Theme switch and a helper for staggered animations
 │   ├── types.ts               Types for the content data
 │   ├── App.tsx                Page layout and section order
 │   ├── main.tsx               Entry point

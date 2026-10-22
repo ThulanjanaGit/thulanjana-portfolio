@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EDUCATION } from "../../data/education";
 import { EXPERIENCES } from "../../data/experience";
 import type { Highlight } from "../../types";
+import { stagger } from "../../utils/stagger";
 import SectionHeading from "../ui/SectionHeading";
 import TechFilter from "../ui/TechFilter";
 
@@ -57,17 +58,18 @@ const ROW_GRID =
   "grid grid-cols-[1fr_1.5rem] gap-x-gutter xl:grid-cols-[1fr_1fr_9em_1.5rem]";
 
 interface LineupRowProps {
+  index: number;
   row: Row;
   open: boolean;
   selected: string | null;
 }
 
-const LineupRow = ({ row, open, selected }: LineupRowProps) => {
+const LineupRow = ({ index, row, open, selected }: LineupRowProps) => {
   const { title, place, period, highlights, note, technologies } = row;
   const dimmed = selected !== null && !technologies.includes(selected);
 
   return (
-    <li>
+    <li data-reveal style={stagger(index + 1)}>
       <details
         open={open}
         className={`group [transition:color_var(--t-hover)_ease] ${dimmed ? "text-muted" : ""}`}
@@ -139,15 +141,20 @@ const Experience = () => {
       className="px-page py-chapter"
     >
       <SectionHeading id="experience-heading">Experience</SectionHeading>
-      <TechFilter selected={selected} onSelect={setSelected} />
+      <div data-reveal style={stagger(1)}>
+        <TechFilter selected={selected} onSelect={setSelected} />
+      </div>
       <div className="mt-16">
         {GROUPS.map(({ country, rows }) => (
           <div key={country} className="mt-14 first:mt-0">
-            <h3 className="mb-2 text-lead text-muted">{country}</h3>
+            <h3 data-reveal className="mb-2 text-lead text-muted">
+              {country}
+            </h3>
             <ul>
-              {rows.map((row) => (
+              {rows.map((row, index) => (
                 <LineupRow
                   key={`${row.title}-${row.period}`}
+                  index={index}
                   row={row}
                   open={row === ROWS[0]}
                   selected={selected}

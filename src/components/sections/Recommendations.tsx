@@ -1,4 +1,5 @@
 import { RECOMMENDATIONS } from "../../data/recommendations";
+import { stagger } from "../../utils/stagger";
 import SectionHeading from "../ui/SectionHeading";
 
 const featured = RECOMMENDATIONS.find(({ excerpt }) => excerpt);
@@ -7,15 +8,20 @@ const featured = RECOMMENDATIONS.find(({ excerpt }) => excerpt);
 // longer line measures 909px at 100px, plus at least 0.3em between words, so
 // 10.2cqw keeps it inside the page width; it stops growing at the display size.
 interface QuoteLineProps {
+  index: number;
   line: string;
   first: boolean;
   last: boolean;
 }
 
-const QuoteLine = ({ line, first, last }: QuoteLineProps) => {
+const QuoteLine = ({ index, line, first, last }: QuoteLineProps) => {
   const words = line.split(" ");
   return (
-    <span className="flex justify-between gap-x-[0.3em]">
+    <span
+      data-reveal
+      style={stagger(index + 1)}
+      className="flex justify-between gap-x-[0.3em]"
+    >
       {words.map((word, index) => (
         <span key={word}>
           {first && index === 0 && "“"}
@@ -41,6 +47,7 @@ const Recommendations = () => {
                 {featured.excerpt.map((line, index, lines) => (
                   <QuoteLine
                     key={line}
+                    index={index}
                     line={line}
                     first={index === 0}
                     last={index === lines.length - 1}
@@ -48,7 +55,11 @@ const Recommendations = () => {
                 ))}
               </p>
             </blockquote>
-            <figcaption className="mt-10 flex flex-col sm:flex-row sm:justify-between sm:gap-x-gutter">
+            <figcaption
+              data-reveal
+              style={stagger(3)}
+              className="mt-10 flex flex-col sm:flex-row sm:justify-between sm:gap-x-gutter"
+            >
               <span>{featured.name}</span>
               <span>{featured.role}</span>
               <span>{featured.organisation}</span>
@@ -62,19 +73,23 @@ const Recommendations = () => {
             const [first, ...rest] = paragraphs;
             return (
               <li key={name}>
-                <img
-                  src={image}
-                  alt=""
-                  width={576}
-                  height={576}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-28 bg-surface object-cover"
-                />
-                <h3 className="mt-6 text-lead">{name}</h3>
-                <p className="text-muted">
-                  {role}, {organisation}
-                </p>
+                <div className="flex items-center gap-5 lg:block">
+                  <img
+                    src={image}
+                    alt=""
+                    width={576}
+                    height={576}
+                    loading="lazy"
+                    decoding="async"
+                    className="size-20 shrink-0 bg-surface object-cover lg:size-28"
+                  />
+                  <div className="lg:mt-6">
+                    <h3 className="text-lead">{name}</h3>
+                    <p className="text-muted">
+                      {role}, {organisation}
+                    </p>
+                  </div>
+                </div>
                 <a
                   href={linkedIn}
                   target="_blank"

@@ -12,8 +12,10 @@
     <meta name="theme-color" content="#0b0b0b" />
     <meta name="color-scheme" content="dark" />
     <script>
-      // Apply the saved theme before the first paint so the page never
-      // flashes the wrong one. Dark is the default.
+      // Mark that scripts run, so motion may hide elements before they
+      // arrive, and apply the saved theme before the first paint so the page
+      // never flashes the wrong one. Dark is the default.
+      document.documentElement.classList.add("js");
       try {
         if (localStorage.getItem("theme") === "light") {
           document.documentElement.dataset.theme = "light";

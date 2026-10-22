@@ -1,5 +1,6 @@
 import profilePic from "../../assets/profile.webp";
 import { ABOUT_PARAGRAPHS, ABOUT_STATEMENT } from "../../data/profile";
+import { stagger } from "../../utils/stagger";
 import SectionHeading from "../ui/SectionHeading";
 
 // Each line of the statement starts one grid column further right, and the
@@ -24,21 +25,36 @@ const About = () => {
         </SectionHeading>
         <p className="text-lead lg:col-span-8 lg:row-start-2">
           {ABOUT_STATEMENT.map((line, index) => (
-            <span key={line} className={`block ${STEPS[index]}`}>
+            <span
+              key={line}
+              data-reveal
+              style={stagger(index + 1)}
+              className={`block ${STEPS[index]}`}
+            >
               {line}
             </span>
           ))}
         </p>
-        <img
-          src={profilePic}
-          alt="Portrait of Thulanjana Pramod in a dark suit"
-          width={1024}
-          height={1024}
-          loading="lazy"
-          decoding="async"
-          className="mt-12 w-4/5 justify-self-end sm:w-1/2 lg:col-span-4 lg:col-start-9 lg:row-span-3 lg:row-start-1 lg:mt-0 lg:w-full lg:self-end"
-        />
-        <div className="mt-12 max-w-[62ch] space-y-[0.9em] lg:col-span-5 lg:col-start-4 lg:row-start-3">
+        <div
+          data-reveal
+          style={stagger(2)}
+          className="mt-12 w-3/5 justify-self-end sm:w-1/2 lg:col-span-4 lg:col-start-9 lg:row-span-3 lg:row-start-1 lg:mt-0 lg:w-full lg:self-end"
+        >
+          <img
+            src={profilePic}
+            alt="Portrait of Thulanjana Pramod in a dark suit"
+            width={1024}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+            data-drift
+          />
+        </div>
+        <div
+          data-reveal
+          style={stagger(4)}
+          className="mt-12 max-w-[62ch] space-y-[0.9em] lg:col-span-5 lg:col-start-4 lg:row-start-3"
+        >
           {ABOUT_PARAGRAPHS.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

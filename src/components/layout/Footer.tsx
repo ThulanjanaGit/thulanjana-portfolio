@@ -32,6 +32,7 @@ const Footer = () => {
       <div className="@container mt-8 px-page sm:mt-12">
         <p
           aria-hidden="true"
+          data-settle
           className="translate-y-[28%] text-[22.6cqw] leading-[0.8] font-medium tracking-tighter whitespace-nowrap select-none"
         >
           Thulanjana

@@ -164,3 +164,112 @@
     }
   }
 }
+
+/* Motion, from DESIGN.md. Hidden starting states apply only when scripts run
+   (the js class) and the visitor allows motion, so the page is complete
+   without either. useReveal sets data-in once an element is in view. */
+@media (prefers-reduced-motion: no-preference) {
+  /* The name rises out of its own line on load. */
+  .js [data-line] {
+    transform: translateY(125%);
+    animation: line-up 900ms var(--ease-expo) forwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 150ms);
+  }
+
+  .js [data-load] {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise 500ms var(--ease-out) forwards;
+    animation-delay: var(--d, 420ms);
+  }
+
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--ease-out),
+      transform 900ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * var(--stagger-item));
+  }
+
+  .js [data-reveal][data-in] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Pictures open from the top edge once the element around them is
+     revealed: a fully clipped element never counts as in view for an
+     IntersectionObserver, so a shutter is not observed itself. */
+  .js [data-shutter] {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path var(--t-open) var(--ease-in-out);
+    transition-delay: calc(var(--i, 0) * var(--stagger-item));
+  }
+
+  .js [data-in] [data-shutter] {
+    clip-path: inset(0);
+  }
+
+  /* <details> open and close smoothly where ::details-content is supported. */
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size var(--t-ui) var(--ease-out),
+      content-visibility var(--t-ui) allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* Moves tied to the scroll position, where scroll timelines exist. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The portrait drifts a little as it passes through the screen. */
+    [data-drift] {
+      animation: drift linear both;
+      animation-timeline: view();
+    }
+
+    /* The footer name rises into place as it comes into view. */
+    [data-settle] {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes line-up {
+  to {
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(6%);
+  }
+  to {
+    transform: translateY(-6%);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: translateY(24%);
+  }
+}

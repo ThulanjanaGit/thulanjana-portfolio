@@ -6,8 +6,11 @@ import Experience from "./components/sections/Experience";
 import Projects from "./components/sections/Projects";
 import Recommendations from "./components/sections/Recommendations";
 import Contact from "./components/sections/Contact";
+import { useReveal } from "./hooks/useReveal";
 
 const App = () => {
+  useReveal();
+
   return (
     <div id="top" className="relative overflow-x-clip">
       <a

@@ -31,7 +31,7 @@ const Contact = () => {
         <span className="block xl:inline">{domain}</span>
       </a>
       <div className="mt-16 grid items-start gap-x-gutter gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-        <ul>
+        <ul className="flex flex-wrap gap-x-6">
           {SOCIAL_LINKS.map(({ label, href }) => (
             <li key={href}>
               <a

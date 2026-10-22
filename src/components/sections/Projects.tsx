@@ -1,14 +1,12 @@
 import { PROJECTS } from "../../data/projects";
+import { stagger } from "../../utils/stagger";
 
-// Tiles step down like the About statement. The heading fills cell 0; on
-// phones the tiles alternate sides, with two columns the second column starts
-// one step lower, and with three columns the second and third start one and
-// two steps lower. Class names stay whole so Tailwind can find them.
+// Tiles step down like the About statement. The heading fills cell 0; with
+// two columns the second column starts one step lower, and with three columns
+// the second and third start one and two steps lower. On phones the pictures
+// alternate sides instead. Class names stay whole so Tailwind can find them.
 const tileOffset = (cell: number) => {
-  const twoColumns =
-    cell % 2 === 1
-      ? "max-sm:ml-[20%] sm:max-xl:mt-(--step)"
-      : "max-sm:mr-[20%]";
+  const twoColumns = cell % 2 === 1 ? "sm:max-xl:mt-(--step)" : "";
   const threeColumns =
     cell % 3 === 1
       ? "xl:mt-(--step)"
@@ -28,14 +26,23 @@ const Projects = () => {
     >
       <ul className="grid items-start gap-x-gutter gap-y-16 sm:grid-cols-2 sm:gap-y-20 xl:grid-cols-3">
         <li>
-          <h2 id="projects-heading" className="text-head">
+          <h2 id="projects-heading" data-reveal className="text-head">
             Projects
           </h2>
         </li>
         {PROJECTS.map(
           ({ title, kind, image, description, technologies, link }, index) => (
-            <li key={title} className={tileOffset(index + 1)}>
-              <div className="grid aspect-square place-items-center bg-surface p-[14%]">
+            <li
+              key={title}
+              data-reveal
+              style={stagger(index + 1)}
+              className={tileOffset(index + 1)}
+            >
+              <div
+                data-shutter
+                style={stagger(index + 1)}
+                className={`grid aspect-square place-items-center bg-surface p-[14%] max-sm:w-[70%] ${index % 2 === 0 ? "max-sm:ml-auto" : ""}`}
+              >
                 <img
                   src={image}
                   alt={`Screenshot of the ${title} ${kind.toLowerCase()}`}
