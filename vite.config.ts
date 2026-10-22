@@ -4,6 +4,6 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/thulanjana-portfolio/",
+  base: process.env.VERCEL ? "/" : "/thulanjana-portfolio/",
   plugins: [react(), tailwindcss()],
 });
