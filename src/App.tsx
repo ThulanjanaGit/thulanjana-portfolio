@@ -8,6 +8,7 @@ import Experience from "./components/sections/Experience";
 import Education from "./components/sections/Education";
 import Recommendations from "./components/sections/Recommendations";
 import Projects from "./components/sections/Projects";
+import Toptal from "./components/sections/Toptal";
 import Contact from "./components/sections/Contact";
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
               <Education />
               <Recommendations />
               <Projects />
+              <Toptal />
               <Contact />
             </main>
             <Footer />

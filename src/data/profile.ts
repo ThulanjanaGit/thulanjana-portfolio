@@ -39,6 +39,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { label: "WhatsApp", href: "https://wa.me/351965617062", icon: FaWhatsapp },
 ];
 
+export const TOPTAL_URL =
+  "https://www.toptal.com/developers/resume/thulanjana-pramod#4L3r2b";
+
 export const CONTACT = {
   location: "Lisbon, Portugal",
   phone: "+351 965 617 062",
