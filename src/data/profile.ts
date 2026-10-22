@@ -9,10 +9,15 @@ import type { SocialLink } from "../types";
 
 export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
 
-export const HERO_TITLE = ["Software Engineer", "Frontend Developer"];
+export const HERO_LEAD =
+  "Frontend-focused software engineer in Lisbon, with four years of experience building web applications across telecom, fintech, data governance and charity sectors.";
 
-export const HERO_CONTENT =
-  "Frontend-focused Software Engineer with 4 years of experience building high-performance, scalable web applications across telecom, fintech, data governance and charity sectors. I specialise in React and TypeScript, with solid full-stack experience in Node.js, Python and PHP.";
+// One sentence, set over three lines that step to the right.
+export const ABOUT_STATEMENT = [
+  "I specialise in React and TypeScript,",
+  "with solid full-stack experience",
+  "in Node.js, Python and PHP.",
+];
 
 export const ABOUT_PARAGRAPHS = [
   "I'm a Software Engineer at Opplane in Lisbon, building high-performance React, Next.js and Python (Django, FastAPI) applications on AWS and GCP for telecom, fintech and data governance clients. Recently I designed JudgeKit, a domain-agnostic Python library that calibrates multi-LLM quality scores, and built REST, GraphQL and MCP services that connect frontend, microservice and AI workflows.",

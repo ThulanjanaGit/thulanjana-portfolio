@@ -5,7 +5,8 @@ import ThemeToggle from "../ui/ThemeToggle";
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between gap-4 px-page py-4 sm:py-6">
+    // Sits over the hero's upper field and scrolls away with it.
+    <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 px-page py-4 sm:py-6">
       <a
         href="#top"
         className="shrink-0 font-medium underline-offset-[0.18em] hover:underline"
