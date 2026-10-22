@@ -30,13 +30,14 @@
   --text-display--line-height: 0.9;
   --text-display--letter-spacing: -0.05em;
 
-  --spacing-page: clamp(1rem, 2.2vw, 2rem);
+  /* Side margin: 16-32px, growing on wide screens so content stays within
+     86rem (1376px) while colour fields still run edge to edge. */
+  --spacing-page: max(clamp(1rem, 2.2vw, 2rem), calc((100% - 86rem) / 2));
   --spacing-gutter: clamp(1rem, 2vw, 2rem);
   --spacing-section: clamp(5rem, 12vw, 13rem);
   /* Padding at the top and bottom of each section: half the gap, so two
      neighbouring sections sit one full gap apart. */
   --spacing-chapter: clamp(2.5rem, 6vw, 6.5rem);
-  --container-page: 120rem;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
@@ -49,12 +50,6 @@
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-field: var(--field);
-  --color-field-ink: var(--field-ink);
-  --color-field-muted: var(--field-muted);
-  --color-accent: var(--accent);
-  --color-accent-strong: var(--accent-strong);
-  --color-accent-ink: var(--accent-ink);
 }
 
 /* Dark is the default theme. Each block also serves inverted chapters,
@@ -65,8 +60,6 @@
   --surface: #191816;
   --ink: #eae8e4;
   --muted: #a39f98;
-  --accent: #3b5bdb;
-  --accent-strong: #2f4bc4;
   --focus: #eae8e4;
   color-scheme: dark;
 }
@@ -77,18 +70,11 @@
   --surface: #e4e2dd;
   --ink: #0b0b0b;
   --muted: #57534c;
-  --accent: #24338f;
-  --accent-strong: #1a2670;
   --focus: #0b0b0b;
   color-scheme: light;
 }
 
 :root {
-  --field: #e1ac10;
-  --field-ink: #0b0b0b;
-  --field-muted: #4d3d0a;
-  --accent-ink: #ffffff;
-
   --t-press: 140ms;
   --t-hover: 180ms;
   --t-ui: 240ms;
@@ -128,14 +114,42 @@
     text-decoration-thickness: 0.07em;
   }
 
+  /* No double-tap zoom delay on controls, and a tap flash in their own
+     colour, so it shows on every chapter. */
+  a,
+  button,
+  summary,
+  select {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: color-mix(
+      in srgb,
+      currentColor 15%,
+      transparent
+    );
+  }
+
+  /* The rubber band past either end would show a field in the wrong colour
+     under the footer. Touch screens keep it for pull to refresh. */
+  @media (pointer: fine) {
+    html {
+      overscroll-behavior-y: none;
+    }
+  }
+
+  /* The header stays in view while it holds keyboard focus, so a section
+     reached from its links leaves the header's height free. */
+  html:has(header :focus-visible) main > section[id] {
+    scroll-margin-top: 5.25rem;
+  }
+
   :focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 3px;
   }
 
   ::selection {
-    background-color: var(--field);
-    color: var(--field-ink);
+    background-color: var(--ink);
+    color: var(--ground);
   }
 
   [data-chapter="surface"] {
@@ -147,20 +161,118 @@
     color: var(--ink);
   }
 
-  [data-chapter="field"] {
-    --focus: var(--field-ink);
-    background-color: var(--field);
-    color: var(--field-ink);
-  }
-
-  [data-chapter="field"] ::selection {
-    background-color: var(--ground);
-    color: var(--ink);
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
     }
+  }
+}
+
+/* Motion, from DESIGN.md. Hidden starting states apply only when scripts run
+   (the js class) and the visitor allows motion, so the page is complete
+   without either. useReveal sets data-in once an element is in view. */
+@media (prefers-reduced-motion: no-preference) {
+  /* The name rises out of its own line on load. */
+  .js [data-line] {
+    transform: translateY(125%);
+    animation: line-up 900ms var(--ease-expo) forwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 150ms);
+  }
+
+  .js [data-load] {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise 500ms var(--ease-out) forwards;
+    animation-delay: var(--d, 420ms);
+  }
+
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--ease-out),
+      transform 900ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * var(--stagger-item));
+  }
+
+  .js [data-reveal][data-in] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Pictures open from the top edge once the element around them is
+     revealed: a fully clipped element never counts as in view for an
+     IntersectionObserver, so a shutter is not observed itself. */
+  .js [data-shutter] {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path var(--t-open) var(--ease-in-out);
+    transition-delay: calc(var(--i, 0) * var(--stagger-item));
+  }
+
+  .js [data-in] [data-shutter] {
+    clip-path: inset(0);
+  }
+
+  /* <details> open and close smoothly where ::details-content is supported. */
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size var(--t-ui) var(--ease-out),
+      content-visibility var(--t-ui) allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* Moves tied to the scroll position, where scroll timelines exist. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The portrait drifts a little as it passes through the screen. */
+    [data-drift] {
+      animation: drift linear both;
+      animation-timeline: view();
+    }
+
+    /* The footer name rises into place as it comes into view. */
+    [data-settle] {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes line-up {
+  to {
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(6%);
+  }
+  to {
+    transform: translateY(-6%);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: translateY(24%);
   }
 }

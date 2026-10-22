@@ -1,28 +1,104 @@
-// Skills in the order of the technology filter. Each one is matched against
-// the technologies of the roles and projects; those with no match and no
-// entry in OTHER_USES are listed on their own.
-export const SKILLS = [
-  "React",
-  "TypeScript",
-  "Next.js",
-  "JavaScript",
-  "Tailwind CSS",
-  "Redux",
-  "Angular",
-  "Node.js",
-  "Python",
-  "FastAPI",
-  "Django",
-  "PHP",
-  "GraphQL",
-  "PostgreSQL",
-  "MongoDB",
-  "Docker",
-  "AWS",
-  "Google Cloud",
-];
+import type { SkillGroup } from "../types";
 
-// Where a skill was used outside the roles and projects on the page.
-export const OTHER_USES: Partial<Record<string, string>> = {
-  "Tailwind CSS": "this site",
-};
+// The technical ecosystem from the CV, in its order.
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    title: "Frontend architecture and UI",
+    skills: [
+      "React (v15–19)",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Radix UI",
+      "Material UI",
+      "State management (Redux, Zustand)",
+      "TanStack (Query, Table)",
+      "Vite",
+      "Angular 12",
+      "RxJS",
+      "Sass",
+      "SCSS",
+      "HTML5",
+      "Bootstrap",
+      "Webpack",
+      "Gulp",
+    ],
+  },
+  {
+    title: "Backend services and APIs",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "Python (Django, FastAPI, Flask)",
+      "PHP 8 (Laravel, WordPress)",
+      "REST APIs",
+      "GraphQL",
+      "XML",
+      "YANG data modelling",
+      "Celery",
+      "SQLAlchemy",
+      "Microservices architecture",
+    ],
+  },
+  {
+    title: "Databases and streaming",
+    skills: [
+      "PostgreSQL",
+      "SQL",
+      "MongoDB",
+      "Redis",
+      "Elasticsearch",
+      "Kafka",
+      "Avro",
+      "AWS SQS",
+    ],
+  },
+  {
+    title: "Cloud, DevOps and infrastructure",
+    skills: [
+      "AWS (ECR, IAM, Lambda, S3, SQS)",
+      "GCP (BigQuery, Cloud Run, GKE)",
+      "Docker",
+      "Kubernetes",
+      "Git",
+      "CI/CD (Bitbucket Pipelines, Jenkins)",
+      "Terraform",
+      "ArgoCD",
+    ],
+  },
+  {
+    title: "AI and data engineering",
+    skills: [
+      "AI-driven integration (Anthropic Claude, OpenAI)",
+      "LLM integration",
+      "Model Context Protocol (MCP)",
+      "Observability (Datadog)",
+      "pandas",
+    ],
+  },
+  {
+    title: "Testing and quality assurance",
+    skills: [
+      "Jest",
+      "React Testing Library",
+      "Vitest",
+      "Supertest",
+      "pytest",
+      "Test-driven development (TDD)",
+      "BDD feature specs",
+      "Integration testing",
+    ],
+  },
+  {
+    title: "Architecture and core practices",
+    skills: [
+      "Frontend performance optimisation",
+      "Clean architecture",
+      "Design system engineering",
+      "Async/await concurrency",
+      "Repository service pattern",
+      "OIDC and JWT auth",
+      "Agile (Scrum)",
+    ],
+  },
+];

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thulanjana.vercel.app/sitemap.xml

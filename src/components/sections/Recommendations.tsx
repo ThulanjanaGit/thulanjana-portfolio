@@ -1,85 +1,100 @@
 import { RECOMMENDATIONS } from "../../data/recommendations";
+import { stagger } from "../../utils/stagger";
+import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 
 const featured = RECOMMENDATIONS.find(({ excerpt }) => excerpt);
 
-// The excerpt's lines run from margin to margin, a word at each edge. The
-// longer line measures 909px at 100px, plus at least 0.3em between words, so
-// 10.2cqw keeps it inside the page width; it stops growing at the display size.
-interface QuoteLineProps {
-  line: string;
-  first: boolean;
-  last: boolean;
-}
-
-const QuoteLine = ({ line, first, last }: QuoteLineProps) => {
-  const words = line.split(" ");
-  return (
-    <span className="flex justify-between gap-x-[0.3em]">
-      {words.map((word, index) => (
-        <span key={word}>
-          {first && index === 0 && "“"}
-          {word}
-          {last && index === words.length - 1 && "”"}
-        </span>
-      ))}
-    </span>
-  );
-};
-
+// The quote stays on two lines at every width: its longer line measures 909px
+// at 100px, so 10.8cqw fits a phone and the heading size takes over above.
 const Recommendations = () => {
   return (
-    <section id="recommendations" aria-labelledby="recommendations-heading">
-      <div data-chapter="field" className="@container px-page py-chapter">
-        <SectionHeading id="recommendations-heading">
-          Recommendations
-        </SectionHeading>
-        {featured?.excerpt && (
-          <figure>
-            <blockquote className="text-[min(8.75rem,10.2cqw)] leading-none font-medium tracking-[-0.04em]">
-              <p>
-                {featured.excerpt.map((line, index, lines) => (
-                  <QuoteLine
-                    key={line}
-                    line={line}
-                    first={index === 0}
-                    last={index === lines.length - 1}
-                  />
-                ))}
-              </p>
-            </blockquote>
-            <figcaption className="mt-10 flex flex-col sm:flex-row sm:justify-between sm:gap-x-gutter">
-              <span>{featured.name}</span>
-              <span>{featured.role}</span>
-              <span>{featured.organisation}</span>
-            </figcaption>
-          </figure>
-        )}
-      </div>
-      <ul className="grid gap-x-gutter gap-y-16 px-page py-chapter lg:grid-cols-3">
+    <section
+      id="recommendations"
+      aria-labelledby="recommendations-heading"
+      className={`@container ${SECTION_FRAME}`}
+    >
+      <SectionHeading id="recommendations-heading">
+        Recommendations
+      </SectionHeading>
+      {featured?.excerpt && (
+        <figure>
+          <blockquote className="text-[min(var(--text-head),10.8cqw)] leading-[0.95] font-medium tracking-[-0.04em]">
+            <p>
+              {featured.excerpt.map((line, index, lines) => (
+                <span
+                  key={line}
+                  data-reveal
+                  style={stagger(index + 1)}
+                  className="block"
+                >
+                  {index === 0 && "“"}
+                  {line}
+                  {index === lines.length - 1 && "”"}
+                </span>
+              ))}
+            </p>
+          </blockquote>
+          <figcaption
+            data-reveal
+            style={stagger(3)}
+            className="mt-6 text-muted"
+          >
+            <span translate="no">{featured.name}</span>, {featured.role}
+            {featured.organisation && (
+              <>
+                {" at "}
+                <span translate="no">{featured.organisation}</span>
+              </>
+            )}
+          </figcaption>
+        </figure>
+      )}
+      <ul className="mt-20 grid gap-x-gutter gap-y-16 md:grid-cols-2">
         {RECOMMENDATIONS.map(
-          ({ name, role, organisation, paragraphs, image, linkedIn }) => {
+          ({
+            name,
+            role,
+            organisation,
+            relationship,
+            paragraphs,
+            image,
+            linkedIn,
+          }) => {
             const [first, ...rest] = paragraphs;
             return (
               <li key={name}>
-                <img
-                  src={image}
-                  alt=""
-                  width={576}
-                  height={576}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-28 bg-surface object-cover"
-                />
-                <h3 className="mt-6 text-lead">{name}</h3>
-                <p className="text-muted">
-                  {role}, {organisation}
-                </p>
+                <div className="flex items-center gap-5 lg:block">
+                  <img
+                    src={image}
+                    alt=""
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
+                    className="size-20 shrink-0 bg-surface object-cover lg:size-28"
+                  />
+                  <div className="lg:mt-6">
+                    <h3 translate="no" className="text-lead">
+                      {name}
+                    </h3>
+                    <p className="text-muted">
+                      {role}
+                      {organisation && (
+                        <>
+                          {", "}
+                          <span translate="no">{organisation}</span>
+                        </>
+                      )}
+                    </p>
+                    <p className="text-small text-muted">{relationship}</p>
+                  </div>
+                </div>
                 <a
                   href={linkedIn}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center underline"
+                  className="inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
                 >
                   LinkedIn
                   <span className="sr-only">: {name} (opens in a new tab)</span>
@@ -88,7 +103,7 @@ const Recommendations = () => {
                   <p>{first}</p>
                   {rest.length > 0 && (
                     <details className="group">
-                      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center underline [&::-webkit-details-marker]:hidden">
+                      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center underline hover:decoration-[length:0.11em] [&::-webkit-details-marker]:hidden">
                         <span className="group-open:hidden">
                           Read the full recommendation
                         </span>

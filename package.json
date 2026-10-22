@@ -3,14 +3,14 @@
   "private": true,
   "version": "2.0.0",
   "description": "Personal portfolio of Thulanjana Pramod.",
-  "homepage": "https://thulanjanagit.github.io/thulanjana-portfolio/",
+  "homepage": "https://thulanjana.vercel.app/",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "oxlint --deny-warnings",
     "format": "prettier --write .",
