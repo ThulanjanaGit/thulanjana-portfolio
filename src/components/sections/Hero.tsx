@@ -32,7 +32,7 @@ const Hero = () => {
           rel="noopener noreferrer"
           data-load
           style={{ "--d": "480ms" } as CSSProperties}
-          className="mt-4 inline-flex min-h-11 items-center underline"
+          className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
         >
           View CV
           <span className="sr-only"> (PDF, opens in a new tab)</span>
@@ -40,6 +40,7 @@ const Hero = () => {
       </div>
       <h1
         id="hero-name"
+        translate="no"
         className="absolute inset-x-0 top-[46%] grid -translate-y-3/4 px-page text-center text-(length:--name) leading-[0.9] font-medium tracking-tighter text-ink sm:top-1/2"
       >
         <span className={mask}>

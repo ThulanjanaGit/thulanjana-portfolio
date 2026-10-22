@@ -39,7 +39,7 @@ const Certifications = () => {
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-11 items-center underline"
+                        className="inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
                       >
                         Show credential
                         <span className="sr-only">

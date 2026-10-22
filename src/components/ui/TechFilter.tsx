@@ -57,13 +57,14 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
           <label className="grid gap-2 sm:hidden">
             <span className="font-medium">Filter by technology</span>
             <select
+              name="tech"
               value={selected ?? ""}
               onChange={(event) => onSelect(event.target.value || null)}
-              className="min-h-11 w-full cursor-pointer bg-ground px-3"
+              className="min-h-11 w-full cursor-pointer bg-ground px-3 text-ink"
             >
               <option value="">All technologies</option>
               {TECHNOLOGIES.map((technology) => (
-                <option key={technology} value={technology}>
+                <option key={technology} value={technology} translate="no">
                   {technology}
                 </option>
               ))}
@@ -76,6 +77,7 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
                 <button
                   key={technology}
                   type="button"
+                  translate="no"
                   aria-pressed={selected === technology}
                   onClick={() =>
                     onSelect(selected === technology ? null : technology)
@@ -98,20 +100,20 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
             className="flex flex-wrap gap-x-5 gap-y-2"
           >
             {TECHNOLOGIES.map((technology) => (
-              <li key={technology}>{technology}</li>
+              <li key={technology} translate="no">
+                {technology}
+              </li>
             ))}
           </ul>
         </>
       )}
       {/* Room for the longest sentence at each width (measured), so the
-          line-up below stays put while you switch technologies. */}
-      <p
-        aria-live="polite"
-        className="mt-6 min-h-[4lh] sm:min-h-[3lh] md:min-h-[2lh] 2xl:min-h-[1lh]"
-      >
-        {hydrated &&
-          (selected ? describe(selected) : "Pick one to see where I used it.")}
-      </p>
+          line-up below stays put while you switch technologies. Only the
+          result is a live region, so the prompt is not read out on load. */}
+      <div className="mt-6 min-h-[4lh] sm:min-h-[3lh] md:min-h-[2lh] 2xl:min-h-[1lh]">
+        {hydrated && !selected && <p>Pick one to see where I used it.</p>}
+        <p aria-live="polite">{selected && describe(selected)}</p>
+      </div>
     </div>
   );
 };

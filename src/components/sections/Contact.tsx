@@ -25,7 +25,8 @@ const Contact = () => {
           <div className="lg:col-span-6">
             <a
               href={`mailto:${CONTACT.email}`}
-              className="inline-flex min-h-11 items-center text-lead break-all underline"
+              translate="no"
+              className="inline-flex min-h-11 items-center text-lead break-all underline hover:decoration-[length:0.11em]"
             >
               {CONTACT.email}
             </a>

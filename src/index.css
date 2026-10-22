@@ -114,6 +114,34 @@
     text-decoration-thickness: 0.07em;
   }
 
+  /* No double-tap zoom delay on controls, and a tap flash in their own
+     colour, so it shows on every chapter. */
+  a,
+  button,
+  summary,
+  select {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: color-mix(
+      in srgb,
+      currentColor 15%,
+      transparent
+    );
+  }
+
+  /* The rubber band past either end would show a field in the wrong colour
+     under the footer. Touch screens keep it for pull to refresh. */
+  @media (pointer: fine) {
+    html {
+      overscroll-behavior-y: none;
+    }
+  }
+
+  /* The header stays in view while it holds keyboard focus, so a section
+     reached from its links leaves the header's height free. */
+  html:has(header :focus-visible) main > section[id] {
+    scroll-margin-top: 5.25rem;
+  }
+
   :focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 3px;

@@ -1,5 +1,6 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { EXPERIENCES } from "../../data/experience";
+import { useTechnologyParam } from "../../hooks/useTechnologyParam";
 import type { Experience as Role } from "../../types";
 import { stagger } from "../../utils/stagger";
 import { groupBy, LINEUP_GRID } from "../ui/lineup";
@@ -39,7 +40,7 @@ const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
             <span className="hidden group-open:inline">−</span>
           </span>
           <span className="col-start-1 mt-1 flex justify-between gap-4 text-small text-muted sm:text-body xl:contents xl:text-lead xl:text-inherit">
-            <span>{company}</span>
+            <span translate="no">{company}</span>
             <span className="whitespace-nowrap tabular-nums xl:text-right">
               {period}
             </span>
@@ -47,7 +48,9 @@ const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
         </summary>
         <div className={`${LINEUP_GRID} pb-10`}>
           <div className="col-span-2 xl:col-span-3">
-            <p className="mb-6 text-small text-muted">
+            {/* translate="no" keeps the technology names whole when the page
+                is machine-translated; "Built with" stays English with them. */}
+            <p translate="no" className="mb-6 text-small text-muted">
               Built with{" "}
               {technologies.map((technology, position) => (
                 <Fragment key={technology}>
@@ -78,7 +81,7 @@ const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
 };
 
 const Experience = () => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useTechnologyParam();
 
   return (
     <section

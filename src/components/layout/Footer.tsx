@@ -27,13 +27,16 @@ const Footer = () => {
             </li>
           </ul>
         </nav>
-        <p suppressHydrationWarning>© {CURRENT_YEAR} Thulanjana Pramod</p>
+        <p translate="no" suppressHydrationWarning>
+          © {CURRENT_YEAR} Thulanjana Pramod
+        </p>
       </div>
       {/* The first name, cut by the bottom edge. 22.6cqw makes it span the
           page width: it measures 442.5px at 100px in Hanken Grotesk 500. */}
       <div className="@container mt-8 px-page sm:mt-12">
         <p
           aria-hidden="true"
+          translate="no"
           data-settle
           className="translate-y-[28%] text-[22.6cqw] leading-[0.8] font-medium tracking-tighter whitespace-nowrap select-none"
         >

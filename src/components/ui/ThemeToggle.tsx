@@ -25,6 +25,7 @@ const Sun = () => (
 // A switch for the light theme. Its position and icons follow data-theme on
 // <html> through CSS, so it is right on the first paint; aria-checked follows
 // once scripts run. Without scripts it is hidden, since it could not work.
+// The ::after layer stretches the hit area to 44px tall.
 const ThemeToggle = () => {
   const light = useLightTheme();
 
@@ -36,7 +37,7 @@ const ThemeToggle = () => {
       aria-checked={light}
       aria-label="Light theme"
       onClick={toggleTheme}
-      className="relative grid h-7 w-13 shrink-0 cursor-pointer grid-cols-2 place-items-center border-[1.5px] border-muted text-muted [html:not(.js)_&]:hidden"
+      className="relative grid h-7 w-13 shrink-0 cursor-pointer grid-cols-2 place-items-center border-[1.5px] border-muted text-muted after:absolute after:-inset-2 after:content-[''] [html:not(.js)_&]:hidden"
     >
       <Moon />
       <Sun />

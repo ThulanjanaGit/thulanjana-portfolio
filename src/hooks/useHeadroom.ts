@@ -12,9 +12,9 @@ interface Headroom {
 }
 
 // The header hides while the page scrolls down and comes back when it scrolls
-// up or the mouse reaches the top edge; keyboard focus brings it back in CSS.
-// After a click on an in-page link it stays hidden until that scroll ends, so
-// it does not cover the section you jumped to. Server-rendered HTML shows it
+// up or the mouse reaches the top edge; keyboard focus inside it brings it
+// back in CSS. Jumps (in-page links, keyboard focus elsewhere) keep it hidden
+// until their scroll ends, so it never covers what you jumped to. Server-rendered HTML shows it
 // at the top, which is where every visit starts.
 export const useHeadroom = (header: RefObject<HTMLElement | null>) => {
   const [state, setState] = useState<Headroom>({ atTop: true, hidden: false });
@@ -41,6 +41,16 @@ export const useHeadroom = (header: RefObject<HTMLElement | null>) => {
       if (!jumping) return;
       jumping = false;
       lastY = window.scrollY;
+    };
+
+    // A jump is a scroll the visitor did not make with the wheel or touch: a
+    // link to a section, or keyboard focus moving off screen. It never brings
+    // the header back. The timer ends it if nothing scrolls.
+    const startJump = (timeout: number) => {
+      jumping = true;
+      byPointer = false;
+      clearTimeout(jumpTimer);
+      jumpTimer = window.setTimeout(endJump, timeout);
     };
 
     const onScroll = () => {
@@ -91,12 +101,26 @@ export const useHeadroom = (header: RefObject<HTMLElement | null>) => {
       ) {
         return;
       }
-      jumping = true;
-      byPointer = false;
+      startJump(1000);
       if (!current.atTop) apply({ atTop: false, hidden: true });
-      // Ends the jump if the link leads nowhere new and nothing scrolls.
-      clearTimeout(jumpTimer);
-      jumpTimer = window.setTimeout(endJump, 1000);
+    };
+
+    // Tabbing to an element scrolls it into view, often at the top edge, so
+    // the header must not come back over it, and steps aside if it is there.
+    const onFocusIn = (event: FocusEvent) => {
+      const target = event.target;
+      if (
+        !(target instanceof Element) ||
+        header.current?.contains(target) ||
+        !target.matches(":focus-visible")
+      ) {
+        return;
+      }
+      startJump(300);
+      const covered =
+        target.getBoundingClientRect().top <
+        (header.current?.offsetHeight ?? 0);
+      if (!current.atTop && covered) apply({ atTop: false, hidden: true });
     };
 
     // A reload can open the page part-way down.
@@ -109,11 +133,13 @@ export const useHeadroom = (header: RefObject<HTMLElement | null>) => {
     window.addEventListener("scrollend", endJump);
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     document.addEventListener("click", onClick);
+    document.addEventListener("focusin", onFocusIn);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("scrollend", endJump);
       window.removeEventListener("pointermove", onPointerMove);
       document.removeEventListener("click", onClick);
+      document.removeEventListener("focusin", onFocusIn);
       cancelAnimationFrame(frame);
       clearTimeout(jumpTimer);
     };

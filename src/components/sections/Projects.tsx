@@ -69,7 +69,7 @@ const Projects = () => {
               <h3 className="mt-6 text-lead">{title}</h3>
               <p className="text-muted">{kind}</p>
               <p className="mt-4">{description}</p>
-              <p className="mt-4 text-small text-muted">
+              <p translate="no" className="mt-4 text-small text-muted">
                 {technologies.join(", ")}
               </p>
               {link && (
@@ -77,7 +77,7 @@ const Projects = () => {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex min-h-11 items-center underline"
+                  className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
                 >
                   Visit site
                   <span className="sr-only"> (opens in a new tab)</span>

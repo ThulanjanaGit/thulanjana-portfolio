@@ -21,7 +21,11 @@ const Header = () => {
       data-hidden={hidden ? "" : undefined}
       className="absolute inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5 [.js_&]:fixed"
     >
-      <a href="#top" className={`${linkClass} shrink-0 font-medium`}>
+      <a
+        href="#top"
+        translate="no"
+        className={`${linkClass} shrink-0 font-medium`}
+      >
         Thulanjana Pramod
       </a>
       <div className="flex items-center gap-5 sm:gap-8">
