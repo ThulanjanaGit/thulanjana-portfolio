@@ -1,91 +1,46 @@
-import type { Variants } from "motion/react";
-import * as m from "motion/react-m";
-import profilePic from "../../assets/profile.webp";
-import { HERO_CONTENT, HERO_TITLE, RESUME_URL } from "../../data/profile";
+import { HERO_LEAD, RESUME_URL } from "../../data/profile";
 
-const container = (delay: number): Variants => ({
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.5, delay },
-  },
-});
-
+// Two fields meet at the seam: 46% of the height on phones, half from 640px.
+// The name is lifted by 75% of its own height, so the seam runs through the
+// middle of "Pramod". That word's real text is clipped to its upper half, and
+// a copy drawn by CSS (so the name is in the page once) fills the lower half
+// in the field's ink. --name fills the page width on phones (22.6cqw) and
+// stops at 8.75rem.
 const Hero = () => {
   return (
-    <section className="border-b border-neutral-900 pb-4">
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2">
-          <div className="flex flex-col items-center lg:items-start">
-            <m.h1
-              variants={container(0)}
-              initial="hidden"
-              animate="visible"
-              className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl"
-            >
-              Thulanjana Pramod
-            </m.h1>
-            <m.p
-              variants={container(0.15)}
-              initial="hidden"
-              animate="visible"
-              className="bg-linear-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-center text-3xl tracking-tight text-transparent lg:text-left"
-            >
-              {HERO_TITLE.map((line) => (
-                <span key={line} className="block">
-                  {line}{" "}
-                </span>
-              ))}
-            </m.p>
-            <m.p
-              variants={container(0.3)}
-              initial="hidden"
-              animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter"
-            >
-              {HERO_CONTENT}
-            </m.p>
-            <m.div
-              variants={container(0.45)}
-              initial="hidden"
-              animate="visible"
-              className="mb-10 flex flex-wrap justify-center gap-4 lg:mb-0"
-            >
-              <a
-                href="#contact"
-                className="rounded-lg bg-neutral-300 px-6 py-3 font-medium text-neutral-950 transition-colors hover:bg-white"
-              >
-                Contact me
-              </a>
-              <a
-                href={RESUME_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg border border-neutral-700 px-6 py-3 font-medium transition-colors hover:border-neutral-400 hover:text-white"
-              >
-                View Resume
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </m.div>
-          </div>
-        </div>
-        <div className="w-full lg:w-1/2 lg:p-8">
-          <div className="flex justify-center">
-            <m.img
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full max-w-lg rounded-2xl object-cover"
-              src={profilePic}
-              alt="Thulanjana Pramod"
-              width={1024}
-              height={1024}
-              fetchPriority="high"
-            />
-          </div>
-        </div>
+    <section
+      aria-labelledby="hero-name"
+      className="@container relative h-svh min-h-144 px-page [--name:min(8.75rem,22.6cqw)]"
+    >
+      <div
+        data-chapter="field"
+        className="absolute inset-x-0 top-[46%] bottom-0 px-page pt-[calc(var(--name)*0.45+2.5rem)] text-center sm:top-1/2"
+      >
+        <p className="mx-auto max-w-[46ch] text-lead">{HERO_LEAD}</p>
+        <a
+          href={RESUME_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex min-h-11 items-center underline"
+        >
+          View CV
+          <span className="sr-only"> (PDF, opens in a new tab)</span>
+        </a>
       </div>
+      <h1
+        id="hero-name"
+        className="absolute inset-x-0 top-[46%] -translate-y-3/4 px-page text-center text-(length:--name) leading-[0.9] font-medium tracking-tighter text-ink sm:top-1/2 light:text-accent"
+      >
+        <span className="block">Thulanjana</span>{" "}
+        <span className="relative block">
+          <span className="block [clip-path:inset(0_0_50%_0)]">Pramod</span>
+          <span
+            aria-hidden="true"
+            data-text="Pramod"
+            className="absolute inset-0 text-field-ink [clip-path:inset(50%_0_0_0)] after:content-[attr(data-text)]"
+          />
+        </span>
+      </h1>
     </section>
   );
 };

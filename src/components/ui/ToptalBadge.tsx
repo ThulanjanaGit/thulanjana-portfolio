@@ -11,11 +11,11 @@ const THEMES = {
     logoWordmark: "fill-[#262d3d]",
   },
   dark: {
-    face: "bg-[linear-gradient(153deg,#0667ff_18%,#204ecf_40%,#0f256e_80%)] text-white",
+    face: "bg-[linear-gradient(153deg,#0667ff_18%,#204ecf_40%,#0f256e_80%)] text-[#fff]",
     caption: "opacity-80",
-    stars: "fill-white",
-    logoMark: "fill-white",
-    logoWordmark: "fill-white",
+    stars: "fill-[#fff]",
+    logoMark: "fill-[#fff]",
+    logoWordmark: "fill-[#fff]",
   },
 };
 
@@ -28,7 +28,7 @@ const ToptalBadge = ({ href, theme }: ToptalBadgeProps) => {
   const colors = THEMES[theme];
 
   return (
-    <div className={`inline-block bg-[#25a9ef] p-1.5 ${HEXAGON}`}>
+    <div data-ui className={`inline-block bg-[#25a9ef] p-1.5 ${HEXAGON}`}>
       <div
         className={`flex w-50 flex-col items-center gap-2 pt-6 pb-10 text-center ${HEXAGON} ${colors.face}`}
       >
@@ -63,7 +63,7 @@ const ToptalBadge = ({ href, theme }: ToptalBadgeProps) => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-md bg-[#296bff] px-5 py-1 font-medium text-white underline decoration-[0.5px] underline-offset-2"
+          className="inline-flex items-center justify-center rounded-md bg-[#296bff] px-5 py-1 font-medium text-[#fff] underline decoration-[0.5px] underline-offset-2"
         >
           Hire me
           <span className="sr-only"> on Toptal (opens in a new tab)</span>

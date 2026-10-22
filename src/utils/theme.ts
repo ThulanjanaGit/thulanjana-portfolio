@@ -2,7 +2,7 @@ type Theme = "dark" | "light";
 
 const THEME_COLOR: Record<Theme, string> = {
   dark: "#0b0b0b",
-  light: "#f1eee8",
+  light: "#eeedea",
 };
 
 // The inline script in index.html applies the saved theme before the first

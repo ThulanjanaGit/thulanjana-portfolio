@@ -1,18 +1,16 @@
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaSquareXTwitter,
-  FaWhatsapp,
-} from "react-icons/fa6";
 import type { SocialLink } from "../types";
 
 export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
 
-export const HERO_TITLE = ["Software Engineer", "Frontend Developer"];
+export const HERO_LEAD =
+  "Frontend-focused software engineer in Lisbon, with four years of experience building web applications across telecom, fintech, data governance and charity sectors.";
 
-export const HERO_CONTENT =
-  "Frontend-focused Software Engineer with 4 years of experience building high-performance, scalable web applications across telecom, fintech, data governance and charity sectors. I specialise in React and TypeScript, with solid full-stack experience in Node.js, Python and PHP.";
+// One sentence, set over three lines that step to the right.
+export const ABOUT_STATEMENT = [
+  "I specialise in React and TypeScript,",
+  "with solid full-stack experience",
+  "in Node.js, Python and PHP.",
+];
 
 export const ABOUT_PARAGRAPHS = [
   "I'm a Software Engineer at Opplane in Lisbon, building high-performance React, Next.js and Python (Django, FastAPI) applications on AWS and GCP for telecom, fintech and data governance clients. Recently I designed JudgeKit, a domain-agnostic Python library that calibrates multi-LLM quality scores, and built REST, GraphQL and MCP services that connect frontend, microservice and AI workflows.",
@@ -20,23 +18,10 @@ export const ABOUT_PARAGRAPHS = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/thulanjana/",
-    icon: FaLinkedin,
-  },
-  { label: "GitHub", href: "https://github.com/ThulanjanaGit", icon: FaGithub },
-  {
-    label: "X (Twitter)",
-    href: "https://x.com/ThulanjanaX",
-    icon: FaSquareXTwitter,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/__pramod_00__/",
-    icon: FaInstagram,
-  },
-  { label: "WhatsApp", href: "https://wa.me/351965617062", icon: FaWhatsapp },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/thulanjana/" },
+  { label: "GitHub", href: "https://github.com/ThulanjanaGit" },
+  { label: "X", href: "https://x.com/ThulanjanaX" },
+  { label: "Instagram", href: "https://www.instagram.com/__pramod_00__/" },
 ];
 
 export const TOPTAL_URL =
@@ -44,6 +29,5 @@ export const TOPTAL_URL =
 
 export const CONTACT = {
   location: "Lisbon, Portugal",
-  phone: "+351 965 617 062",
   email: "thulanjana1125@gmail.com",
 };
