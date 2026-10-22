@@ -1,4 +1,5 @@
 import { EDUCATION } from "../../data/education";
+import { alphabetical } from "../../utils/alphabetical";
 import { stagger } from "../../utils/stagger";
 import { groupBy, LINEUP_GRID } from "../ui/lineup";
 import SectionHeading from "../ui/SectionHeading";
@@ -43,7 +44,7 @@ const Education = () => {
                   )}
                   {skills && (
                     <span className="col-span-2 col-start-1 mt-2 text-small text-muted xl:col-span-3">
-                      Skills gained: {skills.join(", ")}
+                      Skills gained: {alphabetical(skills).join(", ")}
                     </span>
                   )}
                 </li>

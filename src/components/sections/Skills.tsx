@@ -1,4 +1,5 @@
 import { SKILL_GROUPS } from "../../data/skills";
+import { alphabetical } from "../../utils/alphabetical";
 import { stagger } from "../../utils/stagger";
 import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
@@ -20,7 +21,7 @@ const Skills = () => {
             className="grid gap-x-gutter gap-y-2 lg:grid-cols-12"
           >
             <dt className="text-lead lg:col-span-4">{title}</dt>
-            <dd className="lg:col-span-8">{skills.join(", ")}</dd>
+            <dd className="lg:col-span-8">{alphabetical(skills).join(", ")}</dd>
           </div>
         ))}
       </dl>

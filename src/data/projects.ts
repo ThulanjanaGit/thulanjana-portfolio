@@ -8,6 +8,7 @@ import type { Project } from "../types";
 export const PROJECTS: Project[] = [
   {
     title: "Test Your Worth",
+    hidden: true,
     kind: "E-learning website",
     image: testYourWorth,
     description:
@@ -16,6 +17,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Travel Guider",
+    hidden: true,
     kind: "Online booking app",
     image: travelGuider,
     description:
@@ -66,3 +68,7 @@ export const PROJECTS: Project[] = [
     ],
   },
 ];
+
+// The projects on show. With none, the Projects section and its menu link are
+// hidden too.
+export const VISIBLE_PROJECTS = PROJECTS.filter(({ hidden }) => !hidden);

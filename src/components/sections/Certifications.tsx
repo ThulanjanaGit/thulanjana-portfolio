@@ -1,4 +1,5 @@
 import { CERTIFICATIONS } from "../../data/certifications";
+import { alphabetical } from "../../utils/alphabetical";
 import { stagger } from "../../utils/stagger";
 import { groupBy } from "../ui/lineup";
 import { SECTION_FRAME } from "../ui/section";
@@ -28,7 +29,7 @@ const Certifications = () => {
                   <li key={title} data-reveal style={stagger(index + 1)}>
                     <p className="font-medium">{title}</p>
                     <p className="text-small text-muted">
-                      {skills.join(", ")}
+                      {alphabetical(skills).join(", ")}
                       {credentialId && `. Credential ID ${credentialId}`}
                     </p>
                     <p className="mt-1 flex flex-wrap items-baseline gap-x-4 text-small">

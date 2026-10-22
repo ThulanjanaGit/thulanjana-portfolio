@@ -1,22 +1,14 @@
 import { EXPERIENCES } from "../../data/experience";
-import { PROJECTS } from "../../data/projects";
+import { VISIBLE_PROJECTS } from "../../data/projects";
 import { useHydrated } from "../../hooks/useHydrated";
+import { alphabetical } from "../../utils/alphabetical";
 
 const list = new Intl.ListFormat("en-GB", { type: "conjunction" });
 
-const VISIBLE_PROJECTS = PROJECTS.filter(({ hidden }) => !hidden);
-
-// Every technology from the roles, the most used first; ties keep the order
-// in which they first appear.
-const TECHNOLOGIES = (() => {
-  const counts = new Map<string, number>();
-  for (const { technologies } of EXPERIENCES) {
-    for (const technology of technologies) {
-      counts.set(technology, (counts.get(technology) ?? 0) + 1);
-    }
-  }
-  return [...counts.keys()].sort((a, b) => counts.get(b)! - counts.get(a)!);
-})();
+// Every technology from the roles, A to Z.
+const TECHNOLOGIES = alphabetical([
+  ...new Set(EXPERIENCES.flatMap(({ technologies }) => technologies)),
+]);
 
 // "PHP: Web Developer at Fat Beehive and …; the project Test Your Worth."
 const describe = (technology: string) => {

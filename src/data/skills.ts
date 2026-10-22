@@ -29,7 +29,7 @@ export const SKILL_GROUPS: SkillGroup[] = [
     skills: [
       "Node.js",
       "Express.js",
-      "Python (FastAPI, Django, Flask)",
+      "Python (Django, FastAPI, Flask)",
       "PHP 8 (Laravel, WordPress)",
       "REST APIs",
       "GraphQL",
@@ -56,12 +56,12 @@ export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: "Cloud, DevOps and infrastructure",
     skills: [
-      "AWS (Lambda, S3, SQS, ECR, IAM)",
-      "GCP (Cloud Run, GKE, BigQuery)",
+      "AWS (ECR, IAM, Lambda, S3, SQS)",
+      "GCP (BigQuery, Cloud Run, GKE)",
       "Docker",
       "Kubernetes",
       "Git",
-      "CI/CD (Jenkins, Bitbucket Pipelines)",
+      "CI/CD (Bitbucket Pipelines, Jenkins)",
       "Terraform",
       "ArgoCD",
     ],

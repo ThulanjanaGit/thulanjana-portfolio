@@ -1,8 +1,7 @@
-import { PROJECTS } from "../../data/projects";
+import { VISIBLE_PROJECTS } from "../../data/projects";
+import { alphabetical } from "../../utils/alphabetical";
 import { stagger } from "../../utils/stagger";
 import { SECTION_FRAME } from "../ui/section";
-
-const VISIBLE_PROJECTS = PROJECTS.filter(({ hidden }) => !hidden);
 
 // Tiles step down like a staircase. With two columns the heading runs across
 // the top and the second column starts one step lower. From 1280px, three or
@@ -26,6 +25,8 @@ const tileOffset = (index: number) => {
 };
 
 const Projects = () => {
+  if (VISIBLE_PROJECTS.length === 0) return null;
+
   return (
     <section
       id="projects"
@@ -70,7 +71,7 @@ const Projects = () => {
               <p className="text-muted">{kind}</p>
               <p className="mt-4">{description}</p>
               <p translate="no" className="mt-4 text-small text-muted">
-                {technologies.join(", ")}
+                {alphabetical(technologies).join(", ")}
               </p>
               {link && (
                 <a

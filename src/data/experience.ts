@@ -70,6 +70,9 @@ export const EXPERIENCES: Experience[] = [
       "pytest",
       "Jest",
       "Jira",
+      "Node.js",
+      "JavaScript",
+      "CI/CD",
     ],
   },
   {
@@ -128,6 +131,11 @@ export const EXPERIENCES: Experience[] = [
       "GitHub",
       "Figma",
       "Agile",
+      "Python",
+      "Next.js",
+      "Google Cloud",
+      "CI/CD",
+      "REST APIs",
     ],
   },
   {
@@ -171,6 +179,11 @@ export const EXPERIENCES: Experience[] = [
       "Bitbucket",
       "Figma",
       "Agile",
+      "Python",
+      "Next.js",
+      "AWS",
+      "Google Cloud",
+      "CI/CD",
     ],
   },
   {
