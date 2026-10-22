@@ -1,137 +1,114 @@
-import { AnimatePresence } from "motion/react";
-import * as m from "motion/react-m";
-import { useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaLinkedin } from "react-icons/fa6";
 import { RECOMMENDATIONS } from "../../data/recommendations";
-import { fadeIn } from "../../utils/motion";
 import SectionHeading from "../ui/SectionHeading";
 
-const arrowButtonClass =
-  "grid size-11 shrink-0 cursor-pointer place-items-center rounded-full bg-neutral-800 text-white shadow-lg transition-colors hover:bg-neutral-700";
+const featured = RECOMMENDATIONS.find(({ excerpt }) => excerpt);
 
-const fade = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.25 },
+// The excerpt's lines run from margin to margin, a word at each edge. The
+// longer line measures 909px at 100px, plus at least 0.3em between words, so
+// 10.2cqw keeps it inside the page width; it stops growing at the display size.
+interface QuoteLineProps {
+  line: string;
+  first: boolean;
+  last: boolean;
+}
+
+const QuoteLine = ({ line, first, last }: QuoteLineProps) => {
+  const words = line.split(" ");
+  return (
+    <span className="flex justify-between gap-x-[0.3em]">
+      {words.map((word, index) => (
+        <span key={word}>
+          {first && index === 0 && "“"}
+          {word}
+          {last && index === words.length - 1 && "”"}
+        </span>
+      ))}
+    </span>
+  );
 };
 
 const Recommendations = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const count = RECOMMENDATIONS.length;
-  const current = RECOMMENDATIONS[currentIndex];
-
-  const showPrevious = () => {
-    setCurrentIndex((index) => (index - 1 + count) % count);
-  };
-
-  const showNext = () => {
-    setCurrentIndex((index) => (index + 1) % count);
-  };
-
   return (
-    <section
-      id="recommendations"
-      aria-labelledby="recommendations-heading"
-      aria-roledescription="carousel"
-      className="border-b border-neutral-900 pb-4"
-    >
-      <SectionHeading id="recommendations-heading">
-        Recommendations
-      </SectionHeading>
-      <m.div
-        {...fadeIn("left")}
-        className="mx-auto mb-12 flex max-w-5xl flex-col items-center gap-10 lg:flex-row lg:items-start"
-      >
-        <div className="flex shrink-0 flex-col items-center">
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={showPrevious}
-              aria-label="Previous recommendation"
-              className={arrowButtonClass}
-            >
-              <FaChevronLeft aria-hidden="true" />
-            </button>
-            <AnimatePresence mode="wait" initial={false}>
-              <m.img
-                key={current.name}
-                {...fade}
-                src={current.image}
-                alt=""
-                width={288}
-                height={288}
-                loading="lazy"
-                className="size-40 rounded-full object-cover sm:size-56"
-              />
-            </AnimatePresence>
-            <button
-              type="button"
-              onClick={showNext}
-              aria-label="Next recommendation"
-              className={arrowButtonClass}
-            >
-              <FaChevronRight aria-hidden="true" />
-            </button>
-          </div>
-          <div className="mt-4 flex">
-            {RECOMMENDATIONS.map(({ name }, index) => (
-              <button
-                key={name}
-                type="button"
-                onClick={() => setCurrentIndex(index)}
-                aria-label={`Show recommendation from ${name}`}
-                aria-current={index === currentIndex}
-                className="group grid size-6 cursor-pointer place-items-center"
-              >
-                <span
-                  className={`size-2.5 rounded-full transition-colors ${
-                    index === currentIndex
-                      ? "bg-neutral-200"
-                      : "bg-neutral-700 group-hover:bg-neutral-500"
-                  }`}
+    <section id="recommendations" aria-labelledby="recommendations-heading">
+      <div data-chapter="field" className="@container px-page py-chapter">
+        <SectionHeading id="recommendations-heading">
+          Recommendations
+        </SectionHeading>
+        {featured?.excerpt && (
+          <figure>
+            <blockquote className="text-[min(8.75rem,10.2cqw)] leading-none font-medium tracking-[-0.04em]">
+              <p>
+                {featured.excerpt.map((line, index, lines) => (
+                  <QuoteLine
+                    key={line}
+                    line={line}
+                    first={index === 0}
+                    last={index === lines.length - 1}
+                  />
+                ))}
+              </p>
+            </blockquote>
+            <figcaption className="mt-10 flex flex-col sm:flex-row sm:justify-between sm:gap-x-gutter">
+              <span>{featured.name}</span>
+              <span>{featured.role}</span>
+              <span>{featured.organisation}</span>
+            </figcaption>
+          </figure>
+        )}
+      </div>
+      <ul className="grid gap-x-gutter gap-y-16 px-page py-chapter lg:grid-cols-3">
+        {RECOMMENDATIONS.map(
+          ({ name, role, organisation, paragraphs, image, linkedIn }) => {
+            const [first, ...rest] = paragraphs;
+            return (
+              <li key={name}>
+                <img
+                  src={image}
+                  alt=""
+                  width={576}
+                  height={576}
+                  loading="lazy"
+                  decoding="async"
+                  className="size-28 bg-surface object-cover"
                 />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div aria-live="polite" className="w-full lg:flex-1">
-          <AnimatePresence mode="wait" initial={false}>
-            <m.figure
-              key={current.name}
-              {...fade}
-              aria-roledescription="slide"
-              aria-label={`${currentIndex + 1} of ${count}`}
-            >
-              <figcaption className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xl font-semibold text-neutral-200">
-                    {current.name}
-                  </p>
-                  <p className="text-lg font-medium text-neutral-400">
-                    {current.position}
-                  </p>
-                </div>
+                <h3 className="mt-6 text-lead">{name}</h3>
+                <p className="text-muted">
+                  {role}, {organisation}
+                </p>
                 <a
-                  href={current.linkedIn}
+                  href={linkedIn}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${current.name} on LinkedIn (opens in a new tab)`}
-                  className="text-3xl text-neutral-300 transition-colors hover:text-white"
+                  className="inline-flex min-h-11 items-center underline"
                 >
-                  <FaLinkedin aria-hidden="true" />
+                  LinkedIn
+                  <span className="sr-only">: {name} (opens in a new tab)</span>
                 </a>
-              </figcaption>
-              <blockquote className="space-y-4 text-neutral-400">
-                {current.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </blockquote>
-            </m.figure>
-          </AnimatePresence>
-        </div>
-      </m.div>
+                <blockquote className="mt-4">
+                  <p>{first}</p>
+                  {rest.length > 0 && (
+                    <details className="group">
+                      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center underline [&::-webkit-details-marker]:hidden">
+                        <span className="group-open:hidden">
+                          Read the full recommendation
+                        </span>
+                        <span className="hidden group-open:inline">
+                          Show less
+                        </span>
+                      </summary>
+                      <div className="space-y-[0.9em]">
+                        {rest.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </details>
+                  )}
+                </blockquote>
+              </li>
+            );
+          },
+        )}
+      </ul>
     </section>
   );
 };

@@ -1,5 +1,3 @@
-import type { IconType } from "react-icons";
-
 export interface NavLink {
   label: string;
   href: string;
@@ -8,7 +6,6 @@ export interface NavLink {
 export interface SocialLink {
   label: string;
   href: string;
-  icon: IconType;
 }
 
 export interface Highlight {
@@ -35,6 +32,7 @@ export interface Education {
 
 export interface Project {
   title: string;
+  kind: string;
   image: string;
   description: string;
   technologies: string[];
@@ -43,8 +41,12 @@ export interface Project {
 
 export interface Recommendation {
   name: string;
-  position: string;
+  role: string;
+  organisation: string;
   paragraphs: string[];
+  // A short quote from the paragraphs, broken by hand into two lines and
+  // shown large above the letters.
+  excerpt?: string[];
   image: string;
   linkedIn: string;
 }

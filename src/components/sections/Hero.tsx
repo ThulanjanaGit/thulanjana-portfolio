@@ -1,20 +1,11 @@
 import { HERO_LEAD, RESUME_URL } from "../../data/profile";
 
-const NAME_LINES = ["Thulanjana", "Pramod"];
-
-const nameLines = NAME_LINES.map((line) => (
-  <span key={line} className="block">
-    {line}
-  </span>
-));
-
 // Two fields meet at the seam: 46% of the height on phones, half from 640px.
-// The name is lifted by 75% of its own height, so the seam runs through its
-// second line, and each copy is clipped to one field so the ink changes there.
-// --name fills the page width on phones (22.6cqw) and stops at 8.75rem.
-const nameClass =
-  "text-(length:--name) leading-[0.9] font-medium tracking-tighter";
-
+// The name is lifted by 75% of its own height, so the seam runs through the
+// middle of "Pramod". That word's real text is clipped to its upper half, and
+// a copy drawn by CSS (so the name is in the page once) fills the lower half
+// in the field's ink. --name fills the page width on phones (22.6cqw) and
+// stops at 8.75rem.
 const Hero = () => {
   return (
     <section
@@ -25,7 +16,7 @@ const Hero = () => {
         data-chapter="field"
         className="absolute inset-x-0 top-[46%] bottom-0 px-page pt-[calc(var(--name)*0.45+2.5rem)] text-center sm:top-1/2"
       >
-        <p className="mx-auto max-w-[46ch] sm:text-lead">{HERO_LEAD}</p>
+        <p className="mx-auto max-w-[46ch] text-lead">{HERO_LEAD}</p>
         <a
           href={RESUME_URL}
           target="_blank"
@@ -36,20 +27,20 @@ const Hero = () => {
           <span className="sr-only"> (PDF, opens in a new tab)</span>
         </a>
       </div>
-      <div className="absolute inset-x-0 top-[46%] -translate-y-3/4 px-page text-center sm:top-1/2">
-        <h1
-          id="hero-name"
-          className={`${nameClass} text-ink [clip-path:inset(0_0_25%_0)] light:text-accent`}
-        >
-          {nameLines}
-        </h1>
-        <p
-          aria-hidden="true"
-          className={`${nameClass} absolute inset-0 px-page text-field-ink [clip-path:inset(75%_0_0_0)]`}
-        >
-          {nameLines}
-        </p>
-      </div>
+      <h1
+        id="hero-name"
+        className="absolute inset-x-0 top-[46%] -translate-y-3/4 px-page text-center text-(length:--name) leading-[0.9] font-medium tracking-tighter text-ink sm:top-1/2 light:text-accent"
+      >
+        <span className="block">Thulanjana</span>{" "}
+        <span className="relative block">
+          <span className="block [clip-path:inset(0_0_50%_0)]">Pramod</span>
+          <span
+            aria-hidden="true"
+            data-text="Pramod"
+            className="absolute inset-0 text-field-ink [clip-path:inset(50%_0_0_0)] after:content-[attr(data-text)]"
+          />
+        </span>
+      </h1>
     </section>
   );
 };

@@ -1,10 +1,3 @@
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaSquareXTwitter,
-  FaWhatsapp,
-} from "react-icons/fa6";
 import type { SocialLink } from "../types";
 
 export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
@@ -25,23 +18,10 @@ export const ABOUT_PARAGRAPHS = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/thulanjana/",
-    icon: FaLinkedin,
-  },
-  { label: "GitHub", href: "https://github.com/ThulanjanaGit", icon: FaGithub },
-  {
-    label: "X (Twitter)",
-    href: "https://x.com/ThulanjanaX",
-    icon: FaSquareXTwitter,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/__pramod_00__/",
-    icon: FaInstagram,
-  },
-  { label: "WhatsApp", href: "https://wa.me/351965617062", icon: FaWhatsapp },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/thulanjana/" },
+  { label: "GitHub", href: "https://github.com/ThulanjanaGit" },
+  { label: "X", href: "https://x.com/ThulanjanaX" },
+  { label: "Instagram", href: "https://www.instagram.com/__pramod_00__/" },
 ];
 
 export const TOPTAL_URL =
@@ -49,6 +29,5 @@ export const TOPTAL_URL =
 
 export const CONTACT = {
   location: "Lisbon, Portugal",
-  phone: "+351 965 617 062",
   email: "thulanjana1125@gmail.com",
 };

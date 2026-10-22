@@ -93,19 +93,8 @@ const LineupRow = ({ row, open, selected }: LineupRowProps) => {
         </summary>
         <div className={`${ROW_GRID} pb-10`}>
           <div className="col-span-2 xl:col-span-3">
-            {highlights.length > 0 && (
-              <ul className="grid gap-x-gutter gap-y-4 md:grid-cols-2 xl:grid-cols-3">
-                {highlights.map(({ title: highlight, description }) => (
-                  <li key={highlight}>
-                    <span className="font-medium">{highlight}:</span>{" "}
-                    {description}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {note && <p>{note}</p>}
             {technologies.length > 0 && (
-              <p className="mt-6 text-small text-muted">
+              <p className="mb-6 text-small text-muted">
                 Built with{" "}
                 {technologies.map((technology, index) => (
                   <span key={technology}>
@@ -121,6 +110,17 @@ const LineupRow = ({ row, open, selected }: LineupRowProps) => {
                 ))}
               </p>
             )}
+            {highlights.length > 0 && (
+              <ul className="grid gap-x-gutter gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+                {highlights.map(({ title: highlight, description }) => (
+                  <li key={highlight}>
+                    <span className="font-medium">{highlight}:</span>{" "}
+                    {description}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {note && <p>{note}</p>}
           </div>
         </div>
       </details>

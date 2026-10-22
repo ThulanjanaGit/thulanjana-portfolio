@@ -9,7 +9,6 @@ Source code for Thulanjana Pramod's personal portfolio website.
 - [React](https://react.dev) with [TypeScript](https://www.typescriptlang.org)
 - [Vite](https://vite.dev) for development and builds
 - [Tailwind CSS](https://tailwindcss.com) for styling
-- [Motion](https://motion.dev) for animations
 - [oxlint](https://oxc.rs) for linting and [Prettier](https://prettier.io) for formatting
 - GitHub Actions and GitHub Pages for deployment
 
@@ -53,7 +52,8 @@ Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/`
 │   │   ├── sections/          One component per page section
 │   │   └── ui/                Small shared components
 │   ├── data/                  All site content; edit these files to update the site
-│   ├── utils/motion.ts        Shared scroll animation
+│   ├── hooks/                 Small React hooks
+│   ├── utils/theme.ts         Light and dark theme switch
 │   ├── types.ts               Types for the content data
 │   ├── App.tsx                Page layout and section order
 │   ├── main.tsx               Entry point
@@ -66,15 +66,15 @@ Open <http://localhost:5173/thulanjana-portfolio/>. The `/thulanjana-portfolio/`
 
 All text and lists live in `src/data/`:
 
-| File                 | Content                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------- |
-| `profile.ts`         | Hero title and summary, About text, social links, Toptal link, contact details, CV |
-| `navigation.ts`      | Header links                                                                       |
-| `skills.ts`          | Skills grid (icons from [react-icons](https://react-icons.github.io/react-icons/)) |
-| `experience.ts`      | Jobs, highlights and tags                                                          |
-| `education.ts`       | Education                                                                          |
-| `projects.ts`        | Projects; an optional `link` adds a "Visit site" button                            |
-| `recommendations.ts` | Recommendations                                                                    |
+| File                 | Content                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| `profile.ts`         | Hero line, About statement and text, social links, Toptal link, location and email, CV   |
+| `navigation.ts`      | Header and footer links                                                                  |
+| `skills.ts`          | Skills for the technology filter; `OTHER_USES` covers skills used outside roles/projects |
+| `experience.ts`      | Jobs, highlights and technologies                                                        |
+| `education.ts`       | Education                                                                                |
+| `projects.ts`        | Projects; an optional `link` adds a "Visit site" link                                    |
+| `recommendations.ts` | Recommendations; `excerpt` is the two-line quote shown large                             |
 
 TypeScript checks every entry, so `npm run build` reports a missing or misspelled field.
 
@@ -86,7 +86,7 @@ Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the sam
 
 ### Images
 
-- Put images in `src/assets/` as WebP, at about twice the size they are shown so they stay sharp on high-density screens (for example 1024 × 1024 for the hero photo and 480 × 480 for project screenshots).
+- Put images in `src/assets/` as WebP, at about twice the size they are shown so they stay sharp on high-density screens (for example 1024 × 1024 for the portrait and 480 × 480 for project screenshots).
 - Import the image in the data file or component that uses it.
 - `public/og-image.jpg` (1200 × 630) is the preview shown when the link is shared. Replace it if your title or photo changes.
 
@@ -121,8 +121,8 @@ Dependabot opens pull requests every month: one grouped pull request for minor a
 
 ## To do
 
-- [ ] Replace `src/assets/about.webp` (a placeholder illustration) with a real photo, and give it descriptive `alt` text in `src/components/sections/About.tsx`.
-- [ ] Update `src/data/projects.ts`: use the real project names, add live links with the `link` field and add recent work.
+- [ ] Confirm I can publicly name each client project.
+- [ ] Update `src/data/projects.ts`: add live links with the `link` field, larger screenshots (1600 px or wider) and recent work.
 
 ## License
 

@@ -6,7 +6,8 @@ import type { Recommendation } from "../types";
 export const RECOMMENDATIONS: Recommendation[] = [
   {
     name: "Rajind Pamoda",
-    position: "Advanced Engineer - Capgemini Engineering",
+    role: "Advanced Engineer",
+    organisation: "Capgemini Engineering",
     paragraphs: [
       "I've had the privilege of working alongside Thulanjana, in my role as a Lead Support Developer at Fatbeehive in the UK. It has been a true pleasure to witness his progression from an entry-level developer to a highly proficient and accomplished team member.",
       "Thulanjana possesses an impressive and diverse skill set, which includes proficiency in PHP, MySQL, HTML, Cascading Style Sheets (CSS), Project Management, Databases, Collaboration & Teamwork, Communication, and Problem Solving. His remarkable ability to swiftly grasp new concepts and devise effective solutions has made a substantial contribution to our team's success.",
@@ -18,7 +19,9 @@ export const RECOMMENDATIONS: Recommendation[] = [
   },
   {
     name: "Kamosh Samaraweera",
-    position: "Senior Frontend Developer - Fat Beehive",
+    role: "Senior Frontend Developer",
+    organisation: "Fat Beehive",
+    excerpt: ["An exceptional talent", "in web development."],
     paragraphs: [
       "I had the pleasure of working with Thulanjana, and I can confidently say that he is an exceptional talent in web development. Thulanjana is a fast learner who catches up quickly on new technologies and methodologies. His proficiency in both backend and frontend development is impressive, demonstrating a deep understanding and skill in PHP, SASS, MySQL, and WordPress.",
       "He excels in custom development as well as utilizing page builders, which showcases his versatility and adaptability in any project environment. His dedication to delivering high-quality work and his ability to seamlessly integrate into any team make him a valuable asset. I highly recommend Thulanjana for any development role; his expertise and enthusiasm are truly commendable.",
@@ -28,7 +31,8 @@ export const RECOMMENDATIONS: Recommendation[] = [
   },
   {
     name: "Achini Fernando",
-    position: "Head of Coordination - Fat Beehive",
+    role: "Head of Coordination",
+    organisation: "Fat Beehive",
     paragraphs: [
       "I have the pleasure of working with Thulanjana at Fatbeehive, where he quickly distinguished himself as a talented web developer. His rapid growth and proficiency in PHP, HTML, CSS and MySQL combined with his excellent collaboration and communication skills, make him an invaluable team member. Thulanjana’s ability to learn quickly and his technical expertise ensure he consistently delivers high-quality work. He is an asset to any development team. I highly recommend Thulanjana for any development role and am confident he will continue to excel in his career.",
     ],

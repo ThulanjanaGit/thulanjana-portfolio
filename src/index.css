@@ -7,6 +7,10 @@
 /* Tokens from DESIGN.md. Colour roles are CSS variables (below) so the light
    theme and inverted chapters can swap them; Tailwind reads them inline. */
 @theme {
+  /* Only the design tokens: Tailwind's default palette and type scale are off. */
+  --color-*: initial;
+  --text-*: initial;
+
   --font-sans:
     "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -59,18 +63,18 @@
 [data-theme="light"] [data-chapter="invert"] {
   --ground: #0b0b0b;
   --surface: #191816;
-  --ink: #ece8e1;
+  --ink: #eae8e4;
   --muted: #a39f98;
   --accent: #3b5bdb;
   --accent-strong: #2f4bc4;
-  --focus: #ece8e1;
+  --focus: #eae8e4;
   color-scheme: dark;
 }
 
 [data-theme="light"],
 :root:not([data-theme="light"]) [data-chapter="invert"] {
-  --ground: #f1eee8;
-  --surface: #e5e0d7;
+  --ground: #eeedea;
+  --surface: #e4e2dd;
   --ink: #0b0b0b;
   --muted: #57534c;
   --accent: #24338f;
