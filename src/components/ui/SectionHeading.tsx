@@ -1,6 +1,4 @@
-import * as m from "motion/react-m";
 import type { ReactNode } from "react";
-import { fadeIn } from "../../utils/motion";
 
 interface SectionHeadingProps {
   id: string;
@@ -9,9 +7,9 @@ interface SectionHeadingProps {
 
 const SectionHeading = ({ id, children }: SectionHeadingProps) => {
   return (
-    <m.h2 id={id} {...fadeIn("top")} className="my-20 text-center text-4xl">
+    <h2 id={id} className="mb-10 text-head sm:mb-16">
       {children}
-    </m.h2>
+    </h2>
   );
 };
 
