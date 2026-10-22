@@ -1,14 +1,26 @@
+import { useRef } from "react";
 import { NAV_LINKS } from "../../data/navigation";
 import { CONTACT } from "../../data/profile";
+import { useHeadroom } from "../../hooks/useHeadroom";
 import ThemeToggle from "../ui/ThemeToggle";
 
 const linkClass =
   "inline-flex min-h-11 items-center underline-offset-[0.18em] hover:underline";
 
 const Header = () => {
+  const header = useRef<HTMLElement>(null);
+  const { atTop, hidden } = useHeadroom(header);
+
   return (
-    // Sits over the hero's upper field and scrolls away with it.
-    <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 px-page py-3 sm:py-5">
+    // At the top it sits over the hero's upper field. Further down it takes
+    // the ground colour and slides away while you read; see useHeadroom for
+    // what brings it back.
+    <header
+      ref={header}
+      data-scrolled={atTop ? undefined : ""}
+      data-hidden={hidden ? "" : undefined}
+      className="fixed inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5"
+    >
       <a href="#top" className={`${linkClass} shrink-0 font-medium`}>
         Thulanjana Pramod
       </a>
