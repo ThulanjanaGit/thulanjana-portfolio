@@ -11,9 +11,9 @@ const About = () => {
       aria-labelledby="about-heading"
       className={SECTION_FRAME}
     >
+      <SectionHeading id="about-heading">About</SectionHeading>
       <div className="grid gap-x-gutter lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <SectionHeading id="about-heading">About</SectionHeading>
           <p data-reveal style={stagger(1)} className="max-w-[34ch] text-lead">
             {ABOUT_LEAD}
           </p>
@@ -30,7 +30,7 @@ const About = () => {
         <div
           data-reveal
           style={stagger(3)}
-          className="mt-12 w-3/5 justify-self-end sm:w-1/2 lg:col-span-4 lg:col-start-9 lg:mt-0 lg:w-full lg:self-end"
+          className="mt-12 w-3/5 justify-self-center sm:w-1/2 lg:col-span-4 lg:col-start-9 lg:mt-0 lg:w-full lg:self-center"
         >
           <img
             src={profilePic}
