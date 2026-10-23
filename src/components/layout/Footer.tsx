@@ -10,9 +10,9 @@ const linkClass =
 const Footer = () => {
   return (
     <footer data-chapter="invert" className="overflow-hidden">
-      <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 px-page pt-8 sm:pt-12">
+      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 px-page pt-8 sm:justify-between sm:pt-12">
         <nav aria-label="Footer">
-          <ul className="flex flex-wrap gap-x-6">
+          <ul className="flex flex-wrap justify-center gap-x-6 sm:justify-start">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <a href={href} className={linkClass}>

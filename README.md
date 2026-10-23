@@ -95,7 +95,7 @@ Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the sam
 
 - Put images in `src/assets/` as WebP, at about twice the size they are shown so they stay sharp on high-density screens (for example 1024 × 1024 for the portrait and 480 × 480 for project screenshots).
 - Import the image in the data file or component that uses it.
-- `public/og-image.jpg` (1200 × 630) is the preview shown when the link is shared. It shows your name and the line "Full-stack software engineer in Lisbon", so replace it if either changes.
+- `public/og-image-v2.jpg` (1200 × 630) is the preview shown when the link is shared. It shows your name and the line "Full-stack software engineer in Lisbon", so replace it if either changes. Apps cache the preview by its address, so give a new image a new name (for example `og-image-v3.jpg`) and update both references in `index.html`.
 - `public/favicon.svg` is the "TP" tab icon. `favicon-96x96.png` and `apple-touch-icon.png` (180 × 180) are PNG copies of it for browsers and phones that don't use SVG icons, so replace all three together.
 
 ## Deployment

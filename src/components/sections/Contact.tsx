@@ -15,7 +15,7 @@ const Contact = () => {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="px-page py-chapter"
+      className="px-page py-chapter text-center sm:text-left"
     >
       <SectionHeading id="contact-heading">Get in touch</SectionHeading>
       {/* Email, profiles and badge run across the row from 1024px, so the
@@ -32,7 +32,7 @@ const Contact = () => {
             </a>
             <p className="text-muted">{CONTACT.location}</p>
           </div>
-          <ul className="flex flex-wrap gap-x-6 lg:col-span-3 lg:col-start-7 lg:flex-col">
+          <ul className="flex flex-wrap justify-center gap-x-6 sm:justify-start lg:col-span-3 lg:col-start-7 lg:flex-col">
             {SOCIAL_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <a
