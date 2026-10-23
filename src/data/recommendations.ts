@@ -8,6 +8,7 @@ export const RECOMMENDATIONS: Recommendation[] = [
   {
     name: "Nuno Oliveira",
     role: "Head of Platform Engineering",
+    organisation: "Opplane",
     relationship: "Managed Thulanjana directly",
     paragraphs: [
       "I had the pleasure of working alongside Pramod and I highly recommend him as a team member. He is a dependable, conscientious colleague who brings a fantastic work ethic and a warm, professional attitude to work every day.",
@@ -18,8 +19,8 @@ export const RECOMMENDATIONS: Recommendation[] = [
   },
   {
     name: "Rajind Pamoda",
-    role: "Advanced Engineer",
-    organisation: "Capgemini Engineering",
+    role: "Senior Full Stack Engineer",
+    organisation: "cinch",
     relationship: "Managed Thulanjana directly",
     paragraphs: [
       "I’ve had the privilege of working alongside Thulanjana, in my role as a Lead Support Developer at Fatbeehive in the UK. It has been a true pleasure to witness his progression from an entry-level developer to a highly proficient and accomplished team member.",
@@ -32,7 +33,7 @@ export const RECOMMENDATIONS: Recommendation[] = [
   },
   {
     name: "Kamosh Samaraweera",
-    role: "Senior Frontend Developer",
+    role: "Lead Frontend Developer",
     organisation: "Fat Beehive",
     relationship: "Worked with Thulanjana on the same team",
     excerpt: ["An exceptional talent", "in web development."],
@@ -45,7 +46,7 @@ export const RECOMMENDATIONS: Recommendation[] = [
   },
   {
     name: "Achini Fernando",
-    role: "Head of Coordination",
+    role: "Lead Support Coordinator",
     organisation: "Fat Beehive",
     relationship: "Managed Thulanjana directly",
     paragraphs: [
