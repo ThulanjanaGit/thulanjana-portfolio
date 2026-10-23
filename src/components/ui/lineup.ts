@@ -1,5 +1,5 @@
-// The line-up's row grid, shared by Experience and Education so their columns
-// line up. Title, place and dates fit on one line only from 1280px (measured
+// The line-up's row grid, shared by Experience, Education and the phone
+// technology filter so their columns line up. Title, place and dates fit on one line only from 1280px (measured
 // at lead size); below that each row takes two lines. The dates column is a
 // fixed 9em, not auto, so the second column starts at the same place on every
 // row; the last column holds the + / − indicator.

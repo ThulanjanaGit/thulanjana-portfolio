@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import { EXPERIENCES } from "../../data/experience";
 import { VISIBLE_PROJECTS } from "../../data/projects";
 import { useHydrated } from "../../hooks/useHydrated";
 import { alphabetical } from "../../utils/alphabetical";
+import { LINEUP_GRID } from "./lineup";
 
 const list = new Intl.ListFormat("en-GB", { type: "conjunction" });
 
@@ -31,37 +33,69 @@ const describe = (technology: string) => {
   return `${technology}: ${parts.join("; ")}.`;
 };
 
+const TOGGLE_CLASS =
+  "min-h-11 cursor-pointer bg-ground px-3 underline-offset-[0.18em] [transition:background-color_var(--t-hover)_ease,color_var(--t-hover)_ease,transform_var(--t-press)_var(--ease-out)] hover:underline active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-ground";
+
 interface TechFilterProps {
   selected: string | null;
   onSelect: (technology: string | null) => void;
 }
 
-// Buttons from 640px; on phones the same choice is a select, because the
-// full list would fill several screens as buttons. Before scripts run it is
-// a plain list.
+// Buttons from 640px. On phones the full list would fill several screens, so
+// the buttons fold away behind a row styled like the line-up's, which shows
+// the pick and closes again once one is made. Before scripts run it is a
+// plain list.
 const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
   const hydrated = useHydrated();
+  const menu = useRef<HTMLDetailsElement>(null);
+  const menuSummary = useRef<HTMLElement>(null);
+
+  // The pressed button disappears as the fold closes, so focus moves back
+  // to the row that opens it.
+  const pickFromMenu = (technology: string | null) => {
+    onSelect(technology);
+    if (menu.current) menu.current.open = false;
+    menuSummary.current?.focus();
+  };
 
   return (
     <div>
       {hydrated ? (
         <>
-          <label className="grid gap-2 sm:hidden">
-            <span className="font-medium">Filter by technology</span>
-            <select
-              name="tech"
-              value={selected ?? ""}
-              onChange={(event) => onSelect(event.target.value || null)}
-              className="min-h-11 w-full cursor-pointer bg-ground px-3 text-ink"
-            >
-              <option value="">All technologies</option>
-              {TECHNOLOGIES.map((technology) => (
-                <option key={technology} value={technology} translate="no">
-                  {technology}
-                </option>
-              ))}
-            </select>
-          </label>
+          <div className="sm:hidden">
+            <p aria-hidden="true" className="font-medium">
+              Filter by technology
+            </p>
+            <details ref={menu} className="group">
+              <summary
+                ref={menuSummary}
+                aria-label={`Filter by technology: ${selected ?? "All technologies"}`}
+                className={`${LINEUP_GRID} cursor-pointer list-none items-baseline py-4 text-lead [&::-webkit-details-marker]:hidden`}
+              >
+                <span translate={selected ? "no" : undefined}>
+                  {selected ?? "All technologies"}
+                </span>
+                <span aria-hidden="true" className="text-right text-muted">
+                  <span className="group-open:hidden">+</span>
+                  <span className="hidden group-open:inline">−</span>
+                </span>
+              </summary>
+              <div className="flex flex-wrap gap-2 pb-4">
+                {[null, ...TECHNOLOGIES].map((technology) => (
+                  <button
+                    key={technology ?? ""}
+                    type="button"
+                    translate={technology ? "no" : undefined}
+                    aria-pressed={selected === technology}
+                    onClick={() => pickFromMenu(technology)}
+                    className={TOGGLE_CLASS}
+                  >
+                    {technology ?? "All technologies"}
+                  </button>
+                ))}
+              </div>
+            </details>
+          </div>
           <fieldset className="hidden sm:block">
             <legend className="mb-4 font-medium">Filter by technology</legend>
             <div className="flex flex-wrap gap-2">
@@ -74,7 +108,7 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
                   onClick={() =>
                     onSelect(selected === technology ? null : technology)
                   }
-                  className="min-h-11 cursor-pointer bg-ground px-3 underline-offset-[0.18em] [transition:background-color_var(--t-hover)_ease,color_var(--t-hover)_ease,transform_var(--t-press)_var(--ease-out)] hover:underline active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-ground"
+                  className={TOGGLE_CLASS}
                 >
                   {technology}
                 </button>
