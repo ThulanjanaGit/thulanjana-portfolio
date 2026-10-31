@@ -77,7 +77,7 @@ const Projects = () => {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
+                  className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[0.11em]"
                 >
                   Visit site
                   <span className="sr-only"> (opens in a new tab)</span>

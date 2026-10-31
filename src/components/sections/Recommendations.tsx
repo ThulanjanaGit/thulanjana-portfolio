@@ -94,7 +94,7 @@ const Recommendations = () => {
                   href={linkedIn}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
+                  className="inline-flex min-h-11 items-center underline hover:decoration-[0.11em]"
                 >
                   LinkedIn
                   <span className="sr-only">: {name} (opens in a new tab)</span>
@@ -103,7 +103,7 @@ const Recommendations = () => {
                   <p>{first}</p>
                   {rest.length > 0 && (
                     <details className="group">
-                      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center underline hover:decoration-[length:0.11em] [&::-webkit-details-marker]:hidden">
+                      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center underline hover:decoration-[0.11em] [&::-webkit-details-marker]:hidden">
                         <span className="group-open:hidden">
                           Read the full recommendation
                         </span>
