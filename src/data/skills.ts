@@ -1,7 +1,7 @@
 import type { SkillGroup } from "../types";
 
-// The technical ecosystem from the CV, in its order. Each group ends with the
-// skills the site keeps but the CV leaves out for space.
+// The technical ecosystem from the CV, in its order. SQL and async/await
+// concurrency close their groups: the site keeps them, the CV has no room.
 export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: "Frontend architecture and UI",
@@ -25,7 +25,6 @@ export const SKILL_GROUPS: SkillGroup[] = [
       "SCSS",
       "HTML5",
       "Bootstrap",
-      "Gulp",
     ],
   },
   {
@@ -42,7 +41,6 @@ export const SKILL_GROUPS: SkillGroup[] = [
       "PHP 8 (Laravel, WordPress)",
       "Microservices architecture",
       "YANG data modelling",
-      "XML",
     ],
   },
   {

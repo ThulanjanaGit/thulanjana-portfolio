@@ -3,7 +3,7 @@ import type { SocialLink } from "../types";
 export const RESUME_URL = `${import.meta.env.BASE_URL}Thulanjana-Pramod-Resume.pdf`;
 
 export const HERO_LEAD =
-  "Software Engineer in Lisbon with 4+ years of experience building full-stack web applications for telecom, fintech, data governance and charity clients.";
+  "Software Engineer in Lisbon with 4+ years of experience building full-stack web applications for telecom, fintech, data governance, charity and energy clients.";
 
 export const ABOUT_LEAD =
   "I focus on React and TypeScript on the frontend, with full-stack experience in Node.js and Python (FastAPI, Django) on the backend.";

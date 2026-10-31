@@ -75,7 +75,7 @@ All text and lists live in `src/data/`:
 | `profile.ts`         | Hero line, About lead and text, LinkedIn and GitHub links, Toptal link, location and email, CV                                                                                    |
 | `navigation.ts`      | Header and footer links                                                                                                                                                           |
 | `experience.ts`      | Jobs, highlights and technologies; the technology filter lists every technology used here                                                                                         |
-| `education.ts`       | Degrees and school qualifications; `honours` and `skills` are optional                                                                                                            |
+| `education.ts`       | Degrees and school qualifications (`honours` and `skills` are optional), and the languages shown under them                                                                       |
 | `certifications.ts`  | Certifications, grouped by issuer on the page; `credentialId` is optional                                                                                                         |
 | `projects.ts`        | Projects; an optional `link` adds a "Visit site" link, and `hidden: true` keeps a project off the page (with every project hidden, so are the Projects section and its menu link) |
 | `skills.ts`          | Skills grouped as in the CV, shown in the Skills section                                                                                                                          |

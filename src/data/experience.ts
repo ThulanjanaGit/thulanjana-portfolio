@@ -13,14 +13,9 @@ export const EXPERIENCES: Experience[] = [
           "Build React, Next.js and TypeScript frontends backed by Node.js and Python (Django, FastAPI) services on AWS and GCP for telecom, fintech and data governance clients.",
       },
       {
-        title: "Cloud Migration",
+        title: "Cloud Migration & CI/CD",
         description:
-          "Contributed to moving the whole platform from AWS (Lambda, S3, SQS, ECR) to GCP (Cloud Run, GKE, BigQuery, Cloud Storage, Artifact Registry).",
-      },
-      {
-        title: "CI/CD & Cloud Infrastructure",
-        description:
-          "Built Bitbucket Pipelines that automate version-gated releases, publish container images to Artifact Registry and sync runtime config to Cloud Storage.",
+          "Contributed to moving the whole platform from AWS (Lambda, S3, SQS, ECR) to GCP (Cloud Run, GKE, BigQuery, Cloud Storage, Artifact Registry), including Bitbucket Pipelines that automate version-gated releases, publish container images to Artifact Registry and sync runtime config to Cloud Storage.",
       },
       {
         title: "LLM Evaluation Platform",
@@ -35,7 +30,7 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Distributed Batch Processing",
         description:
-          "Built resumable async batch jobs on Cloud Run, BigQuery and Cloud Storage, with heavy scientific dependencies kept in their own container images.",
+          "Built resumable async batch jobs on Cloud Run, BigQuery and Cloud Storage, keeping heavy scientific dependencies in their own container images.",
       },
       {
         title: "Reusable Libraries",
@@ -66,17 +61,18 @@ export const EXPERIENCES: Experience[] = [
       "FastAPI",
       "Django",
       "SQLAlchemy",
+      "PostgreSQL",
       "pytest",
       "REST APIs",
       "GraphQL",
       "MCP",
+      "PyMC",
       "Google Cloud",
       "BigQuery",
       "AWS",
       "Docker",
       "Bitbucket",
       "CI/CD",
-      "DevOps",
       "Datadog",
       "Jira",
     ],
@@ -95,7 +91,7 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Full-Stack & API Architecture",
         description:
-          "Built REST APIs with Node.js, Express and TypeScript and connected them to React frontends using test-driven development (TDD). Also customised PHP and headless WordPress backends.",
+          "Built REST APIs with Node.js, Express and TypeScript and connected them to the frontend using test-driven development (TDD). Also customised PHP and headless WordPress backends.",
       },
       {
         title: "Testing & Quality",
@@ -129,7 +125,6 @@ export const EXPERIENCES: Experience[] = [
       "Webpack",
       "Node.js",
       "Express",
-      "NestJS",
       "REST APIs",
       "Python",
       "PHP",
@@ -225,14 +220,9 @@ export const EXPERIENCES: Experience[] = [
           "Deployed and supported applications on Microsoft Azure and AWS (EC2, S3, RDS, CloudWatch).",
       },
       {
-        title: "System Triage & Support",
+        title: "System Support & Optimisation",
         description:
-          "Provided end-to-end support across frontend and backend, and documented the ticket triage process to speed up issue resolution.",
-      },
-      {
-        title: "Data Handling Optimisation",
-        description:
-          "Investigated and tuned slow database queries and backend services that handled large volumes of data.",
+          "Provided end-to-end support across frontend and backend, documented the ticket triage process to speed up issue resolution, and tuned slow database queries and backend services that handled large volumes of data.",
       },
     ],
     technologies: [
@@ -246,8 +236,6 @@ export const EXPERIENCES: Experience[] = [
       "HTML",
       "CSS",
       "Node.js",
-      "PHP",
-      "Laravel",
       "REST APIs",
       "GraphQL",
       "MySQL",

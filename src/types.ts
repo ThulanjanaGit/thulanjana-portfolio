@@ -36,6 +36,12 @@ export interface Education {
   skills?: string[];
 }
 
+export interface Language {
+  name: string;
+  level: string;
+  cefr: string;
+}
+
 export interface Certification {
   title: string;
   issuer: string;
