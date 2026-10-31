@@ -1,4 +1,4 @@
-import type { Education } from "../types";
+import type { Education, Language } from "../types";
 
 export const EDUCATION: Education[] = [
   {
@@ -40,4 +40,9 @@ export const EDUCATION: Education[] = [
     location: "Sri Lanka",
     period: "Jan 2015 – Dec 2016",
   },
+];
+
+export const LANGUAGES: Language[] = [
+  { name: "English", level: "Professional working proficiency", cefr: "C1" },
+  { name: "Portuguese", level: "Basic", cefr: "A1" },
 ];

@@ -1,9 +1,22 @@
-import { EDUCATION } from "../../data/education";
+import { EDUCATION, LANGUAGES } from "../../data/education";
+import type { Education as Qualification } from "../../types";
 import { stagger } from "../../utils/stagger";
 import { groupBy, LINEUP_GRID } from "../ui/lineup";
 import SectionHeading from "../ui/SectionHeading";
 
-const GROUPS = groupBy(EDUCATION, ({ location }) => location);
+// Grouped by country, then the languages as one more group: language, level
+// and CEFR level take the degree, institution and dates columns.
+const GROUPS: { label: string; items: Omit<Qualification, "location">[] }[] = [
+  ...groupBy(EDUCATION, ({ location }) => location),
+  {
+    label: "Languages",
+    items: LANGUAGES.map(({ name, level, cefr }) => ({
+      degree: name,
+      institution: level,
+      period: cefr,
+    })),
+  },
+];
 
 // Set like the experience line-up, so the two read as one history.
 const Education = () => {
@@ -15,10 +28,10 @@ const Education = () => {
       className="px-page py-chapter"
     >
       <SectionHeading id="education-heading">Education</SectionHeading>
-      {GROUPS.map(({ label: country, items }) => (
-        <div key={country} className="mt-14 first:mt-0">
+      {GROUPS.map(({ label, items }) => (
+        <div key={label} className="mt-14 first:mt-0">
           <h3 data-reveal className="mb-2 text-lead text-muted">
-            {country}
+            {label}
           </h3>
           <ul>
             {items.map(
