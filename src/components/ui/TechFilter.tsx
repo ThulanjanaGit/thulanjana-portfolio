@@ -2,15 +2,15 @@ import { useRef } from "react";
 import { EXPERIENCES } from "../../data/experience";
 import { VISIBLE_PROJECTS } from "../../data/projects";
 import { useHydrated } from "../../hooks/useHydrated";
-import { alphabetical } from "../../utils/alphabetical";
 import { LINEUP_GRID } from "./lineup";
 
 const list = new Intl.ListFormat("en-GB", { type: "conjunction" });
 
-// Every technology from the roles, A to Z.
-const TECHNOLOGIES = alphabetical([
+// Every technology from the roles, in the order it first appears, so the
+// current role's main stack leads.
+const TECHNOLOGIES = [
   ...new Set(EXPERIENCES.flatMap(({ technologies }) => technologies)),
-]);
+];
 
 // "PHP: Web Developer at Fat Beehive and …; the project Test Your Worth."
 const describe = (technology: string) => {
@@ -136,7 +136,7 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
       {/* Room for the longest sentence at each width (measured), so the
           line-up below stays put while you switch technologies. Only the
           result is a live region, so the prompt is not read out on load. */}
-      <div className="mt-6 min-h-[4lh] sm:min-h-[3lh] md:min-h-[2lh] 2xl:min-h-[1lh]">
+      <div className="mt-6 min-h-[4lh] sm:min-h-[3lh] md:min-h-[2lh] 2xl:min-h-lh">
         {hydrated && !selected && <p>Pick one to see where I used it.</p>}
         <p aria-live="polite">{selected && describe(selected)}</p>
       </div>

@@ -81,7 +81,7 @@ All text and lists live in `src/data/`:
 | `skills.ts`          | Skills grouped as in the CV, shown in the Skills section                                                                                                                          |
 | `recommendations.ts` | Recommendations in the order shown, each with a `relationship` line and a `linkedIn` link; the first one with an `excerpt` gives the two-line quote shown large                   |
 
-Lists of technologies and skills appear A to Z on the page, so their order in these files does not matter.
+Lists of technologies and skills appear on the page in the order given in these files, so put the most important first. The technology filter lists each technology where it first appears, starting with the current role.
 
 TypeScript checks every entry, so `npm run build` reports a missing or misspelled field.
 
@@ -95,7 +95,7 @@ Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the sam
 
 - Put images in `src/assets/` as WebP, at about twice the size they are shown so they stay sharp on high-density screens (for example 1024 × 1024 for the portrait and 480 × 480 for project screenshots).
 - Import the image in the data file or component that uses it.
-- `public/og-image-v2.jpg` (1200 × 630) is the preview shown when the link is shared. It shows your name and the line "Full-stack software engineer in Lisbon", so replace it if either changes. Apps cache the preview by its address, so give a new image a new name (for example `og-image-v3.jpg`) and update both references in `index.html`.
+- `public/og-image-v3.jpg` (1200 × 630) is the preview shown when the link is shared. It shows your name and the line "Software Engineer in Lisbon", so replace it if either changes. Apps cache the preview by its address, so give a new image a new name (for example `og-image-v4.jpg`) and update both references in `index.html`.
 - `public/favicon.svg` is the "TP" tab icon. `favicon-96x96.png` and `apple-touch-icon.png` (180 × 180) are PNG copies of it for browsers and phones that don't use SVG icons, so replace all three together.
 
 ## Deployment

@@ -26,7 +26,7 @@ const Contact = () => {
             <a
               href={`mailto:${CONTACT.email}`}
               translate="no"
-              className="inline-flex min-h-11 items-center text-lead break-all underline hover:decoration-[length:0.11em]"
+              className="inline-flex min-h-11 items-center text-lead break-all underline hover:decoration-[0.11em]"
             >
               {CONTACT.email}
             </a>

@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { EXPERIENCES } from "../../data/experience";
 import { useTechnologyParam } from "../../hooks/useTechnologyParam";
 import type { Experience as Role } from "../../types";
-import { alphabetical } from "../../utils/alphabetical";
 import { stagger } from "../../utils/stagger";
 import { groupBy, LINEUP_GRID } from "../ui/lineup";
 import { SECTION_FRAME } from "../ui/section";
@@ -53,7 +52,7 @@ const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
                 is machine-translated; "Built with" stays English with them. */}
             <p translate="no" className="mb-6 text-small text-muted">
               Built with{" "}
-              {alphabetical(technologies).map((technology, position) => (
+              {technologies.map((technology, position) => (
                 <Fragment key={technology}>
                   {position > 0 && ", "}
                   {technology === selected ? (

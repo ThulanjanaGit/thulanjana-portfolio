@@ -1,5 +1,4 @@
 import { VISIBLE_PROJECTS } from "../../data/projects";
-import { alphabetical } from "../../utils/alphabetical";
 import { stagger } from "../../utils/stagger";
 import { SECTION_FRAME } from "../ui/section";
 
@@ -71,14 +70,14 @@ const Projects = () => {
               <p className="text-muted">{kind}</p>
               <p className="mt-4">{description}</p>
               <p translate="no" className="mt-4 text-small text-muted">
-                {alphabetical(technologies).join(", ")}
+                {technologies.join(", ")}
               </p>
               {link && (
                 <a
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
+                  className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[0.11em]"
                 >
                   Visit site
                   <span className="sr-only"> (opens in a new tab)</span>

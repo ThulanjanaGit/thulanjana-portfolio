@@ -19,7 +19,7 @@ const Header = () => {
       ref={header}
       data-scrolled={atTop ? undefined : ""}
       data-hidden={hidden ? "" : undefined}
-      className="absolute inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5 [.js_&]:fixed"
+      className="absolute inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 in-[.js]:fixed data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5"
     >
       <a
         href="#top"

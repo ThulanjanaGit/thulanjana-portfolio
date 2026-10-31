@@ -5,7 +5,7 @@ import { stagger } from "../../utils/stagger";
 // Each line of the name rises out of a mask; the padding lets ascenders and
 // descenders paint, and the negative margin keeps the layout unchanged. The
 // heading is a grid so those negative margins do not collapse into each other.
-const mask = "block overflow-clip py-[0.2em] -my-[0.2em]";
+const mask = "block overflow-clip py-[0.2em] my-[-0.2em]";
 
 // Two fields meet at the seam: 46% of the height on phones, half from 640px.
 // The name is lifted by 75% of its own height, so the seam runs through the
@@ -32,7 +32,7 @@ const Hero = () => {
           rel="noopener noreferrer"
           data-load
           style={{ "--d": "480ms" } as CSSProperties}
-          className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[length:0.11em]"
+          className="mt-4 inline-flex min-h-11 items-center underline hover:decoration-[0.11em]"
         >
           View CV
           <span className="sr-only"> (PDF, opens in a new tab)</span>
