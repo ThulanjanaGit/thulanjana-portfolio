@@ -10,69 +10,75 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Scalable Applications",
         description:
-          "Built high-performance React, Next.js and Python (Django, FastAPI) applications on AWS and GCP for telecom, fintech, and data governance clients.",
+          "Build React, Next.js and TypeScript frontends backed by Node.js and Python (Django, FastAPI) services on AWS and GCP for telecom, fintech and data governance clients.",
       },
       {
-        title: "LLM Evaluation Platform",
+        title: "Cloud Migration",
         description:
-          "Designed and extracted JudgeKit, a domain-agnostic Python library using Bayesian IRT models (PyMC) to calibrate multi-LLM quality scores across large datasets.",
-      },
-      {
-        title: "API Integration",
-        description:
-          "Built and integrated REST, GraphQL, and MCP endpoints, including a combined FastAPI and stateless MCP agent service to unify frontend, microservice, and AI workflows.",
-      },
-      {
-        title: "Distributed Batch Processing",
-        description:
-          "Built asynchronous, resumable batch jobs on Cloud Run, BigQuery, and GCS, isolating scientific dependencies into dedicated container images.",
-      },
-      {
-        title: "Reusable Libraries",
-        description:
-          "Authored a framework-agnostic SQLAlchemy and Django audit trail library that logs data changes at the session flush layer.",
-      },
-      {
-        title: "Quality Assurance & Observability",
-        description:
-          "Maintained 300+ automated tests using pytest, Jest, and React Testing Library while integrating Datadog for system observability and automated error alerting.",
+          "Contributed to moving the whole platform from AWS (Lambda, S3, SQS, ECR) to GCP (Cloud Run, GKE, BigQuery, Cloud Storage, Artifact Registry).",
       },
       {
         title: "CI/CD & Cloud Infrastructure",
         description:
-          "Built Bitbucket Pipelines to automate version-gated releases, publish Artefact Registry container images, and sync runtime config to GCS.",
+          "Built Bitbucket Pipelines that automate version-gated releases, publish container images to Artifact Registry and sync runtime config to Cloud Storage.",
+      },
+      {
+        title: "LLM Evaluation Platform",
+        description:
+          "Designed and extracted JudgeKit, a domain-agnostic Python library that uses Bayesian IRT models (PyMC) to calibrate quality scores from multiple LLMs across large datasets.",
+      },
+      {
+        title: "API Integration",
+        description:
+          "Built REST, GraphQL and MCP endpoints, including a FastAPI service combined with a stateless MCP agent, giving the frontend, microservices and AI workflows a single API layer.",
+      },
+      {
+        title: "Distributed Batch Processing",
+        description:
+          "Built resumable async batch jobs on Cloud Run, BigQuery and Cloud Storage, with heavy scientific dependencies kept in their own container images.",
+      },
+      {
+        title: "Reusable Libraries",
+        description:
+          "Wrote a framework-agnostic audit trail library for SQLAlchemy and Django that records data changes at the session flush layer.",
+      },
+      {
+        title: "Quality Assurance & Observability",
+        description:
+          "Maintain 500+ automated tests across pytest, Jest and React Testing Library, and set up Datadog monitoring and error alerting.",
       },
       {
         title: "Agile Collaboration",
         description:
-          "Led code reviews, sprint planning, and architecture documentation in Scrum teams alongside UI/UX and backend engineers.",
+          "Lead code reviews and take part in sprint planning and architecture documentation in Scrum teams with UI/UX and backend engineers.",
       },
     ],
     technologies: [
-      "TypeScript",
       "React",
+      "TypeScript",
+      "JavaScript",
       "Next.js",
       "Tailwind CSS",
+      "Jest",
+      "React Testing Library",
+      "Node.js",
       "Python",
-      "Django",
       "FastAPI",
+      "Django",
       "SQLAlchemy",
+      "pytest",
       "REST APIs",
       "GraphQL",
       "MCP",
-      "AWS",
       "Google Cloud",
       "BigQuery",
+      "AWS",
       "Docker",
-      "DevOps",
       "Bitbucket",
-      "Datadog",
-      "pytest",
-      "Jest",
-      "Jira",
-      "Node.js",
-      "JavaScript",
       "CI/CD",
+      "DevOps",
+      "Datadog",
+      "Jira",
     ],
   },
   {
@@ -84,33 +90,39 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Enterprise FE Solutions",
         description:
-          "Engineered high-performance, responsive React web applications for enterprise clients, including Siemens Energy, and created extensible frontend frameworks for 30+ leading UK platforms.",
+          "Built responsive React and TypeScript applications for enterprise clients including Siemens Energy, and a reusable frontend setup used across 30+ UK platforms.",
       },
       {
         title: "Full-Stack & API Architecture",
         description:
-          "Built and integrated robust Node.js, Express REST APIs and customised PHP, WordPress backends, seamlessly connecting frontend components with server-side logic using Test-Driven Development (TDD).",
+          "Built REST APIs with Node.js, Express and TypeScript and connected them to React frontends using test-driven development (TDD). Also customised PHP and headless WordPress backends.",
       },
       {
         title: "Testing & Quality",
         description:
-          "Spearheaded unit and integration testing using Jest, React Testing Library, and Supertest, accelerating deployment pipelines and improving code reliability.",
+          "Wrote unit and integration tests with Jest, React Testing Library and Supertest, which made releases faster and more reliable.",
       },
       {
         title: "Performance & SEO",
         description:
-          "Optimised Core Web Vitals, responsiveness, and load times using modern JavaScript, CSS, Sass, and asset bundling strategies.",
+          "Improved Core Web Vitals, responsiveness and load times through better asset bundling, Sass refactoring and modern JavaScript.",
       },
       {
         title: "Data Processing & Integration",
         description:
-          "Researched and optimised data processing workflows to enable efficient information extraction and retrieval across complex web platforms.",
+          "Wrote Python scripts to speed up data processing and improve content extraction and search across large websites.",
+      },
+      {
+        title: "Cloud Deployment",
+        description:
+          "Deployed and maintained applications on AWS (EC2, S3, CloudFront, Lambda, API Gateway, RDS, CloudWatch, IAM) across development, staging and production environments.",
       },
     ],
     technologies: [
+      "React",
       "TypeScript",
       "JavaScript",
-      "React",
+      "Next.js",
       "Redux",
       "Tailwind CSS",
       "Sass",
@@ -118,24 +130,23 @@ export const EXPERIENCES: Experience[] = [
       "Node.js",
       "Express",
       "NestJS",
+      "REST APIs",
+      "Python",
       "PHP",
       "WordPress",
       "Twig",
       "MySQL",
-      "AWS",
-      "Microsoft Azure",
-      "Docker",
       "Jest",
       "React Testing Library",
       "Supertest",
+      "AWS",
+      "Microsoft Azure",
+      "Google Cloud",
+      "Docker",
+      "CI/CD",
       "GitHub",
       "Figma",
       "Agile",
-      "Python",
-      "Next.js",
-      "Google Cloud",
-      "CI/CD",
-      "REST APIs",
     ],
   },
   {
@@ -147,43 +158,49 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "UI Refinement",
         description:
-          "Refined existing web applications with UI enhancements, performance upgrades, and error resolutions across top UK charity platforms.",
+          "Delivered UI improvements, performance upgrades and bug fixes on major UK charity websites using React, TypeScript and Sass.",
       },
       {
         title: "Full-Stack Feature Delivery",
         description:
-          "Leveraged PHP, TypeScript, and SQL to develop custom functionality aligned with business objectives and user needs.",
+          "Built custom features with TypeScript, PHP and SQL, including Twilio integrations, shaped around business goals and user needs.",
+      },
+      {
+        title: "Scripting & Automation",
+        description:
+          "Wrote Node.js and Python scripts for data imports and routine maintenance tasks.",
       },
       {
         title: "System Optimisation",
         description:
-          "Diagnosed and resolved complex processing issues on UNIX and Windows environments, reducing system downtime and boosting platform efficiency.",
+          "Diagnosed and fixed processing issues on UNIX and Windows servers, reducing downtime.",
       },
     ],
     technologies: [
+      "React",
       "TypeScript",
       "JavaScript",
-      "React",
+      "Next.js",
       "Redux",
       "Sass",
       "Node.js",
+      "Python",
       "PHP",
       "WordPress",
       "Twig",
-      "SQL",
+      "Twilio",
       "MySQL",
       "MongoDB",
+      "SQL",
+      "AWS",
+      "Google Cloud",
       "Docker",
+      "CI/CD",
       "Git",
       "GitHub",
       "Bitbucket",
       "Figma",
       "Agile",
-      "Python",
-      "Next.js",
-      "AWS",
-      "Google Cloud",
-      "CI/CD",
     ],
   },
   {
@@ -195,34 +212,47 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Application Maintenance",
         description:
-          "Developed and maintained dynamic frontend interfaces and backend services using React, PHP (Laravel), and MySQL for enterprise online assessment tools.",
+          "Developed and maintained Angular 12 and React frontends in TypeScript, with RxJS and Material UI, for enterprise online assessment tools.",
+      },
+      {
+        title: "Backend Services",
+        description:
+          "Built and maintained backend services with Node.js, TypeScript and MySQL.",
+      },
+      {
+        title: "Cloud Deployment",
+        description:
+          "Deployed and supported applications on Microsoft Azure and AWS (EC2, S3, RDS, CloudWatch).",
       },
       {
         title: "System Triage & Support",
         description:
-          "Provided end-to-end technical support across FE and BE components, documenting ticket-triage processes to streamline issue resolution and maximise system reliability.",
+          "Provided end-to-end support across frontend and backend, and documented the ticket triage process to speed up issue resolution.",
       },
       {
         title: "Data Handling Optimisation",
         description:
-          "Researched, troubleshot, and optimised backend database queries and services for high-volume data processing.",
+          "Investigated and tuned slow database queries and backend services that handled large volumes of data.",
       },
     ],
     technologies: [
+      "Angular",
+      "React",
       "TypeScript",
       "JavaScript",
-      "React",
-      "AngularJS",
+      "RxJS",
       "Material UI",
+      "Sass",
       "HTML",
       "CSS",
-      "Sass",
       "Node.js",
       "PHP",
       "Laravel",
       "REST APIs",
       "GraphQL",
       "MySQL",
+      "Microsoft Azure",
+      "AWS",
       "Google Cloud",
       "GitHub",
       "Agile",
