@@ -1,18 +1,24 @@
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
-import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Experience from "./components/sections/Experience";
-import Education from "./components/sections/Education";
-import Certifications from "./components/sections/Certifications";
-import Skills from "./components/sections/Skills";
-import Projects from "./components/sections/Projects";
-import Recommendations from "./components/sections/Recommendations";
-import Contact from "./components/sections/Contact";
+import { projectPath, VISIBLE_PROJECTS } from "./data/projects";
 import { useReveal } from "./hooks/useReveal";
+import CaseStudy from "./pages/CaseStudy";
+import Home from "./pages/Home";
 
-const App = () => {
+interface AppProps {
+  // The page's address, such as "/" or "/projects/garci-lanka".
+  path: string;
+}
+
+// The address picks the page: a case study, or else the home page. Each page
+// is prerendered to its own HTML file, so moving between them is an ordinary
+// page load.
+const App = ({ path }: AppProps) => {
   useReveal();
+
+  const project = VISIBLE_PROJECTS.find(
+    ({ slug }) => projectPath(slug) === path,
+  );
 
   return (
     <div id="top" className="relative overflow-x-clip">
@@ -22,19 +28,11 @@ const App = () => {
       >
         Skip to content
       </a>
-      <Header />
+      <Header home={!project} />
       <main id="main">
-        <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Certifications />
-        <Projects />
-        <Skills />
-        <Recommendations />
-        <Contact />
+        {project ? <CaseStudy project={project} /> : <Home />}
       </main>
-      <Footer />
+      <Footer home={!project} />
     </div>
   );
 };

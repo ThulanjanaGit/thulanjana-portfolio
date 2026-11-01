@@ -1,13 +1,19 @@
 import { useRef } from "react";
-import { NAV_LINKS } from "../../data/navigation";
+import { NAV_LINKS, sectionHref } from "../../data/navigation";
 import { CONTACT } from "../../data/profile";
 import { useHeadroom } from "../../hooks/useHeadroom";
 import ThemeToggle from "../ui/ThemeToggle";
+import Menu from "./Menu";
 
 const linkClass =
   "inline-flex min-h-11 items-center underline-offset-[0.18em] hover:underline";
 
-const Header = () => {
+interface HeaderProps {
+  // Whether this is the home page, whose sections the links point to.
+  home: boolean;
+}
+
+const Header = ({ home }: HeaderProps) => {
   const header = useRef<HTMLElement>(null);
   const { atTop, hidden } = useHeadroom(header);
 
@@ -22,20 +28,24 @@ const Header = () => {
       className="absolute inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 in-[.js]:fixed data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5"
     >
       <a
-        href="#top"
+        href={sectionHref("#top", home)}
         translate="no"
         className={`${linkClass} shrink-0 font-medium`}
       >
         Thulanjana Pramod
       </a>
       <div className="flex items-center gap-5 sm:gap-8">
-        <nav aria-label="Main">
+        {/* From 1024px the links sit in the bar, below that in the menu.
+            Without scripts the menu can't open, so Email stays in the bar
+            and the footer has the section links. */}
+        <nav
+          aria-label="Main"
+          className="hidden lg:block [html:not(.js)_&]:block"
+        >
           <ul className="flex gap-5 sm:gap-8">
-            {/* Section links show from 1024px; on smaller screens they are
-                in the footer. */}
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href} className="hidden lg:block">
-                <a href={href} className={linkClass}>
+                <a href={sectionHref(href, home)} className={linkClass}>
                   {label}
                 </a>
               </li>
@@ -47,6 +57,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <Menu home={home} />
         <ThemeToggle />
       </div>
     </header>
