@@ -1,22 +1,22 @@
 # Thulanjana Pramod — Portfolio
 
-Source code for Thulanjana Pramod's personal portfolio website.
+The personal portfolio of Thulanjana Pramod, a software engineer in Lisbon: experience, education, certifications, skills and recommendations on one page, with a case study page for each project.
 
 **Live site:** <https://thulanjana.vercel.app/>
 
 ## Tech stack
 
-- [React](https://react.dev) with [TypeScript](https://www.typescriptlang.org), prerendered to HTML at build time
+- [React](https://react.dev) and [TypeScript](https://www.typescriptlang.org), prerendered to static HTML at build time
 - [Vite](https://vite.dev) for development and builds
 - [Tailwind CSS](https://tailwindcss.com) for styling
-- [oxlint](https://oxc.rs) for linting and [Prettier](https://prettier.io) for formatting
-- [Vercel](https://vercel.com) for hosting and GitHub Actions for checks
+- [oxlint](https://oxc.rs) and [Prettier](https://prettier.io) for linting and formatting
+- [Vercel](https://vercel.com) for hosting, GitHub Actions for checks
 
 Exact versions are in `package.json`.
 
 ## Getting started
 
-Requirements: Node.js 24 (the version in `.nvmrc`; any version from 22.12 works) and npm.
+Requires Node.js 24 (see `.nvmrc`; 22.12 or later works) and npm.
 
 ```bash
 git clone https://github.com/ThulanjanaGit/thulanjana-portfolio.git
@@ -25,18 +25,18 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173/>.
+The development server runs at <http://localhost:5173/>.
 
 ## Scripts
 
-| Command                | What it does                                                                        |
-| ---------------------- | ----------------------------------------------------------------------------------- |
-| `npm run dev`          | Starts the development server with hot reload                                       |
-| `npm run build`        | Type-checks, builds the site into `dist/` and prerenders every page and the sitemap |
-| `npm run preview`      | Serves the production build at <http://localhost:4173/>                             |
-| `npm run lint`         | Runs oxlint; any warning fails the run                                              |
-| `npm run format`       | Formats all files with Prettier                                                     |
-| `npm run format:check` | Checks formatting without changing files                                            |
+| Command                | Description                                                        |
+| ---------------------- | ------------------------------------------------------------------ |
+| `npm run dev`          | Start the development server with hot reload                       |
+| `npm run build`        | Type-check, build into `dist/` and prerender the pages and sitemap |
+| `npm run preview`      | Serve the production build at <http://localhost:4173/>             |
+| `npm run lint`         | Lint with oxlint; any warning fails                                |
+| `npm run format`       | Format all files with Prettier                                     |
+| `npm run format:check` | Check formatting without changing files                            |
 
 ## Project structure
 
@@ -44,105 +44,88 @@ Open <http://localhost:5173/>.
 ├── .github/
 │   ├── workflows/deploy.yml   Checks pull requests; publishes the redirect page from main
 │   ├── pages/index.html       Redirect from the old GitHub Pages address to Vercel
-│   └── dependabot.yml         Monthly dependency update pull requests
-├── public/                    Files served as they are: CV, icons, link-preview image, robots.txt
-├── scripts/prerender.mjs      Writes each rendered page and the sitemap into dist/ after the build
+│   └── dependabot.yml         Monthly dependency updates
+├── public/                    Static files: CV, icons, share image, robots.txt
+├── scripts/prerender.mjs      Writes the rendered pages and the sitemap into dist/
 ├── src/
-│   ├── assets/                Images (WebP); case-study screenshots in assets/projects/<slug>/
+│   ├── assets/                Images (WebP); case study screenshots in assets/projects/<slug>/
 │   ├── components/
-│   │   ├── layout/            Header, footer and the menu for small screens
-│   │   ├── sections/          One component per home page section
-│   │   └── ui/                Small shared components
-│   ├── data/                  All site content; edit these files to update the site
-│   ├── hooks/                 Small React hooks
-│   ├── pages/                 The home page (section order) and the case-study page
-│   ├── utils/                 Theme switch and helpers for staggered animations and screenshots
-│   ├── types.ts               Types for the content data
+│   │   ├── layout/            Header, footer and small-screen menu
+│   │   ├── sections/          Home page sections
+│   │   └── ui/                Shared components
+│   ├── data/                  Site content
+│   ├── hooks/                 React hooks
+│   ├── pages/                 Home and case study pages
+│   ├── utils/                 Theme, animation and screenshot helpers
 │   ├── App.tsx                Page frame; picks the page from the address
-│   ├── entry-server.tsx       Lists the pages and renders each to HTML for the prerender
-│   ├── main.tsx               Entry point; hydrates the prerendered page
-│   └── index.css              Tailwind CSS and global styles
-├── index.html                 Page title, SEO and link-preview metadata
-├── vercel.json                Vercel build settings
-└── vite.config.ts
+│   ├── entry-server.tsx       Lists the pages and renders them for the prerender
+│   ├── main.tsx               Browser entry; hydrates the prerendered page
+│   ├── index.css              Tailwind CSS and global styles
+│   └── types.ts               Content types
+├── index.html                 HTML template with SEO and share metadata
+├── vercel.json                Vercel settings
+└── vite.config.ts             Vite settings
 ```
 
-## Updating content
+## Editing content
 
-All text and lists live in `src/data/`:
+All content lives in `src/data/`:
 
-| File                 | Content                                                                                                                                                                                       |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `profile.ts`         | Hero line, About lead and text, LinkedIn and GitHub links, Toptal link, location and email, CV                                                                                                |
-| `navigation.ts`      | Header and footer links                                                                                                                                                                       |
-| `experience.ts`      | Jobs, highlights and technologies; the technology filter lists every technology used here                                                                                                     |
-| `education.ts`       | Degrees and school qualifications (`honours` and `skills` are optional), and the languages shown under them                                                                                   |
-| `certifications.ts`  | Certifications, grouped by issuer on the page; `credentialId` is optional                                                                                                                     |
-| `projects.ts`        | Projects, each with its case study at `/projects/<slug>`; `hidden: true` keeps a project and its page off the site (with every project hidden, so are the Projects section and its menu link) |
-| `skills.ts`          | Skills grouped as in the CV, shown in the Skills section                                                                                                                                      |
-| `recommendations.ts` | Recommendations in the order shown, each with a `relationship` line and a `linkedIn` link; the first one with an `excerpt` gives the two-line quote shown large                               |
+| File                 | Content                                                                      |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `profile.ts`         | Hero line, About text, contact details, profile links and CV                 |
+| `navigation.ts`      | Section links for the header, menu and footer                                |
+| `experience.ts`      | Roles, highlights and technologies; the technology filter is built from them |
+| `education.ts`       | Degrees, school qualifications and languages                                 |
+| `certifications.ts`  | Certifications, grouped by issuer                                            |
+| `projects.ts`        | Projects and their case studies                                              |
+| `skills.ts`          | Skill groups, as in the CV                                                   |
+| `recommendations.ts` | Recommendations; the first with an `excerpt` supplies the large quote        |
 
-Lists of technologies and skills appear on the page in the order given in these files, so put the most important first. The technology filter lists each technology where it first appears, starting with the current role.
-
-TypeScript checks every entry, so `npm run build` reports a missing or misspelled field.
-
-When your job title, location or summary changes, also update `index.html` (title, description, Open Graph tags and the JSON-LD block). Link previews on LinkedIn, X and messaging apps use only these tags, and search engines use them for the result title and description.
+- Lists appear in the order given, so put the most important items first.
+- `npm run build` type-checks every entry against `src/types.ts`, where optional fields are marked.
+- When the job title, location or summary changes, also update the title, description, Open Graph tags and JSON-LD in `index.html`. Link previews and search results use them.
 
 ### Case studies
 
-Each entry in `src/data/projects.ts` is a tile in the Projects section and a page at `/projects/<slug>`. The page shows `title`, `summary` (also its meta description), `year`, `kind`, `role`, `technologies` and `link`, the `cover` screenshot, then `brief` (paragraphs), `build` (titled highlights), `screens` (screenshots with captions) and `result`, and ends with a link to the next project.
+Each project in `src/data/projects.ts` appears as a tile in the Projects section and as a page at `/projects/<slug>`, with its own title and description and a link to the next project. `hidden: true` keeps a project and its page off the site.
 
-To add one:
+To add a case study:
 
 1. Save its screenshots in `src/assets/projects/<slug>/` (see [Images](#images)).
-2. Add an entry to `PROJECTS` in the order it should appear, newest first.
-3. Run `npm run build`: the prerender writes the page with its own title and description and adds it to the sitemap.
+2. Add an entry to `PROJECTS` in display order, newest first.
+3. Run `npm run build` to prerender the page and add it to the sitemap.
 
-List screens in pairs: a desktop page and a phone screen share a row at the same height, so ordering them page, phone, then phone, page makes the rows alternate sides. Two desktop pages share a row equally.
-
-### CV
-
-Replace `public/Thulanjana-Pramod-Resume.pdf` with the new file and keep the same name. The "View CV" links in the hero and the contact section point to it.
+Screens are laid out in rows of two. A desktop page and a phone screen share a row at the same height, so listing them page then phone, then phone then page, alternates the sides. Two desktop pages share a row equally.
 
 ### Images
 
-- Put images in `src/assets/` as WebP, at about twice the size they are shown so they stay sharp on high-density screens (for example 1024 × 1024 for the portrait).
-- Import the image in the data file or component that uses it.
-- Case-study screenshots are saved at several widths so each screen downloads only the size it needs. Capture a desktop page at 1440 × 900 and a phone screen at 390 × 844, both at 2x, and save them as `src/assets/projects/<slug>/<name>-<width>.webp`: desktop pages 960, 1600 and 2400 pixels wide, phone screens 480 and 780 (their names start with `phone-`). In `projects.ts`, `screenshot("<slug>/<name>", "alt text")` (from `src/utils/screenshots.ts`) picks them up, and the build stops if a width is missing.
-- `public/og-image-v3.jpg` (1200 × 630) is the preview shown when the link is shared. It shows your name and the line "Software Engineer in Lisbon", so replace it if either changes. Apps cache the preview by its address, so give a new image a new name (for example `og-image-v4.jpg`) and update both references in `index.html`.
-- `public/favicon.svg` is the "TP" tab icon. `favicon-96x96.png` and `apple-touch-icon.png` (180 × 180) are PNG copies of it for browsers and phones that don't use SVG icons, so replace all three together.
+- Store images in `src/assets/` as WebP at about twice their displayed size (the portrait is 1024 × 1024), and import them where they are used.
+- Capture case study screenshots at 1440 × 900 (desktop) or 390 × 844 (phone), both at 2x. Save each as `src/assets/projects/<slug>/<name>-<width>.webp`: desktop pages at 960, 1600 and 2400 pixels wide, phone screens at 480 and 780, with names starting with `phone-`. `screenshot("<slug>/<name>", "alt text")` from `src/utils/screenshots.ts` turns them into a responsive image, and the build fails if a width is missing.
+- `public/og-image-v3.jpg` (1200 × 630) is the preview shown when the site is shared, with the name and "Software Engineer in Lisbon". Apps cache it by its address, so give a replacement a new file name and update both references in `index.html`.
+- `public/favicon.svg` is the "TP" tab icon. `favicon-96x96.png` and `apple-touch-icon.png` (180 × 180) are PNG copies of it, so replace all three together.
+
+### CV
+
+Replace `public/Thulanjana-Pramod-Resume.pdf` and keep the file name; every "View CV" link points to it.
 
 ## Deployment
 
-The site is hosted on [Vercel](https://vercel.com) through its Git integration:
+The site is hosted on Vercel through its Git integration. Merges into `main` go live at <https://thulanjana.vercel.app/>, and every other pushed branch gets a preview address. `vercel.json` runs `npm run build`, serves the case studies at `/projects/<slug>` and redirects addresses that end in a slash or `.html`.
 
-- **Merges into `main`** go live at <https://thulanjana.vercel.app/>.
-- **Every other pushed branch** gets its own preview address, linked from the pull request.
+GitHub Actions (`.github/workflows/deploy.yml`) lints, checks formatting and builds every pull request. After a merge into `main` it runs the same checks and publishes `.github/pages/index.html` to GitHub Pages, which redirects the old address, <https://thulanjanagit.github.io/thulanjana-portfolio/>, to Vercel. This requires **Settings → Pages → Source** set to **GitHub Actions**.
 
-`vercel.json` makes Vercel run `npm run build`, so every deployment is prerendered like a local build. It also serves `projects/<slug>.html` at `/projects/<slug>` and redirects addresses that end in a slash or `.html` to that form.
+To ship a change:
 
-`.github/workflows/deploy.yml` runs on GitHub Actions:
+1. Create a branch, commit and push it.
+2. Open a pull request into `main`, check the Vercel preview and wait for the checks to pass.
+3. Merge the pull request. The change is live when Vercel's production deployment finishes.
 
-- **Pull requests:** installs dependencies, lints, checks formatting and builds. Merge only when this check passes.
-- **Merges into `main`:** runs the same checks, then publishes `.github/pages/index.html` to GitHub Pages, so links to the old address, <https://thulanjanagit.github.io/thulanjana-portfolio/>, lead to Vercel. GitHub Pages must have **Source** set to **GitHub Actions** (**Settings → Pages**).
+To redeploy without a change, choose **Redeploy** on the latest production deployment in the Vercel dashboard.
 
-To make a change:
+To move to a custom domain, update the address in `index.html`, `public/robots.txt`, `scripts/prerender.mjs` (`SITE`), `.github/pages/index.html` and the `homepage` field in `package.json`.
 
-1. Create a branch, commit your changes and push the branch.
-2. Open a pull request into `main`, check its Vercel preview and wait for the checks to pass.
-3. Merge the pull request. The new version is live when Vercel's production deployment finishes.
-
-To redeploy without a change, open the latest production deployment in the Vercel dashboard and choose **Redeploy**.
-
-If the site moves to a custom domain, update the address in `index.html`, `public/robots.txt`, `scripts/prerender.mjs` (`SITE`, used for the sitemap and each case study's address), `.github/pages/index.html` and the `homepage` field in `package.json`.
-
-### Dependency updates
-
-Dependabot opens pull requests every month: one grouped pull request for minor and patch npm updates, a separate one for each major version, and one for GitHub Actions. Each runs the same checks; merge it when they pass.
-
-## To do
-
-- [ ] Confirm I can publicly name each client project.
+Dependabot opens pull requests every month: one for minor and patch npm updates, one for each major version and one for GitHub Actions. Merge each once its checks pass.
 
 ## License
 
