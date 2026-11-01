@@ -50,7 +50,7 @@ Open <http://localhost:5173/>.
 ├── src/
 │   ├── assets/                Images (WebP); case-study screenshots in assets/projects/<slug>/
 │   ├── components/
-│   │   ├── layout/            Header and footer
+│   │   ├── layout/            Header, footer and the menu for small screens
 │   │   ├── sections/          One component per home page section
 │   │   └── ui/                Small shared components
 │   ├── data/                  All site content; edit these files to update the site

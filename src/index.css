@@ -136,6 +136,11 @@
     }
   }
 
+  /* The page stays still behind the open menu. */
+  html:has([data-menu][open]) {
+    overflow: hidden;
+  }
+
   /* The header stays in view while it holds keyboard focus, so a section
      reached from its links leaves the header's height free. */
   html:has(header :focus-visible) main > section[id] {
@@ -228,6 +233,27 @@
 
   details[open]::details-content {
     block-size: auto;
+  }
+
+  /* The menu drops in from the top and lifts away when it closes. */
+  [data-menu] {
+    transition:
+      translate var(--t-ui) var(--ease-out),
+      opacity var(--t-ui) var(--ease-out),
+      overlay var(--t-ui) allow-discrete,
+      display var(--t-ui) allow-discrete;
+  }
+
+  [data-menu]:not([open]) {
+    translate: 0 -1rem;
+    opacity: 0;
+  }
+
+  @starting-style {
+    [data-menu][open] {
+      translate: 0 -1rem;
+      opacity: 0;
+    }
   }
 }
 
