@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { NAV_LINKS } from "../../data/navigation";
+import { NAV_LINKS, sectionHref } from "../../data/navigation";
 import { CONTACT } from "../../data/profile";
 import { useHeadroom } from "../../hooks/useHeadroom";
 import ThemeToggle from "../ui/ThemeToggle";
@@ -7,7 +7,12 @@ import ThemeToggle from "../ui/ThemeToggle";
 const linkClass =
   "inline-flex min-h-11 items-center underline-offset-[0.18em] hover:underline";
 
-const Header = () => {
+interface HeaderProps {
+  // Whether this is the home page, whose sections the links point to.
+  home: boolean;
+}
+
+const Header = ({ home }: HeaderProps) => {
   const header = useRef<HTMLElement>(null);
   const { atTop, hidden } = useHeadroom(header);
 
@@ -22,7 +27,7 @@ const Header = () => {
       className="absolute inset-x-0 top-0 z-40 flex items-center justify-between gap-4 px-page py-3 in-[.js]:fixed data-hidden:not-focus-within:-translate-y-full data-scrolled:bg-ground motion-safe:[transition:translate_var(--t-ui)_var(--ease-out),background-color_var(--t-ui)_ease] sm:py-5"
     >
       <a
-        href="#top"
+        href={sectionHref("#top", home)}
         translate="no"
         className={`${linkClass} shrink-0 font-medium`}
       >
@@ -35,7 +40,7 @@ const Header = () => {
                 in the footer. */}
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href} className="hidden lg:block">
-                <a href={href} className={linkClass}>
+                <a href={sectionHref(href, home)} className={linkClass}>
                   {label}
                 </a>
               </li>

@@ -136,7 +136,7 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
       {/* Room for the longest sentence at each width (measured), so the
           line-up below stays put while you switch technologies. Only the
           result is a live region, so the prompt is not read out on load. */}
-      <div className="mt-6 min-h-[4lh] sm:min-h-[3lh] md:min-h-[2lh] 2xl:min-h-lh">
+      <div className="mt-6 min-h-[6lh] sm:min-h-[4lh] md:min-h-[3lh] lg:min-h-[2lh]">
         {hydrated && !selected && <p>Pick one to see where I used it.</p>}
         <p aria-live="polite">{selected && describe(selected)}</p>
       </div>

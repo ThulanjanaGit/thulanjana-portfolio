@@ -51,14 +51,34 @@ export interface Certification {
   skills: string[];
 }
 
+// A screenshot saved at several widths; see src/utils/screenshots.ts.
+export interface Screenshot {
+  src: string;
+  srcSet: string;
+  width: number;
+  height: number;
+  // A phone screen rather than a desktop page.
+  phone: boolean;
+  alt: string;
+}
+
+// A project and its case study, shown at /projects/<slug>.
 export interface Project {
+  slug: string;
   title: string;
   kind: string;
-  image: string;
-  description: string;
+  // One sentence: the tile text, the page's lead and its meta description.
+  summary: string;
+  year: string;
+  role: string;
+  link: string;
   technologies: string[];
-  link?: string;
-  // Kept in the data but not shown on the page.
+  cover: Screenshot;
+  brief: string[];
+  build: Highlight[];
+  screens: { image: Screenshot; caption: string }[];
+  result: string[];
+  // Kept in the data but left off the site, page included.
   hidden?: boolean;
 }
 
