@@ -6,11 +6,11 @@ export const HERO_LEAD =
   "Software Engineer in Lisbon with 4+ years of experience building full-stack web applications for telecom, fintech, data governance, charity and energy clients.";
 
 export const ABOUT_LEAD =
-  "I focus on React and TypeScript on the frontend, with full-stack experience in Node.js and Python (FastAPI, Django) on the backend.";
+  "I build full-stack web applications, with React and TypeScript on the frontend and Node.js and Python on the backend.";
 
 export const ABOUT_PARAGRAPHS = [
-  "I’m a Software Engineer at Opplane in Lisbon, where I build React, Next.js and TypeScript frontends backed by Node.js and Python services for telecom, fintech and data governance clients. I contributed to moving our whole platform from AWS to GCP, designed JudgeKit, a Python library that calibrates quality scores across multiple LLMs, and built REST, GraphQL and MCP services that connect the frontend, microservices and AI workflows.",
-  "Before Opplane, I spent two years at Fat Beehive in the UK building React and TypeScript applications and Node.js APIs for clients including Siemens Energy, along with a reusable frontend setup used across 30+ UK platforms. I started my career at IIHRM in Sri Lanka working on Angular and React frontends with Node.js backends. I care about frontend performance, clean and maintainable code and solid test coverage, and I hold a First Class Honours degree in Software Engineering from the University of Wolverhampton.",
+  "I’m a Software Engineer at Opplane in Lisbon, where I build React, Next.js and TypeScript frontends backed by Node.js and Python services for telecom, fintech and data governance clients. I contributed to moving our whole platform from AWS to GCP. I also designed JudgeKit, a Python library that calibrates quality scores across multiple LLMs, and built REST, GraphQL and MCP services that connect our frontend, microservices and AI workflows.",
+  "Before Opplane, I spent two years at Fat Beehive in the UK, where I built React and TypeScript applications and Node.js APIs for clients such as Siemens Energy, and created a reusable frontend setup used across more than 30 UK websites. I started my career at IIHRM in Sri Lanka, working on Angular and React frontends with Node.js backends. I care about frontend performance, clean code and good test coverage. I hold a First Class Honours degree in Software Engineering from the University of Wolverhampton.",
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [

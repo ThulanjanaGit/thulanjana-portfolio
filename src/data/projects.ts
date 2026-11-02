@@ -26,14 +26,14 @@ export const PROJECTS: Project[] = [
       "Garci Lanka Holiday home page: the headline “Discover Relax” beside photos of a lighthouse and a leopard.",
     ),
     brief: [
-      "Garci Lanka Holiday is a travel agency that plans tours of Sri Lanka and trips abroad. It needed a site that shows each package in enough detail to sell it, works on phones, can be found in search and turns interest into a conversation with an agent, since every booking is arranged with the agency rather than paid online.",
-      "Rajind Pamoda and I built it together, splitting the frontend and backend work between us. My parts include the home page’s introduction to Sri Lanka, the About page, the Why choose us and Our expert team sections, and the rework of the destinations and packages sections.",
+      "Garci Lanka Holiday is a travel agency that plans tours of Sri Lanka and trips abroad. It needed a site that shows each package in enough detail to sell it, works on phones, can be found in search and turns interest into a conversation with an agent. Every booking is arranged directly with the agency rather than paid online.",
+      "Rajind Pamoda and I built it together, splitting the frontend and backend work between us. My work included the home page’s introduction to Sri Lanka, the About page, the “Why choose us” and “Our expert team” sections, and the rework of the destinations and packages sections.",
     ],
     build: [
       {
         title: "Content as data",
         description:
-          "The sections I built read their text, icons and images from typed data modules, so the agency’s copy changes without touching markup, and the destinations and packages sections share one data structure for every destination abroad.",
+          "The sections I built read their text, icons and images from typed data modules, so the agency can update its content without changing the markup. The destinations and packages sections share one data structure for every destination abroad.",
       },
       {
         title: "Tour pages from one source",
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
       {
         title: "Search and sharing",
         description:
-          "Pages set their own metadata, JSON-LD describes the agency (TravelAgency, WebSite and BreadcrumbList), and robots rules are generated with the sitemap. Tour pages can be shared to Facebook, X and Pinterest or copied as a link.",
+          "Pages set their own metadata, JSON-LD describes the agency (TravelAgency, WebSite and BreadcrumbList), and the robots.txt file is generated along with the sitemap. Tour pages can be shared to Facebook, X and Pinterest or copied as a link.",
       },
       {
         title: "Consent before analytics",
@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
       },
     ],
     result: [
-      "Built as Dream Ceylon Holiday and renamed Garci Lanka Holiday in January 2026, the site is live at garcilanka.com and still growing: visa services and document legalisation pages followed in October 2026.",
+      "The site was first built as Dream Ceylon Holiday and renamed Garci Lanka Holiday in January 2026. It is live at garcilanka.com and still growing: visa and document legalisation pages were added in October 2026.",
     ],
   },
   {
@@ -97,7 +97,7 @@ export const PROJECTS: Project[] = [
     title: "Kanneliya Travels & Camping",
     kind: "Eco-camping website",
     summary:
-      "A one-page Next.js site for camping trips in Kanneliya rainforest, Sri Lanka: prerendered, described for search engines and built around one action, calling to book.",
+      "A one-page Next.js site for camping trips in the Kanneliya rainforest in Sri Lanka. It is prerendered, optimised for search engines and built around one goal: getting visitors to call and book.",
     year: "2026",
     role: "Full-stack developer, with Rajind Pamoda",
     link: "https://kanneliya.com/",
@@ -114,7 +114,7 @@ export const PROJECTS: Project[] = [
       {
         title: "One page, in order",
         description:
-          "A slider, what the camp offers (eco cottages, tents, guided tours and campfires), the rainforest itself, a video, the camping options with food and drinks, a photo gallery and a call to book. The camp’s phone number sits in the header, mid-page and in the footer.",
+          "The page runs in this order: a slider, what the camp offers (eco cottages, tents, guided tours and campfires), the rainforest, a video, camping options with food and drinks, a photo gallery and a call to book. The camp’s phone number appears in the header, in the middle of the page and in the footer.",
       },
       {
         title: "Next.js 16 on Vercel",
@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
           "The App Router page is prerendered at build time and served from Vercel’s cache. The slider, lightbox gallery and scroll animations use jQuery plugins (Owl Carousel, Fancybox, Isotope and WOW.js) inside the React app.",
       },
       {
-        title: "Described for search",
+        title: "Search engine optimisation",
         description:
           "Title, description, keywords and social cards come from Next.js metadata. JSON-LD marks the camp as a TouristAttraction with its coordinates, and robots.txt and the sitemap are generated.",
       },
@@ -137,7 +137,8 @@ export const PROJECTS: Project[] = [
           "kanneliya/about",
           "Section “Sri Lanka’s Pristine Rainforest” with a round photo of the forest and a list of highlights.",
         ),
-        caption: "The rainforest section, with what makes the place special.",
+        caption:
+          "The rainforest section, showing what makes the place special.",
       },
       {
         image: screenshot(
@@ -168,9 +169,9 @@ export const PROJECTS: Project[] = [
     title: "IIHRM",
     kind: "HR consultancy website",
     summary:
-      "The website of the Intercontinental Institute of Human Resource Management, an HR consultancy in Sri Lanka: its services, consultants and partner programmes, and a page for paying online.",
+      "The website of the Intercontinental Institute of Human Resource Management, an HR consultancy in Sri Lanka. It presents the institute’s services, consultants and partner programmes, and includes an online payment page.",
     year: "2020–2022",
-    role: "Full-stack developer, in a team",
+    role: "Full-stack developer, as part of a team",
     link: "https://iihrm.biz/",
     technologies: [
       "PHP",
@@ -187,18 +188,18 @@ export const PROJECTS: Project[] = [
     ),
     brief: [
       "IIHRM is a human resource and organisational development consultancy in Colombo with regional offices in the Middle East, Africa and Pakistan. Its work covers executive coaching, CEO succession planning, family business advisory and competency assessment.",
-      "It needed one place to present a long list of services and consultants to clients in several regions, take payments from clients at home and abroad, and lead to its assessment products. I built it in a team, working on both the frontend and the PHP backend.",
+      "It needed one place to present a long list of services and consultants to clients in several regions, take payments from clients at home and abroad, and link to its assessment products. I built it as part of a team, working on both the frontend and the PHP backend.",
     ],
     build: [
       {
         title: "Services and people",
         description:
-          "Pages for each service line, the chief, lead and senior consultants, the directors and advisory council, publications and partner programmes, on a responsive Bootstrap layout.",
+          "Built pages for each service line, the consultants, the directors and advisory council, publications and partner programmes, all on a responsive Bootstrap layout.",
       },
       {
         title: "Content from the database",
         description:
-          "PHP renders the partner programmes from MySQL, each with its own enquiry form, and the home page loads its current offers from the same API as JSON, so they change without editing HTML.",
+          "PHP renders the partner programmes from MySQL, each with its own enquiry form. The home page loads its current offers as JSON from a PHP API, so they can be updated without editing HTML.",
       },
       {
         title: "Online payments",
@@ -208,7 +209,7 @@ export const PROJECTS: Project[] = [
       {
         title: "Contact and support",
         description:
-          "The validated contact form posts to the same PHP endpoint as the enquiry forms, and the site was kept up to date after launch.",
+          "The contact form is validated and posts to the same PHP endpoint as the enquiry forms. I also kept the site up to date after launch.",
       },
     ],
     screens: [
@@ -238,7 +239,7 @@ export const PROJECTS: Project[] = [
     summary:
       "IIHRM’s competency assessment platform: a storefront that sells assessments in Sinhala, English and Tamil, and a member portal where organisations run them and read the reports.",
     year: "2021–2023",
-    role: "Full-stack developer at IIHRM, in a team",
+    role: "Full-stack developer at IIHRM, as part of a team",
     link: "https://iihrmtestyourworth.com/",
     technologies: ["TypeScript", "PHP", "MySQL", "RxJS", "HTML", "CSS"],
     cover: screenshot(
@@ -247,13 +248,13 @@ export const PROJECTS: Project[] = [
     ),
     brief: [
       "Test Your Worth is IIHRM’s virtual competency assessment deck. It simulates a work setting to measure the competencies a job needs and reports each person’s strengths and development needs.",
-      "IIHRM wanted to sell single tests to individuals and run full assessment programmes for organisations, so the platform has two parts: a public storefront and a member portal. I worked on both in a team, across the frontend and the PHP backend.",
+      "IIHRM wanted to sell single tests to individuals and run full assessment programmes for organisations, so the platform has two parts: a public storefront and a member portal. I worked on both as part of a team, across the frontend and the PHP backend.",
     ],
     build: [
       {
         title: "Storefront",
         description:
-          "A catalogue of assessments with search, sorting and a language filter for Sinhala, English and Tamil. Each assessment shows its competency code, duration and number of questions and goes into a cart; registration, sign-in and the newsletter use the same API.",
+          "A catalogue of assessments with search, sorting and a language filter for Sinhala, English and Tamil. Each assessment shows its competency code, duration and number of questions, and can be added to a cart. Registration, sign-in and the newsletter use the same API as the rest of the platform.",
       },
       {
         title: "Competency framework",
@@ -273,7 +274,7 @@ export const PROJECTS: Project[] = [
       {
         title: "Accounts",
         description:
-          "Email activation, password resets, resent links and a lock screen for idle sessions. Administrators and members land on different screens after signing in.",
+          "Includes email activation, password resets, resending activation links and a lock screen for idle sessions. Administrators and members land on different screens after signing in.",
       },
       {
         title: "One API",
@@ -320,9 +321,9 @@ export const PROJECTS: Project[] = [
     title: "Paris Disney Shuttle",
     kind: "Airport transfer booking site",
     summary:
-      "A booking site for a private shuttle service in Paris that prices each transfer between the airports, train stations and Disneyland Paris before the customer commits.",
+      "A booking site for a private shuttle service in Paris that shows the price of each transfer between airports, train stations and Disneyland Paris before the customer books.",
     year: "2020",
-    role: "Full-stack developer, in a team",
+    role: "Full-stack developer, as part of a team",
     link: "https://parisdisneyshuttle.com/",
     technologies: [
       "TypeScript",
@@ -339,13 +340,13 @@ export const PROJECTS: Project[] = [
     ),
     brief: [
       "Paris Disney Shuttle is a government-approved private shuttle and taxi service. Its eight-seat vans run between Charles de Gaulle, Orly and Beauvais airports, the city’s train stations and Disneyland Paris.",
-      "Customers pay the driver at the end of the journey, so the site had to quote a firm price up front, collect what the driver needs (flight number, hotel, number of passengers) and pass the booking to the office. I built it in a team, working on both the booking frontend and the PHP API.",
+      "Customers pay the driver at the end of the journey, so the site had to quote a firm price up front, collect what the driver needs (flight number, hotel, number of passengers) and pass the booking to the office. I built it as part of a team, working on both the booking frontend and the PHP API.",
     ],
     build: [
       {
         title: "Fare finder",
         description:
-          "On the home page, choosing a pickup, a drop-off and the group size shows the fare at once, and Book now carries those choices into the booking form. Phones get the system’s own select menus.",
+          "On the home page, choosing a pickup, a drop-off and the group size shows the fare at once, and Book now carries those choices into the booking form. On phones, it uses the device’s native select menus.",
       },
       {
         title: "Two-step booking",
