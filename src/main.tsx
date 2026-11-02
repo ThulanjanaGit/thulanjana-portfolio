@@ -3,6 +3,9 @@ import { createRoot, hydrateRoot } from "react-dom/client";
 import "@fontsource-variable/hanken-grotesk";
 import "./index.css";
 import App from "./App.tsx";
+import { followDeviceTheme } from "./utils/theme";
+
+followDeviceTheme();
 
 const root = document.getElementById("root")!;
 const app = (

@@ -15,7 +15,7 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Cloud Migration & CI/CD",
         description:
-          "Contributed to moving the whole platform from AWS (Lambda, S3, SQS, ECR) to GCP (Cloud Run, GKE, BigQuery, Cloud Storage, Artifact Registry), including Bitbucket Pipelines that automate version-gated releases, publish container images to Artifact Registry and sync runtime config to Cloud Storage.",
+          "Contributed to moving the whole platform from AWS (Lambda, S3, SQS, ECR) to GCP (Cloud Run, GKE, BigQuery, Cloud Storage, Artifact Registry). Built Bitbucket Pipelines that automate version-gated releases, publish container images and sync runtime config to Cloud Storage.",
       },
       {
         title: "LLM Evaluation Platform",
@@ -45,7 +45,7 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Agile Collaboration",
         description:
-          "Lead code reviews and take part in sprint planning and architecture documentation in Scrum teams with UI/UX and backend engineers.",
+          "Lead code reviews and contribute to sprint planning and architecture documentation, working in Scrum teams with UI/UX and backend engineers.",
       },
     ],
     technologies: [
@@ -84,14 +84,14 @@ export const EXPERIENCES: Experience[] = [
     period: "Dec 2023 – Sep 2025",
     highlights: [
       {
-        title: "Enterprise FE Solutions",
+        title: "Enterprise Frontend",
         description:
-          "Built responsive React and TypeScript applications for enterprise clients including Siemens Energy, and a reusable frontend setup used across 30+ UK platforms.",
+          "Built responsive React and TypeScript applications for enterprise clients such as Siemens Energy, and created a reusable frontend setup used across 30+ UK websites.",
       },
       {
         title: "Full-Stack & API Architecture",
         description:
-          "Built REST APIs with Node.js, Express and TypeScript and connected them to the frontend using test-driven development (TDD). Also customised PHP and headless WordPress backends.",
+          "Built REST APIs with Node.js, Express and TypeScript using test-driven development (TDD) and connected them to React frontends. Also customised PHP and headless WordPress backends.",
       },
       {
         title: "Testing & Quality",
@@ -158,7 +158,7 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "Full-Stack Feature Delivery",
         description:
-          "Built custom features with TypeScript, PHP and SQL, including Twilio integrations, shaped around business goals and user needs.",
+          "Built custom features, including Twilio integrations, with TypeScript, PHP and SQL to meet business and user needs.",
       },
       {
         title: "Scripting & Automation",
@@ -222,7 +222,7 @@ export const EXPERIENCES: Experience[] = [
       {
         title: "System Support & Optimisation",
         description:
-          "Provided end-to-end support across frontend and backend, documented the ticket triage process to speed up issue resolution, and tuned slow database queries and backend services that handled large volumes of data.",
+          "Provided end-to-end support across the frontend and backend, documented the ticket triage process to speed up issue resolution, and tuned slow database queries and backend services that handled large volumes of data.",
       },
     ],
     technologies: [

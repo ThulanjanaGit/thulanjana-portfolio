@@ -14,12 +14,15 @@ interface LineupRowProps {
   index: number;
   role: Role;
   open: boolean;
-  selected: string | null;
+  selected: string[];
 }
 
 const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
   const { role: title, company, period, highlights, technologies } = role;
-  const dimmed = selected !== null && !technologies.includes(selected);
+  // A role stays in ink when it uses any of the picks.
+  const dimmed =
+    selected.length > 0 &&
+    !technologies.some((technology) => selected.includes(technology));
 
   return (
     <li data-reveal style={stagger(index + 1)}>
@@ -55,7 +58,7 @@ const LineupRow = ({ index, role, open, selected }: LineupRowProps) => {
               {technologies.map((technology, position) => (
                 <Fragment key={technology}>
                   {position > 0 && ", "}
-                  {technology === selected ? (
+                  {selected.includes(technology) ? (
                     <mark className="bg-ink px-1 text-ground">
                       {technology}
                     </mark>

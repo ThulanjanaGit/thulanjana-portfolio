@@ -58,7 +58,8 @@ const Header = ({ home }: HeaderProps) => {
           </ul>
         </nav>
         <Menu home={home} />
-        <ThemeToggle />
+        {/* Below 1024px the switch sits at the foot of the menu. */}
+        <ThemeToggle className="max-lg:hidden" />
       </div>
     </header>
   );

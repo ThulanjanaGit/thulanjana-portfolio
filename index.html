@@ -11,20 +11,33 @@
     <meta name="author" content="Thulanjana Pramod" />
     <meta name="theme-color" content="#0b0b0b" />
     <meta name="color-scheme" content="dark" />
+    <!-- Stops iOS turning dates and place names into dotted-underlined links. -->
+    <meta
+      name="format-detection"
+      content="telephone=no, date=no, address=no, email=no"
+    />
     <script>
       // Mark that scripts run, so motion may hide elements before they
-      // arrive, and apply the saved theme before the first paint so the page
-      // never flashes the wrong one. Dark is the default.
+      // arrive, and apply the theme before the first paint so the page never
+      // flashes the wrong one: the visitor's saved choice, or else the
+      // device's setting.
       document.documentElement.classList.add("js");
-      try {
-        if (localStorage.getItem("theme") === "light") {
+      {
+        let saved = null;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch {
+          // Storage can be blocked; the device's setting then decides.
+        }
+        const light = saved
+          ? saved === "light"
+          : matchMedia("(prefers-color-scheme: light)").matches;
+        if (light) {
           document.documentElement.dataset.theme = "light";
           document.querySelector('meta[name="theme-color"]').content =
             "#eeedea";
           document.querySelector('meta[name="color-scheme"]').content = "light";
         }
-      } catch {
-        // Storage can be blocked; the default theme stays.
       }
     </script>
     <link rel="canonical" href="https://thulanjana.vercel.app/" />

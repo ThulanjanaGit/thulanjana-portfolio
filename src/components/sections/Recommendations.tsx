@@ -1,9 +1,22 @@
+import type { MouseEvent } from "react";
 import { RECOMMENDATIONS } from "../../data/recommendations";
 import { stagger } from "../../utils/stagger";
 import { SECTION_FRAME } from "../ui/section";
 import SectionHeading from "../ui/SectionHeading";
 
 const featured = RECOMMENDATIONS.find(({ excerpt }) => excerpt);
+
+const toggleClass =
+  "min-h-11 cursor-pointer items-center underline hover:decoration-[0.11em]";
+
+// Closes a letter from its foot and gives focus back to its summary, which is
+// hidden while the letter is open.
+const showLess = (event: MouseEvent<HTMLButtonElement>) => {
+  const details = event.currentTarget.closest("details");
+  if (!details) return;
+  details.open = false;
+  details.querySelector("summary")?.focus();
+};
 
 // The quote stays on two lines at every width: its longer line measures 909px
 // at 100px, so 10.8cqw fits a phone and the heading size takes over above.
@@ -101,9 +114,14 @@ const Recommendations = () => {
                 </a>
                 <blockquote className="mt-4">
                   <p>{first}</p>
+                  {/* Open, the letter ends with "Show less". Without scripts
+                      that button can't work, so the summary stays and says
+                      it instead. */}
                   {rest.length > 0 && (
                     <details className="group">
-                      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center underline hover:decoration-[0.11em] [&::-webkit-details-marker]:hidden">
+                      <summary
+                        className={`inline-flex list-none ${toggleClass} group-open:in-[.js]:hidden [&::-webkit-details-marker]:hidden`}
+                      >
                         <span className="group-open:hidden">
                           Read the full recommendation
                         </span>
@@ -111,11 +129,18 @@ const Recommendations = () => {
                           Show less
                         </span>
                       </summary>
-                      <div className="space-y-[0.9em]">
+                      <div className="space-y-[0.9em] in-[.js]:pt-[0.9em]">
                         {rest.map((paragraph) => (
                           <p key={paragraph}>{paragraph}</p>
                         ))}
                       </div>
+                      <button
+                        type="button"
+                        onClick={showLess}
+                        className={`hidden ${toggleClass} in-[.js]:inline-flex`}
+                      >
+                        Show less
+                      </button>
                     </details>
                   )}
                 </blockquote>
