@@ -40,8 +40,9 @@ interface MenuProps {
 }
 
 // The site menu below 1024px: a button that opens a modal dialog dropping
-// from the top, with the section links, Email and the CV. Its top bar repeats
-// the header's. Escape, the close button, a tap outside or a link closes it.
+// from the top, with the section links, then Email and the CV beside the theme
+// switch. Its top bar repeats the header's. Escape, the close button, a tap
+// outside or a link closes it.
 // Without scripts the button is hidden and the footer has the links.
 const Menu = ({ home }: MenuProps) => {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -96,17 +97,14 @@ const Menu = ({ home }: MenuProps) => {
             >
               Thulanjana Pramod
             </a>
-            <div className="flex items-center gap-5 sm:gap-8">
-              <button
-                type="button"
-                aria-label="Close menu"
-                onClick={close}
-                className={iconButtonClass}
-              >
-                <CloseIcon />
-              </button>
-              <ThemeToggle />
-            </div>
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={close}
+              className={iconButtonClass}
+            >
+              <CloseIcon />
+            </button>
           </div>
           <nav aria-label="Sections" className="mt-6">
             <ul>
@@ -122,7 +120,9 @@ const Menu = ({ home }: MenuProps) => {
                 </li>
               ))}
             </ul>
-            <ul className="mt-6 flex flex-wrap gap-x-6">
+          </nav>
+          <div className="mt-6 flex items-center justify-between gap-6">
+            <ul className="flex flex-wrap gap-x-6">
               <li>
                 <a href={`mailto:${CONTACT.email}`} className={linkClass}>
                   Email
@@ -140,7 +140,8 @@ const Menu = ({ home }: MenuProps) => {
                 </a>
               </li>
             </ul>
-          </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </dialog>
     </>

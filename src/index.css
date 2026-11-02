@@ -52,8 +52,8 @@
   --color-muted: var(--muted);
 }
 
-/* Dark is the default theme. Each block also serves inverted chapters,
-   which take the other theme's roles. */
+/* Dark is the base theme, and the one shown without scripts. Each block also
+   serves inverted chapters, which take the other theme's roles. */
 :root,
 [data-theme="light"] [data-chapter="invert"] {
   --ground: #0b0b0b;
