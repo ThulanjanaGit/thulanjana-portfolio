@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 import { EXPERIENCES } from "../data/experience";
 
 const PARAM = "tech";
@@ -13,26 +13,35 @@ const subscribe = (onChange: () => void) => {
   };
 };
 
-const read = () => new URLSearchParams(window.location.search).get(PARAM);
+// The query string rather than a parsed list, so the snapshot stays the same
+// between renders until the address changes.
+const read = () => window.location.search;
 
-const isKnown = (technology: string | null): technology is string =>
-  technology !== null &&
+const isKnown = (technology: string) =>
   EXPERIENCES.some(({ technologies }) => technologies.includes(technology));
 
-// The technology picked in the filter lives in the address (?tech=Python), so
-// a filtered view can be shared. Server-rendered HTML shows none picked; an
-// unknown value counts as none.
+// The technologies picked in the filter live in the address
+// (?tech=React&tech=Python), in the order they were picked, so a filtered
+// view can be shared. Server-rendered HTML shows none picked; unknown values
+// are dropped.
 export const useTechnologyParam = () => {
-  const value = useSyncExternalStore(subscribe, read, () => null);
+  const search = useSyncExternalStore(subscribe, read, () => "");
+  const selected = useMemo(
+    () =>
+      [...new Set(new URLSearchParams(search).getAll(PARAM))].filter(isKnown),
+    [search],
+  );
 
-  const select = (technology: string | null) => {
+  const select = (technologies: string[]) => {
     const url = new URL(window.location.href);
-    if (technology) url.searchParams.set(PARAM, technology);
-    else url.searchParams.delete(PARAM);
+    url.searchParams.delete(PARAM);
+    for (const technology of technologies) {
+      url.searchParams.append(PARAM, technology);
+    }
     // Replace, not push: switching technologies should not fill the history.
     window.history.replaceState(window.history.state, "", url);
     window.dispatchEvent(new Event(CHANGE));
   };
 
-  return [isKnown(value) ? value : null, select] as const;
+  return [selected, select] as const;
 };
