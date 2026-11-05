@@ -27,9 +27,9 @@ const matching = <T,>(
     return used.length > 0 ? [{ item, used }] : [];
   });
 
-// "no projects", "1 role", "4 roles"
+// "1 role", "4 roles"
 const count = (total: number, noun: string) =>
-  `${total === 0 ? "no" : total} ${noun}${total === 1 ? "" : "s"}`;
+  `${total} ${noun}${total === 1 ? "" : "s"}`;
 
 interface Result {
   key: string;
@@ -38,53 +38,56 @@ interface Result {
 }
 
 // Where the picked technologies were used, under Experience, Personal
-// projects and Education (the degree's skills).
-const resultsFor = (selected: string[]) => [
-  {
-    label: "Experience",
-    noun: "role",
-    items: matching(
-      EXPERIENCES,
-      ({ technologies }) => technologies,
-      selected,
-    ).map<Result>(({ item: { role, company, period }, used }) => ({
-      key: `${role}-${period}`,
-      name: (
-        <>
-          {role} at <span translate="no">{company}</span>
-        </>
+// projects and Education (the degree's skills). Groups without a match are
+// left out; Experience always has one, since every technology comes from a
+// role.
+const resultsFor = (selected: string[]) =>
+  [
+    {
+      label: "Experience",
+      noun: "role",
+      items: matching(
+        EXPERIENCES,
+        ({ technologies }) => technologies,
+        selected,
+      ).map<Result>(({ item: { role, company, period }, used }) => ({
+        key: `${role}-${period}`,
+        name: (
+          <>
+            {role} at <span translate="no">{company}</span>
+          </>
+        ),
+        used,
+      })),
+    },
+    {
+      label: "Personal projects",
+      noun: "personal project",
+      items: matching(
+        VISIBLE_PROJECTS,
+        ({ technologies }) => technologies,
+        selected,
+      ).map<Result>(({ item: { slug, title }, used }) => ({
+        key: slug,
+        name: (
+          <a
+            href={projectPath(slug)}
+            className="underline hover:decoration-[0.11em]"
+          >
+            {title}
+          </a>
+        ),
+        used,
+      })),
+    },
+    {
+      label: "Education",
+      noun: "qualification",
+      items: matching(EDUCATION, ({ skills }) => skills, selected).map<Result>(
+        ({ item: { degree }, used }) => ({ key: degree, name: degree, used }),
       ),
-      used,
-    })),
-  },
-  {
-    label: "Personal projects",
-    noun: "personal project",
-    items: matching(
-      VISIBLE_PROJECTS,
-      ({ technologies }) => technologies,
-      selected,
-    ).map<Result>(({ item: { slug, title }, used }) => ({
-      key: slug,
-      name: (
-        <a
-          href={projectPath(slug)}
-          className="underline hover:decoration-[0.11em]"
-        >
-          {title}
-        </a>
-      ),
-      used,
-    })),
-  },
-  {
-    label: "Education",
-    noun: "qualification",
-    items: matching(EDUCATION, ({ skills }) => skills, selected).map<Result>(
-      ({ item: { degree }, used }) => ({ key: degree, name: degree, used }),
-    ),
-  },
-];
+    },
+  ].filter(({ items }) => items.length > 0);
 
 // Small on phones, so the whole list takes about half a screen.
 const TOGGLE_CLASS =
@@ -176,23 +179,19 @@ const TechFilter = ({ selected, onSelect }: TechFilterProps) => {
               {results.map(({ label, items }) => (
                 <div key={label}>
                   <dt className="mb-1 text-muted">{label}</dt>
-                  {items.length === 0 ? (
-                    <dd className="text-muted">None</dd>
-                  ) : (
-                    items.map(({ key, name, used }) => (
-                      <dd key={key} className="mt-2 first-of-type:mt-0">
-                        {name}
-                        {selected.length > 1 && (
-                          <span
-                            translate="no"
-                            className="block text-small text-muted"
-                          >
-                            {used.join(", ")}
-                          </span>
-                        )}
-                      </dd>
-                    ))
-                  )}
+                  {items.map(({ key, name, used }) => (
+                    <dd key={key} className="mt-2 first-of-type:mt-0">
+                      {name}
+                      {selected.length > 1 && (
+                        <span
+                          translate="no"
+                          className="block text-small text-muted"
+                        >
+                          {used.join(", ")}
+                        </span>
+                      )}
+                    </dd>
+                  ))}
                 </div>
               ))}
             </dl>

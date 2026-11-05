@@ -100,7 +100,7 @@ Screens are laid out in rows of two. A desktop page and a phone screen share a r
 
 ### Images
 
-- Store images in `src/assets/` as WebP at about twice their displayed size (the portrait is 1024 × 1024), and import them where they are used.
+- Store images in `src/assets/` as WebP at about twice their displayed size (the portraits are 1024 × 1024), and import them where they are used.
 - Capture case study screenshots at 1440 × 900 (desktop) or 390 × 844 (phone), both at 2x. Save each as `src/assets/projects/<slug>/<name>-<width>.webp`: desktop pages at 960, 1600 and 2400 pixels wide, phone screens at 480 and 780, with names starting with `phone-`. `screenshot("<slug>/<name>", "alt text")` from `src/utils/screenshots.ts` turns them into a responsive image, and the build fails if a width is missing.
 - `public/og-image-v3.jpg` (1200 × 630) is the preview shown when the site is shared, with the name and "Software Engineer in Lisbon". Apps cache it by its address, so give a replacement a new file name and update both references in `index.html`.
 - `public/favicon.svg` is the "TP" tab icon. `favicon-96x96.png` and `apple-touch-icon.png` (180 × 180) are PNG copies of it, so replace all three together.

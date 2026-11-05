@@ -106,14 +106,16 @@ const Menu = ({ home }: MenuProps) => {
               <CloseIcon />
             </button>
           </div>
-          <nav aria-label="Sections" className="mt-6">
+          {/* "Recommendations" measures 765px at 100px, so 12.5cqw keeps it
+              inside a 320px screen and the heading size takes over above. */}
+          <nav aria-label="Sections" className="@container mt-6">
             <ul>
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
                   <a
                     href={sectionHref(href, home)}
                     onClick={leave}
-                    className="inline-block py-1 text-head underline-offset-[0.18em] hover:underline"
+                    className="inline-block py-1 text-[min(var(--text-head),12.5cqw)] leading-[0.95] tracking-[-0.04em] underline-offset-[0.18em] hover:underline"
                   >
                     {label}
                   </a>
