@@ -1,6 +1,25 @@
-import type { Certification } from "../types";
+import awsTechnicalAccredited from "../assets/badges/aws-technical-accredited.webp";
+import type { Badge, Certification } from "../types";
+
+// AWS has no public page to verify a completion certificate, so these link to
+// copies of the certificates in public/certificates.
+const CERTIFICATES_URL = `${import.meta.env.BASE_URL}certificates/`;
 
 export const CERTIFICATIONS: Certification[] = [
+  {
+    title: "AWS Partner: Accreditation (Technical)",
+    issuer: "AWS",
+    issued: "Nov 2026",
+    url: `${CERTIFICATES_URL}aws-partner-accreditation-technical.pdf`,
+    skills: ["AWS", "Cloud computing"],
+  },
+  {
+    title: "AWS Technical Essentials",
+    issuer: "AWS",
+    issued: "Nov 2026",
+    url: `${CERTIFICATES_URL}aws-technical-essentials.pdf`,
+    skills: ["AWS", "Cloud infrastructure"],
+  },
   {
     title: "Building with the Claude API",
     issuer: "Anthropic",
@@ -73,5 +92,14 @@ export const CERTIFICATIONS: Certification[] = [
     issued: "Oct 2024",
     url: "https://www.linkedin.com/learning/certificates/d2cd1f0b9502ad19abbb228e965027da20fd96446e244e37c3ec81f45a538e67",
     skills: ["HTML"],
+  },
+];
+
+// Shown in a row under the certificates, after Toptal's badge.
+export const BADGES: Badge[] = [
+  {
+    title: "AWS Partner: Technical Accredited",
+    url: "https://www.credly.com/badges/785897bc-d5e1-450c-9f83-1f2426ce19b1",
+    image: awsTechnicalAccredited,
   },
 ];

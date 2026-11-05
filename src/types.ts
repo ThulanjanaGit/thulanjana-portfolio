@@ -51,6 +51,13 @@ export interface Certification {
   skills: string[];
 }
 
+// A badge shown in its issuer's own artwork, linking to where it is verified.
+export interface Badge {
+  title: string;
+  url: string;
+  image: string;
+}
+
 // A screenshot saved at several widths; see src/utils/screenshots.ts.
 export interface Screenshot {
   src: string;
