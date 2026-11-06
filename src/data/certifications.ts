@@ -1,17 +1,40 @@
+import awsCloudEconomicsEssentials from "../assets/badges/aws-cloud-economics-essentials.webp";
+import awsGenerativeAiEssentials from "../assets/badges/aws-generative-ai-essentials.webp";
 import awsTechnicalAccredited from "../assets/badges/aws-technical-accredited.webp";
 import type { Badge, Certification } from "../types";
 
-// AWS has no public page to verify a completion certificate, so these link to
+// The AWS Partner courses are verified by their Credly badges. AWS has no
+// public page to verify its other completion certificates, so those link to
 // copies of the certificates in public/certificates.
 const CERTIFICATES_URL = `${import.meta.env.BASE_URL}certificates/`;
+const AWS_TECHNICAL_ACCREDITED_URL =
+  "https://www.credly.com/badges/785897bc-d5e1-450c-9f83-1f2426ce19b1";
+const AWS_GENERATIVE_AI_ESSENTIALS_URL =
+  "https://www.credly.com/badges/0bcdcad1-d7bf-40ad-914b-771cb7478721";
+const AWS_CLOUD_ECONOMICS_ESSENTIALS_URL =
+  "https://www.credly.com/badges/93b125ec-a517-426d-b457-7be3a86e7e1f";
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    title: "AWS Partner: Accreditation (Technical)",
+    title: "Accreditation (Technical)",
     issuer: "AWS",
     issued: "Nov 2026",
-    url: `${CERTIFICATES_URL}aws-partner-accreditation-technical.pdf`,
-    skills: ["AWS", "Cloud computing"],
+    url: AWS_TECHNICAL_ACCREDITED_URL,
+    skills: ["AWS Partner", "Cloud computing"],
+  },
+  {
+    title: "Generative AI Essentials",
+    issuer: "AWS",
+    issued: "Nov 2026",
+    url: AWS_GENERATIVE_AI_ESSENTIALS_URL,
+    skills: ["AWS Partner", "Generative AI"],
+  },
+  {
+    title: "Cloud Economics Essentials",
+    issuer: "AWS",
+    issued: "Nov 2026",
+    url: AWS_CLOUD_ECONOMICS_ESSENTIALS_URL,
+    skills: ["AWS Partner", "Cloud economics"],
   },
   {
     title: "AWS Technical Essentials",
@@ -28,7 +51,7 @@ export const CERTIFICATIONS: Certification[] = [
     skills: ["Anthropic API", "Generative AI"],
   },
   {
-    title: "Introduction to Model Context Protocol",
+    title: "Introduction to MCP",
     issuer: "Anthropic",
     issued: "Aug 2026",
     url: "https://verify.skilljar.com/c/4q2efkcfzuq4",
@@ -99,7 +122,17 @@ export const CERTIFICATIONS: Certification[] = [
 export const BADGES: Badge[] = [
   {
     title: "AWS Partner: Technical Accredited",
-    url: "https://www.credly.com/badges/785897bc-d5e1-450c-9f83-1f2426ce19b1",
+    url: AWS_TECHNICAL_ACCREDITED_URL,
     image: awsTechnicalAccredited,
+  },
+  {
+    title: "AWS Partner: Generative AI Essentials",
+    url: AWS_GENERATIVE_AI_ESSENTIALS_URL,
+    image: awsGenerativeAiEssentials,
+  },
+  {
+    title: "AWS Partner: Cloud Economics Essentials",
+    url: AWS_CLOUD_ECONOMICS_ESSENTIALS_URL,
+    image: awsCloudEconomicsEssentials,
   },
 ];
